@@ -15,9 +15,12 @@ python pyinstaller.py -F --noconsole --windowed  graf_teste_wGUI_3.py
 
 Material de apoio :
 
- GUI Tkinter Python --http://www.tutorialspoint.com/python/python_gui_programming.htm
+ GUI Tkinter Python --http://www.tutorialspoint.com/python/python_gui_programming.html
+ 
  Pyinstaller Manual --http://www.pyinstaller.org/export/v2.0/project/doc/Manual.html#build-your-project
+ 
  Pyplot  Manual     --http://matplotlib.org/1.3.1/users/pyplot_tutorial.html
+ 
  Python 2.7.7 Docs  --https://docs.python.org/2/
 
 
