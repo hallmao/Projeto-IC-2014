@@ -25,6 +25,9 @@ Material de apoio :
  
  Python Video Lectures --http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/video-lectures/
  
+ Usage of Complex numbers in Python --https://docs.python.org/2/library/cmath.html#module-cmath
+ 
+ Python 2.7.7 API & Syntax --https://docs.python.org/2/library/index.html
 
 
 
