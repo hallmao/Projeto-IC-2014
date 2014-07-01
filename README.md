@@ -8,8 +8,10 @@ Michael Brochonski
 Nelson A.Pires
 
 You are listed as one of the authors of
-this paper. To enter the LACLO 2014 Web
-pages you should visit
+this paper.
+
+Para compilar no pyinstaller, favor utilizar:
+python pyinstaller.py -F --noconsole --windowed  graf_teste_wGUI_3.py
 
 
 
