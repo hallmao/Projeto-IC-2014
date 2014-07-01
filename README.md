@@ -22,6 +22,10 @@ Material de apoio :
  Pyplot  Manual     --http://matplotlib.org/1.3.1/users/pyplot_tutorial.html
  
  Python 2.7.7 Docs  --https://docs.python.org/2/
+ 
+ Python Video Lectures --http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/video-lectures/
+ 
+
 
 
 
