@@ -155,43 +155,44 @@ def plot_and_show():
     RespNatplot= plt.plot(t,plotNat,lw = 2)
     plt.ylim(-abs(y0+1),abs(y0+1))
 
-    if b0 and xT
-    #Plot Resposta Particular
-    plotPart = (b0/a0)* eval(xT)
-    plt.figure("Resposta Particular ypart(t)")
-    plt.xlabel("Tempo t")
-    plt.ylabel("Amplitude")
-    RespPartPlot= plt.plot(t,plotPart,lw = 2)
-    plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
+    if b0!= 0:
+        
+        #Plot Resposta Particular
+        plotPart = (b0/a0)* eval(xT)
+        plt.figure("Resposta Particular ypart(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespPartPlot= plt.plot(t,plotPart,lw = 2)
+        plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
 
 
-    #Plot Resposta Transitoria
-    #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
+        #Plot Resposta Transitoria
+        #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
 
-    plotTran = -(b0/a0)*eval(xT)*(e**r)
-    plt.figure("Resposta Transitoria ytran(t)")
-    plt.xlabel("Tempo t")
-    plt.ylabel("Amplitude")
-    RespTranPlot= plt.plot(t,plotTran,lw = 2)
-    plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
+        plotTran = -(b0/a0)*eval(xT)*(e**r)
+        plt.figure("Resposta Transitoria ytran(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespTranPlot= plt.plot(t,plotTran,lw = 2)
+        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
-    ##Plot Resposta Forçada
-    ##print "yfor(t) = ytran(t) + ypart(t)"
-    plotFor = -(b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
-    plt.figure("Resposta Forcada ytran(t)")
-    plt.xlabel("Tempo t")
-    plt.ylabel("Amplitude")
-    RespForPlot= plt.plot(t,plotFor,lw = 2)
-    plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
-    
-    ##Plot Resposta Completa
-    ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-    plotCom = y0*e**(r*t) + (-(b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
-    plt.figure("Resposta Completa ytran(t)")
-    plt.xlabel("Tempo t")
-    plt.ylabel("Amplitude")
-    RespComPlot= plt.plot(t,plotCom,lw = 2)
-    plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
+        ##Plot Resposta Forçada
+        ##print "yfor(t) = ytran(t) + ypart(t)"
+        plotFor = -(b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
+        plt.figure("Resposta Forcada ytran(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespForPlot= plt.plot(t,plotFor,lw = 2)
+        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
+        
+        ##Plot Resposta Completa
+        ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
+        plotCom = y0*e**(r*t) + (-(b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
+        plt.figure("Resposta Completa ytran(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespComPlot= plt.plot(t,plotCom,lw = 2)
+        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
     
     
