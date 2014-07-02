@@ -280,8 +280,8 @@ def plot_and_show():
         #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
     
-    plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9,
-                wspace=0.2, hspace=0.7)
+    plt.subplots_adjust(left=0.05, bottom=0.07, right=0.94, top=0.9,
+                wspace=0.21, hspace=0.6)
     plt.show()
 
 
