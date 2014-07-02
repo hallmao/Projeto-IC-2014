@@ -1,7 +1,11 @@
-﻿import matplotlib.pyplot as draw
-from   math  import sin,cos 
+﻿import matplotlib.pyplot as plt
+from   math  import sin,cos,e,exp 
 from   numpy import array
 from   numpy import arange
+
+###Funções renomeadas para facilitar digitação
+
+
 
 
 #EDO ordem1
@@ -74,7 +78,7 @@ a1 = float(input("a1 = "))
 a0 = float(input("a0 = "))
 b0 = float(input("b0 = "))
 y0 = float(input("Condicao Inicial de y(0) =  "))
-print "Entrada x(t),favor inserir no formato e^(q*t),sin(q*t),cos(q*t) onde q é uma cte:"
+print "Entrada x(t),favor inserir no formato e(q*t),sin(q*t),cos(q*t) onde q é uma cte:"
 xT = raw_input("x(t) = ")
 
 ###1--Homogenea
@@ -102,36 +106,44 @@ xT = raw_input("x(t) = ")
 ###Resposta natural
 r = -(a0/a1) ## Raiz da eq
     #Forma Natural
-print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(r)+"t)*u(t)"
 
 
+
+
+
+def log_print():
+    print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(r)+"t)*u(t)"
 ##Resposta forma natural com conds iniciais
-print "\nResposta natural:\n"+"ynat(t)= " +str(y0)+"*e^("+str(r)+"t)*u(t)"
+    print "\nResposta natural:\n"+"ynat(t)= " +str(y0)+"*e^("+str(r)+"t)*u(t)"
+    ##Resposta completa
+    if b0 == 0:
+        print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
+        print "yc(t) = ("+str(y0)+"*"+"e^("+str(r)+"t)*u(t)"
 
-    #----------------------Resposta forçada----------------
-
-if b0 != 0 :
-    print "\nResposta forçada"
-    print "ypart(t) ="+str((b0/a0))+"*"+xT+"*u(t)"
-
-    ##ytran(t)
-
-    print "ytran(t) = "+str((-b0/a0))+"*"+xT+"*e^("+str(r)+"t)*u(t)"
-
-
-    ## Yforçada(t)
-   
-    print "yfor(t) = ytran(t) + ypart(t)"
-    print "yfor(t) = "+str((-b0/a0))+"*"+xT+"*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
-
-
-    ###Resposta completa
-
-    print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-    print "yc(t) = ("+str(y0)+str(-b0/a0)+"*"+xT+"*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
+    
+    if b0 != 0 :
+        print "\nResposta forçada"
+        print "ypart(t) ="+str((b0/a0))+"*("+xT+")*u(t)"
+        ##ytran(t)
+        print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
+        ## Yforçada(t)
+        print "yfor(t) = ytran(t) + ypart(t)"
+        print "yfor(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
+        ###Resposta completa
+        print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
+        print "yc(t) = ("+str(y0)+str(-b0/a0)+"*("+xT+")*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
     
 
-        
+
+#Print
+
+log_print()
+
+
+#def plot_and_show:
+
+
+
     
 
 
