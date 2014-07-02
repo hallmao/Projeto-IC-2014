@@ -222,9 +222,9 @@ def plot_and_show():
         ## Nosso t precisa ser multiplicado por essa constant,
         # t deixa de ser um escalar e vira um vetor
             # print xTcheck
-             t=t*xTcheck
-             print type(t),t
-        
+        t=t*xTcheck
+        print type(t),t
+    
         #Plot Resposta Particular
         plotPart = (b0/a0)*t
         plt.figure("Resposta Particular ypart(t)")
@@ -232,7 +232,7 @@ def plot_and_show():
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
         RespPartPlot= plt.plot(t,plotPart,lw = 2)
-        plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
+        #plt.ylim(-abs((b0/a0)+1),abs((b0/a0)+1))
 
 
         #Plot Resposta Transitoria
@@ -244,27 +244,27 @@ def plot_and_show():
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
         RespTranPlot= plt.plot(t,plotTran,lw = 2)
-        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
+        #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
         ##Plot Resposta Forçada
         ##print "yfor(t) = ytran(t) + ypart(t)"
-        plotFor = -(b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
+        plotFor = -(b0/a0)*t*(e**r) + (b0/a0)*t
         plt.figure("Resposta Forcada yfor(t)")
         plt.title("yfor(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
         RespForPlot= plt.plot(t,plotFor,lw = 2)
-        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
+        #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
         
         ##Plot Resposta Completa
         ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-        plotCom = y0*e**(r*t) + (-(b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
+        plotCom = y0*e**(r*t) + (-(b0/a0)*t*(e**r)) + (b0/a0)*t
         plt.figure("Resposta Completa yc(t)")
         plt.title("yc(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
         RespComPlot= plt.plot(t,plotCom,lw = 2)
-        plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
+        #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
     
     
