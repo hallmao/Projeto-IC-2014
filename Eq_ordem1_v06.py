@@ -167,20 +167,24 @@ def plot_and_show():
 
     # t variable adjusting
     t       = arange(0.0,15.0,0.01)
+
     
     plotNat = y0*e**(r*t)
-    plt.figure("Resposta Natural ynat(t)")
-    plt.title("ypart(t)")
+    plt.subplot(322)
+    #plt.figure("Resposta Natural ynat(t)")
+    plt.title("ynat(t)")
     plt.xlabel("Tempo t")
     plt.ylabel("Amplitude")
     RespNatplot= plt.plot(t,plotNat,lw = 2)
     plt.ylim(-abs(y0+1),abs(y0+1))
 
     if b0!= 0 and flag_FdeX : ## Para x(t) funcao de x
-        
+
+       
         #Plot Resposta Particular
         plotPart = (b0/a0)* eval(xT)
-        plt.figure("Resposta Particular ypart(t)")
+        #plt.figure("Resposta Particular ypart(t)")
+        plt.subplot(321)
         plt.title("ypart(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -190,9 +194,10 @@ def plot_and_show():
 
         #Plot Resposta Transitoria
         #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
-
-        plotTran = -(b0/a0)*eval(xT)*(e**r)
-        plt.figure("Resposta Transitoria ytran(t)")
+ 
+        plotTran = (-b0/a0)*eval(xT)*(e**r)
+        plt.subplot(323)
+        #plt.figure("Resposta Transitoria ytran(t)")
         plt.title("ytran(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -201,8 +206,9 @@ def plot_and_show():
 
         ##Plot Resposta Forçada
         ##print "yfor(t) = ytran(t) + ypart(t)"
-        plotFor = -(b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
-        plt.figure("Resposta Forcada yfor(t)")
+        plotFor = (-b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
+        plt.subplot(324)
+        #plt.figure("Resposta Forcada yfor(t)")
         plt.title("yfor(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -211,8 +217,9 @@ def plot_and_show():
         
         ##Plot Resposta Completa
         ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-        plotCom = y0*e**(r*t) + (-(b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
-        plt.figure("Resposta Completa yc(t)")
+        plotCom = y0*e**(r*t) + ((-b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
+        plt.subplot(326)
+        #plt.figure("Resposta Completa yc(t)")
         plt.title("yc(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -229,7 +236,8 @@ def plot_and_show():
     
         #Plot Resposta Particular
         plotPart = (b0/a0)*t
-        plt.figure("Resposta Particular ypart(t)")
+        plt.subplot(321)
+        #plt.figure("Resposta Particular ypart(t)")
         plt.title("ypart(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -240,8 +248,9 @@ def plot_and_show():
         #Plot Resposta Transitoria
         #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
 
-        plotTran = -(b0/a0)*t*(e**r)
-        plt.figure("Resposta Transitoria ytran(t)")
+        plotTran = (-b0/a0)*t*(e**r)
+        plt.subplot(323)
+        #plt.figure("Resposta Transitoria ytran(t)")
         plt.title("ytran(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -250,8 +259,9 @@ def plot_and_show():
 
         ##Plot Resposta Forçada
         ##print "yfor(t) = ytran(t) + ypart(t)"
-        plotFor = -(b0/a0)*t*(e**r) + (b0/a0)*t
-        plt.figure("Resposta Forcada yfor(t)")
+        plotFor = (-b0/a0)*t*(e**r) + (b0/a0)*t
+        plt.subplot(324)
+        #plt.figure("Resposta Forcada yfor(t)")
         plt.title("yfor(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -260,8 +270,9 @@ def plot_and_show():
         
         ##Plot Resposta Completa
         ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-        plotCom = y0*e**(r*t) + (-(b0/a0)*t*(e**r)) + (b0/a0)*t
-        plt.figure("Resposta Completa yc(t)")
+        plotCom = y0*e**(r*t) + ((-b0/a0)*t*(e**r)) + (b0/a0)*t
+        plt.subplot(326)
+        #plt.figure("Resposta Completa yc(t)")
         plt.title("yc(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -269,7 +280,8 @@ def plot_and_show():
         #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
     
-    
+    plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9,
+                wspace=0.2, hspace=0.7)
     plt.show()
 
 
