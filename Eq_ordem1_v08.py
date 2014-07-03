@@ -28,6 +28,7 @@ while True :
     b0 = 0
     #------------------
     t  = 0 # Variável no tempo
+    x0 = 0
     #----------------------------------
 
     #2--Resposta natural:
@@ -178,7 +179,7 @@ while True :
 
 
 
-        if b0!= 0 or flag_FdeX : ## Para x(t) funcao de x
+        if b0!= 0 and flag_FdeX : ## Para x(t) funcao de t
 
 
                 ###Plot x(t)
