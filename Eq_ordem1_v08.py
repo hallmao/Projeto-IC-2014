@@ -101,6 +101,9 @@ while True :
     except:
         pass
 
+
+    ##Precisão no log de saída :
+    precLog = 2
         
     #print xTcheck    
 
@@ -137,26 +140,26 @@ while True :
 
 
     def log_print():
-        print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(round(r,2))+"t)*u(t)"
+        print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(round(r,precLog))+"t)*u(t)"
     ##Resposta forma natural com conds iniciais
-        print "\nResposta natural:\n"+"ynat(t)= " +str(round(y0,2))+"*e^("+str(round(r,2))+"t)*u(t)"
+        print "\nResposta natural:\n"+"ynat(t)= " +str(round(y0,precLog))+"*e^("+str(round(r,precLog))+"t)*u(t)"
         ##Resposta completa
         if b0 == 0:
             print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-            print "yc(t) = ("+str(round(r,2))+"*"+"e^("+str(round(r,2))+"t)*u(t)"
+            print "yc(t) = ("+str(round(r,precLog))+"*"+"e^("+str(round(r,precLog))+"t)*u(t)"
 
         
         if b0 != 0:
             print "\nResposta forcada"
-            print "ypart(t) ="+str(round(b0/a0,2))+"*("+xT+")*u(t)"
+            print "ypart(t) ="+str(round(b0/a0,precLog))+"*("+xT+")*u(t)"
             ##ytran(t)
-            print "ytran(t) = "+str(round(-b0/a0,2))+"*("+xT+")*e^("+str(round(r,2))+"t)*u(t)"
+            print "ytran(t) = "+str(round(-b0/a0,precLog))+"*("+xT+")*e^("+str(round(r,precLog))+"t)*u(t)"
             ## Yforçada(t)
             print "yfor(t) = ytran(t) + ypart(t)"
-            print "yfor(t) = "+str(round(-b0/a0,2))+"*("+xT+")*e^("+str(round(r,2))+"t)*u(t) + "+str(round(b0/a0,2))+"*"+xT+"*u(t)"
+            print "yfor(t) = "+str(round(-b0/a0,precLog))+"*("+xT+")*e^("+str(round(r,precLog))+"t)*u(t) + "+str(round(b0/a0,2))+"*"+xT+"*u(t)"
             ###Resposta completa
             print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-            print "yc(t) = ("+str(round(y0,2))+str(round(-b0/a0,2))+"*("+xT+")*e^("+str(round(r,2))+"t)*u(t) + "+str(round(b0/a0,2))+"*"+xT+"*u(t)"
+            print "yc(t) = ("+str(round(y0,precLog))+str(round(-b0/a0,precLog))+"*("+xT+")*e^("+str(round(r,precLog))+"t)*u(t) + "+str(round(b0/a0,precLog))+"*"+xT+"*u(t)"
         
 
 
@@ -170,7 +173,8 @@ while True :
         #Plot resposta natural:
 
         # t variable adjusting
-        t       = arange(0.0,15.0,0.01)
+        ###Ideia futura, t ajustável pelo Usuário !!
+        t       = arange(0.0,20.0,0.01)
 
         
         plotNat = y0*e**(r*t)
