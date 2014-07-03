@@ -70,14 +70,14 @@ while True :
 
     ### yc(t) = ( d- (b0*f)/a0)*e^[(-a0/a1)*t]
 
-    print "Entre com os coefs para uma EDO do tipo a1*y´(t) + a0*(t)  = b0*x(t)"
+    print "Entre com os coefs para uma EDO do tipo a1*(dy(t)/dt) + a0*y(t)  = b0*x(t)"
 
     #Entrada porca no console (só pra testes,claro !)
     a1 = float(input("a1 = "))
     a0 = float(input("a0 = "))
     b0 = float(input("b0 = "))
     y0 = float(input("Condicao Inicial de y(0) =  "))
-    print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t onde q é uma cte:"
+    print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t,t**q onde q e uma cte:"
     xT = raw_input("x(t) = ")
 
     ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
@@ -131,26 +131,26 @@ while True :
 
 
     def log_print():
-        print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(r)+"t)*u(t)"
+        print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(round(r))+"t)*u(t)"
     ##Resposta forma natural com conds iniciais
-        print "\nResposta natural:\n"+"ynat(t)= " +str(y0)+"*e^("+str(r)+"t)*u(t)"
+        print "\nResposta natural:\n"+"ynat(t)= " +str(round(y0))+"*e^("+str(round(r))+"t)*u(t)"
         ##Resposta completa
         if b0 == 0:
             print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-            print "yc(t) = ("+str(y0)+"*"+"e^("+str(r)+"t)*u(t)"
+            print "yc(t) = ("+str(round(r))+"*"+"e^("+str(round(r))+"t)*u(t)"
 
         
         if b0 != 0:
-            print "\nResposta forçada"
-            print "ypart(t) ="+str((b0/a0))+"*("+xT+")*u(t)"
+            print "\nResposta forcada"
+            print "ypart(t) ="+str(round(b0/a0))+"*("+xT+")*u(t)"
             ##ytran(t)
-            print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
+            print "ytran(t) = "+str(round(-b0/a0))+"*("+xT+")*e^("+str(round(r))+"t)*u(t)"
             ## Yforçada(t)
             print "yfor(t) = ytran(t) + ypart(t)"
-            print "yfor(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
+            print "yfor(t) = "+str(round(-b0/a0))+"*("+xT+")*e^("+str(round(r))+"t)*u(t) + "+str(round(b0/a0))+"*"+xT+"*u(t)"
             ###Resposta completa
             print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-            print "yc(t) = ("+str(y0)+str(-b0/a0)+"*("+xT+")*e^("+str(r)+"t)*u(t) + "+str((b0/a0))+"*"+xT+"*u(t)"
+            print "yc(t) = ("+str(round(y0))+str(round(-b0/a0))+"*("+xT+")*e^("+str(round(r))+"t)*u(t) + "+str(round(b0/a0))+"*"+xT+"*u(t)"
         
 
 
