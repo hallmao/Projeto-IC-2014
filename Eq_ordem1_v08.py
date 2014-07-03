@@ -5,7 +5,7 @@ from   numpy import arange
 ###Funções renomeadas para facilitar digitação
 
 
-while true :
+while True :
 
     #EDO ordem1
     # a1*y´(t) + a0*(t)  = b0*x(t)
@@ -324,7 +324,7 @@ while true :
     #Plot Answers
     plot_and_show()
 
-    input()
+    ##raw_input()
     
 
 
