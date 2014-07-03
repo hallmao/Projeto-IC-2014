@@ -79,7 +79,12 @@ while True :
     b0 = float(input("b0 = "))
     y0 = float(input("Condicao Inicial de y(0) =  "))
     print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t,t**q onde q e uma cte:"
-    xT = raw_input("x(t) = ")
+
+    if b0 != 0 :
+        xT = raw_input("x(t) = ")
+
+    else:
+        xT = 0
 
     ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
     flag_FdeX = True
