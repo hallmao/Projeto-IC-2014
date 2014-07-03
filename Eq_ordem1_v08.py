@@ -178,7 +178,7 @@ while True :
 
 
 
-        if b0!= 0 and flag_FdeX : ## Para x(t) funcao de x
+        if b0!= 0 or flag_FdeX : ## Para x(t) funcao de x
 
 
                 ###Plot x(t)
