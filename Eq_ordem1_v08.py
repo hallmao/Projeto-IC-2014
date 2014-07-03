@@ -174,6 +174,8 @@ while True :
 
         
         plotNat = y0*e**(r*t)
+        ##Nome da Janela dos graficos
+        plt.figure("EDOs a coeficientes constantes")
         plt.subplot(333)
         #plt.figure("Resposta Natural ynat(t)")
         plt.title("ynat(t)")
@@ -321,6 +323,7 @@ while True :
         ##Manual Plot spacing
         plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
                     wspace=0.29, hspace=0.65)
+ 
         plt.show()
 
 
