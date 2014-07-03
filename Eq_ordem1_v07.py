@@ -168,7 +168,7 @@ def plot_and_show():
 
     
     plotNat = y0*e**(r*t)
-    plt.subplot(322)
+    plt.subplot(333)
     #plt.figure("Resposta Natural ynat(t)")
     plt.title("ynat(t)")
     plt.xlabel("Tempo t")
@@ -183,7 +183,7 @@ def plot_and_show():
 
             ###Plot x(t)
         plotXt = eval(xT)
-        plt.subplot(325)
+        plt.subplot(3,3,(1,7))
         plt.title("x(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -194,7 +194,7 @@ def plot_and_show():
         #Plot Resposta Particular
         plotPart = (b0/a0)* eval(xT)
         #plt.figure("Resposta Particular ypart(t)")
-        plt.subplot(321)
+        plt.subplot(332)
         plt.title("ypart(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -206,7 +206,7 @@ def plot_and_show():
         #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
  
         plotTran = (-b0/a0)*eval(xT)*(e**r)
-        plt.subplot(323)
+        plt.subplot(335)
         #plt.figure("Resposta Transitoria ytran(t)")
         plt.title("ytran(t)")
         plt.xlabel("Tempo t")
@@ -217,8 +217,14 @@ def plot_and_show():
         ##Plot Resposta Forçada
         ##print "yfor(t) = ytran(t) + ypart(t)"
         plotFor = (-b0/a0)*eval(xT)*(e**r) + (b0/a0)*eval(xT)
-        plt.subplot(324)
+        plt.subplot(3,3,8)
         #plt.figure("Resposta Forcada yfor(t)")
+        plt.title("yfor(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespForPlot= plt.plot(t,plotFor,lw = 2)
+        ##Plotting on 2 distinct places
+        plt.subplot(3,3,6)
         plt.title("yfor(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -228,7 +234,7 @@ def plot_and_show():
         ##Plot Resposta Completa
         ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
         plotCom = y0*e**(r*t) + ((-b0/a0)*eval(xT)*(e**r)) + (b0/a0)*eval(xT)
-        plt.subplot(326)
+        plt.subplot(339)
         #plt.figure("Resposta Completa yc(t)")
         plt.title("yc(t)")
         plt.xlabel("Tempo t")
@@ -246,7 +252,7 @@ def plot_and_show():
 
             ###Plot x(t)
         plotXt = t
-        plt.subplot(325)
+        plt.subplot(3,3,(1,7))
         plt.title("x(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
@@ -257,7 +263,7 @@ def plot_and_show():
     
         #Plot Resposta Particular
         plotPart = (b0/a0)*t
-        plt.subplot(321)
+        plt.subplot(332)
         #plt.figure("Resposta Particular ypart(t)")
         plt.title("ypart(t)")
         plt.xlabel("Tempo t")
@@ -270,7 +276,7 @@ def plot_and_show():
         #print "ytran(t) = "+str((-b0/a0))+"*("+xT+")*e^("+str(r)+"t)*u(t)"
 
         plotTran = (-b0/a0)*t*(e**r)
-        plt.subplot(323)
+        plt.subplot(335)
         #plt.figure("Resposta Transitoria ytran(t)")
         plt.title("ytran(t)")
         plt.xlabel("Tempo t")
@@ -281,7 +287,13 @@ def plot_and_show():
         ##Plot Resposta Forçada
         ##print "yfor(t) = ytran(t) + ypart(t)"
         plotFor = (-b0/a0)*t*(e**r) + (b0/a0)*t
-        plt.subplot(324)
+        plt.subplot(338)
+        #plt.figure("Resposta Forcada yfor(t)")
+        plt.title("yfor(t)")
+        plt.xlabel("Tempo t")
+        plt.ylabel("Amplitude")
+        RespForPlot= plt.plot(t,plotFor,lw = 2)
+        plt.subplot(336)
         #plt.figure("Resposta Forcada yfor(t)")
         plt.title("yfor(t)")
         plt.xlabel("Tempo t")
@@ -292,7 +304,7 @@ def plot_and_show():
         ##Plot Resposta Completa
         ##print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
         plotCom = y0*e**(r*t) + ((-b0/a0)*t*(e**r)) + (b0/a0)*t
-        plt.subplot(326)
+        plt.subplot(339)
         #plt.figure("Resposta Completa yc(t)")
         plt.title("yc(t)")
         plt.xlabel("Tempo t")
@@ -300,9 +312,9 @@ def plot_and_show():
         RespComPlot= plt.plot(t,plotCom,lw = 2)
         #plt.ylim(-abs((b0/a0)+5),abs((b0/a0)+5))
 
-    
-    plt.subplots_adjust(left=0.05, bottom=0.07, right=0.94, top=0.9,
-                wspace=0.21, hspace=0.6)
+    ##Manual Plot spacing
+    plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
+                wspace=0.29, hspace=0.65)
     plt.show()
 
 
