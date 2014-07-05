@@ -140,6 +140,10 @@ while True :
 
 
     def log_print():
+        print "\nRelatorio"
+        print "Equacao diferencial-->\n"
+        print str(a1)+"*(dy(t)/dt) "+str(a0)+"*y(t) " + "= "+str(b0)+"*("+xT+")\n"
+        print "Raiz(es) da equacao = " + str(round(r,precLog))
         print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(round(r,precLog))+"t)*u(t)"
     ##Resposta forma natural com conds iniciais
         print "\nResposta natural:\n"+"ynat(t)= " +str(round(y0,precLog))+"*e^("+str(round(r,precLog))+"t)*u(t)"
