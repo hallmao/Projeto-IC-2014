@@ -199,7 +199,7 @@ while True :
 
                 ###Plot x(t)
             plotXt = eval(xT)
-            plt.subplot(3,3,(1,7))
+            plt.subplot(3,3,1)
             plt.title("x(t)")
             plt.xlabel("Tempo t")
             plt.ylabel("Amplitude")
@@ -268,7 +268,7 @@ while True :
 
                 ###Plot x(t)
             plotXt = t
-            plt.subplot(3,3,(1,7))
+            plt.subplot(3,3,1)
             plt.title("x(t)")
             plt.xlabel("Tempo t")
             plt.ylabel("Amplitude")
