@@ -10,7 +10,21 @@ from   numpy import array,sin,cos,exp
 from   numpy import arange
 ###Funções renomeadas para facilitar digitação
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+import sys
 
+##try:
+from Tkinter import *
+##except ImportError:
+##    from tkinter import *
+
+##try:
+import ttk
+##    py3 = 0
+##except ImportError:
+##    import tkinter.ttk as ttk
+##    py3 = 1
+
+import v03_support
 
 
 #EDO ordem1
@@ -390,21 +404,7 @@ def plot_and_show():
     return outAllPlots
 
 
-import sys
-
-try:
-    from Tkinter import *
-except ImportError:
-    from tkinter import *
-
-try:
-    import ttk
-    py3 = 0
-except ImportError:
-    import tkinter.ttk as ttk
-    py3 = 1
-
-import v03_support
+###GUI START
 
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
