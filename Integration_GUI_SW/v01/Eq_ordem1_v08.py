@@ -4,8 +4,8 @@ from   numpy import array,sin,cos,exp
 from   numpy import arange
 ###Funções renomeadas para facilitar digitação
 
-test  = 1
-while test >=1 :
+
+while True :
 
     #EDO ordem1
     # a1*y´(t) + a0*(t)  = b0*x(t)
@@ -80,19 +80,24 @@ while test >=1 :
     y0 = float(input("Condicao Inicial de y(0) =  "))
     print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t,t**q onde q e uma cte:"
 
-    if b0 != 0 :
-        xT = raw_input("x(t) = ")
 
-    else:
-        xT = 0
-
-    ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
+      ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
     flag_FdeX = True
     #xTcheck = 0.0
     ##Checando xT, verificando se é uma função em x ou impulso
 
     ##Tente converter x(t) pra float, só funciona se
     #o mesmo for uma constante, do contrario, ignore
+
+
+    
+    if b0 != 0 :
+        xT = raw_input("x(t) = ")
+
+    else:
+        xT = 0
+
+
     try:
         xTcheck = float(xT)
         #print  type(xTcheck)
@@ -100,6 +105,8 @@ while test >=1 :
         flag_FdeX = False
     except:
         pass
+
+  
 
 
     ##Precisão no log de saída :
@@ -142,7 +149,7 @@ while test >=1 :
     def log_print():
         print "\nRelatorio"
         print "Equacao diferencial-->\n"
-        print str(a1)+"*(dy(t)/dt) "+str(a0)+"*y(t) " + "= "+str(b0)+"*("+xT+")\n"
+        print str(a1)+"*(dy(t)/dt) "+str(a0)+"*y(t) " + "= "+str(b0)+"*("+str(xT)+")\n"
         print "Raiz(es) da equacao = " + str(round(r,precLog))
         print "Forma natural da resposta:\n"+"yfn(t)= " + "C*e^("+str(round(r,precLog))+"t)*u(t)"
     ##Resposta forma natural com conds iniciais
@@ -150,7 +157,7 @@ while test >=1 :
         ##Resposta completa
         if b0 == 0:
             print "\nResposta completa : yc(t) = ynat(t) + yfor(t)"
-            print "yc(t) = ("+str(round(r,precLog))+"*"+"e^("+str(round(r,precLog))+"t)*u(t)"
+            print "yc(t) = ("+str(round(y0,precLog))+"*"+"e^("+str(round(r,precLog))+"t)*u(t)"
 
         
         if b0 != 0:
@@ -188,7 +195,7 @@ while test >=1 :
         
         plotNat = y0*e**(r*t)
         ##Nome da Janela dos graficos
-        output_allplots = plt.figure("EDOs a coeficientes constantes")
+        plt.figure("EDOs a coeficientes constantes")
         plt.subplot(333)
         #plt.figure("Resposta Natural ynat(t)")
         plt.title("ynat(t)")
@@ -347,8 +354,7 @@ while test >=1 :
         plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
                     wspace=0.46, hspace=0.64)
  
-        ##plt.show()
-        return output_allplots
+        plt.show()
 
 
 
@@ -360,7 +366,7 @@ while test >=1 :
     ##raw_input()
     
 
-    test+=-1
+
 
     
 

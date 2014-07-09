@@ -26,7 +26,7 @@
       <file leaf-file-name="v05.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Integration_GUI_SW/v01/v05.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="253" column="40" selection-start="9969" selection-end="9969" vertical-scroll-proportion="0.40420562" vertical-offset="3622" max-vertical-offset="4065">
+            <state line="252" column="77" selection-start="9928" selection-end="9928" vertical-scroll-proportion="0.36915886" vertical-offset="3622" max-vertical-offset="4065">
               <folding />
             </state>
           </provider>
@@ -255,7 +255,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32842416" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -306,7 +306,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Integration_GUI_SW/v01/v05.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="40" selection-start="9969" selection-end="9969" vertical-scroll-proportion="0.40420562" vertical-offset="3622" max-vertical-offset="4065">
+        <state line="252" column="77" selection-start="9928" selection-end="9928" vertical-scroll-proportion="0.36915886" vertical-offset="3622" max-vertical-offset="4065">
           <folding />
         </state>
       </provider>
