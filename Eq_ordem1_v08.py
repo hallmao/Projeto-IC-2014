@@ -180,6 +180,11 @@ while True :
         ###Ideia futura, t ajustável pelo Usuário !!
         t       = arange(0.0,20.0,0.01)
 
+
+        
+        
+
+        #Plot resposta natural
         
         plotNat = y0*e**(r*t)
         ##Nome da Janela dos graficos
@@ -191,6 +196,16 @@ while True :
         plt.ylabel("Amplitude")
         RespNatplot= plt.plot(t,plotNat,lw = 2)
         plt.ylim(-abs(y0+1),abs(y0+1))
+
+
+        ##Plot das raizes (nesse caso só uma)
+
+        plotRaizes = r
+        plt.subplot(334)
+        plt.title("Raizes")
+        plt.xlabel("X axis")
+        plt.ylabel("Y axis")
+        respRaizesPlot = plt.plot(r,'x')
 
 
 
@@ -330,7 +345,7 @@ while True :
 
         ##Manual Plot spacing
         plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
-                    wspace=0.29, hspace=0.65)
+                    wspace=0.46, hspace=0.64)
  
         plt.show()
 
