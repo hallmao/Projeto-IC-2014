@@ -4,8 +4,7 @@ from numpy import array,sin,cos,exp
 from numpy import arange
 from sympy import *
 from scipy.integrate import quad
-from scipy import Inf
-
+import scipy.integrate.odeint as integrate
 x = Symbol('x')
 
 y1 = cos(x)
@@ -19,6 +18,9 @@ W = simplify(W)
 
 du1 = (y2*gx)/W
 
-u1 = quad(2, 0, Inf)
+print du1
+u1 = integrate(du1)
+##func = lambda du1 : du1
+##u1 = quad(func)
 
 print u1
