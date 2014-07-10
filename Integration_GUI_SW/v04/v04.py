@@ -11,6 +11,8 @@ from   numpy import arange
 ###Funções renomeadas para facilitar digitação
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 import sys
+##Arquivo que remove bibliotecas nao usadas quando vai compilar
+import library_remover
 
 ##try:
 from Tkinter import *
