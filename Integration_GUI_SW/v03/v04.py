@@ -43,19 +43,23 @@ import v03_support
 
 #Coeficientes da equação diferencial
 #----------------------------------
-a1 = 0
-a0 = 0
-b0 = 0
+##Variaveis de uso global
+
+
+
 #------------------
 t  = 0 # Variável no tempo
-xT = 0
-#----------------------------------
-flag_FdeX = True
-#2--Resposta natural:
 
+
+#----------------------------------
+
+#2--Resposta natural:
 #Condição inicial
 
-y0 = 0
+##Raiz
+
+##Precisão no log de saída :
+precLog = 2
 
 # Condiçãp inicial y(0) = d
 
@@ -83,6 +87,12 @@ y0 = 0
 
 ##### yfor(t) =[-(b0*f)/a0]*e^[(-a0/a1)*t]*u(t) + [(b0*f)/a0]*u(t)
 
+#zerando variaveis
+a1 = 0
+a0 = 0
+b0 = 0.0
+y0 = 0.0
+r = 0.0
 
 #4--Resposta Completa
 
@@ -91,46 +101,54 @@ y0 = 0
 
 ### yc(t) = ( d- (b0*f)/a0)*e^[(-a0/a1)*t]
 def parametros_entrada():
-print "Entre com os coefs para uma EDO do tipo a1*(dy(t)/dt) + a0*y(t)  = b0*x(t)"
+    flag_FdeX = True
+   
+    print "Entre com os coefs para uma EDO do tipo a1*(dy(t)/dt) + a0*y(t)  = b0*x(t)"
 
-#Entrada porca no console (só pra testes,claro !)
-a1 = float(input("a1 = "))
-a0 = float(input("a0 = "))
-b0 = float(input("b0 = "))
-y0 = float(input("Condicao Inicial de y(0) =  "))
-print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t,t**q onde q e uma cte:"
+    #Entrada porca no console (só pra testes,claro !)
+    ##Variavies agora säo de uso global
+    global a1,a0,b0,y0,flag_FdeX,xT,r,xTcheck
+    a1 = float(input("a1 = "))
+    a0 = float(input("a0 = "))
+    b0 = float(input("b0 = "))
+    y0 = float(input("Condicao Inicial de y(0) =  "))
+    print "Entrada x(t),favor inserir no formato e**(q*t),sin(q*t),cos(q*t),q*t,t**q onde q e uma cte:"
+    flag_FdeX = True
 
+      ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
 
-  ##Flag para verificar se xT é uma f(x) ou uma cte (degrau, impulso)
+    #xTcheck = 0.0
+    ##Checando xT, verificando se é uma função em x ou impulso
 
-#xTcheck = 0.0
-##Checando xT, verificando se é uma função em x ou impulso
-
-##Tente converter x(t) pra float, só funciona se
-#o mesmo for uma constante, do contrario, ignore
-
-
-
-if b0 != 0 :
-    xT = raw_input("x(t) = ")
-
-else:
-    xT = 0
-
-
-try:
-    xTcheck = float(xT)
-    #print  type(xTcheck)
-    #print  xT,xTcheck
-    flag_FdeX = False
-except:
-    pass
+    ##Tente converter x(t) pra float, só funciona se
+    #o mesmo for uma constante, do contrario, ignore
 
 
 
+    if b0 != 0 :
+        xT = raw_input("x(t) = ")
 
-##Precisão no log de saída :
-precLog = 2
+    else:
+        xT = 0
+
+
+    try:
+        xTcheck = float(xT)
+        #print  type(xTcheck)
+        #print  xT,xTcheck
+        flag_FdeX = False
+    except:
+        pass
+    ###Resposta natural
+    r = -(a0/a1) ## Raiz da eq
+    #Forma Natural
+
+
+
+
+parametros_entrada()
+print a0,a1,b0,y0,r
+
     
 #print xTcheck    
 
@@ -158,9 +176,6 @@ precLog = 2
 #-------------------Resolucao---------------------
 
 
-###Resposta natural
-r = -(a0/a1) ## Raiz da eq
-    #Forma Natural
 
 
 
@@ -648,12 +663,12 @@ class EDO_Solver:
         toolbar = NavigationToolbar2TkAgg(canvas,self.plotOptions_frame)
         toolbar.pack(side = TOP, fill = Y)
 
-
+        
+        
 
 
 
 if __name__ == '__main__':
     vp_start_gui()
-
 
 
