@@ -8,6 +8,8 @@ from sympy import *
 
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
 
+###Uses the best printing available for pprint
+init_printing()
 
 # #Loop para testes
 while True:
@@ -65,9 +67,11 @@ while True:
 
 	print(sympify(solvedEq, rational=False, evaluate=False).evalf(prec))
 	try:
+		print(solvedEq)
 		pprint(solve(solvedEq))
 	except:
 		pprint(solvedEq)
+		print(solvedEq)
 
 	##PRocesso de separação de resp natural e resposta transitória ---
 	#SEPARACAO FUNCIONAL SOMENTE PARA GRAU 1 E 2
@@ -110,13 +114,17 @@ while True:
 	try:
 
 		print "Resposta Forçada:"
+		print RespFor
 		pprint (RespFor)
 		print "Forma Natural:"
+		print formaNatural
 		pprint(formaNatural)
 	except:
 		print "Resposta Forçada:"
+		print RespFor
 		pprint (RespFor)
 		print "Forma Natural:"
+		print formaNatural
 		pprint(formaNatural)
 
 
