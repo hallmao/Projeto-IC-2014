@@ -9,7 +9,8 @@ from sympy import *
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
 
 ###Uses the best printing available for pprint
-init_printing()
+init_printing( use_latex=True)
+
 
 # #Loop para testes
 while True:
@@ -110,13 +111,13 @@ while True:
         ##Resposta transitória alocada em  RespTran, natural em RespNat
 
 
-        Respostas[3] = RespPart
+        Respostas[3] = RespPart.evalf(prec)
         formaNatural = sepEq.subs(RespPart, 0)
         Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de respostas
         ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
         ##isso é válido no método conds_iniciais_aplicadas
         fN = formaNatural
-        rP = RespPart
+        rP = RespPart.evalf(prec)
 
         ##Tenta resolver parâmetros não terminados, se possível
 ##        try:
@@ -559,14 +560,14 @@ while True:
         conds_iniciais_aplicadas()
         
         respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
-        Respostas[5] = respForc   #Adiciona Resposta Forcada a lista de respostas
+        Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
        
 
         respComp = Respostas[2]  #Resposta completa p/ eqs. homogeneas
         if(xT != 0): #Eqs. nao homogeneas
                 respComp = Respostas[2] + Respostas[5]  #Respsota completa p/ eqs. nao-homogeneas
 
-        Respostas[6] = respComp  #Adiciona Resposta Completa a lista de respostas
+        Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
         
 
         def log_print():
