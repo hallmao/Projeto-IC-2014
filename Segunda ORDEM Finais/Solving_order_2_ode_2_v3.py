@@ -188,7 +188,7 @@ while True:
         
         # tempo variable adjusting
         ###Ideia futura, t ajustável pelo Usuário !!
-        t = arange(0.0,20.0,0.01)
+        xAxisT = arange(0.0,20.0,0.01)
 
         #Plot Resposta Natural
         ##Nome da Janela dos graficos
@@ -201,7 +201,7 @@ while True:
         plt.title("ynat(t)")
         plt.xlabel("Tempo t")
         plt.ylabel("Amplitude")
-        RespNatplot= plt.plot(t,plotNat,lw = 2)
+        RespNatplot= plt.plot(xAxisT,plotNat,lw = 2)
         plt.ylim(-abs(y0+1),abs(y0+1))
 
 
