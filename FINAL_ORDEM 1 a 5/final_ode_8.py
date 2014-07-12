@@ -1,4 +1,8 @@
-﻿from sympy import Function, dsolve, pprint, exp, cos
+﻿import sympy.assumptions.handlers.calculus
+import sympy.assumptions.handlers.ntheory
+import sympy.assumptions.handlers.order
+import sympy.assumptions.handlers.sets
+from sympy import Function, dsolve, pprint, exp, cos
 from sympy.abc import t
 from sympy import *
 
