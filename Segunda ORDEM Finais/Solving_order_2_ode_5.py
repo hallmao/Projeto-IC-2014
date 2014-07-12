@@ -46,7 +46,7 @@ while True:
     ##Sets if it is of homogenous or inhomogenous type and type of resolution method
     if xT == 0:
         solvedEq = dsolve(sympify(eq),y(t),hint='nth_linear_constant_coeff_homogeneous')
-    elif (a3 != 0) or (a4 != 0) or (a5 != 0):
+    #elif (a3 != 0) or (a4 != 0) or (a5 != 0):
         #solvedEq = dsolve(sympify(eq),y(t),hint='nth_linear_constant_coeff_variation_of_parameters')
         pass
     else:
