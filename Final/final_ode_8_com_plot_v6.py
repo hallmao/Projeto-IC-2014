@@ -754,7 +754,7 @@ def show_plots():
                 plt.ylim(-abs(abs(float(plotRaizesC[0]))*2 +1),abs(abs(float(plotRaizesC[len(plotRaizesC)-1]))+ 1)  )
                 plt.xlim(-abs(abs(float(plotRaizesR[0]))*2+1),abs(abs(float(plotRaizesR[len(plotRaizesR)-1]))+1)  )
                 plt.axhline(0, color = 'black',lw =1)
-                respRaizesPlot = plt.stem(plotRaizesR,plotRaizesC,markerfmt='bx',)
+                respRaizesPlot = plt.stem(plotRaizesR,plotRaizesC,markerfmt='bo',)
 
                 plt.subplot(332)
                 plt.grid('on')
@@ -868,7 +868,7 @@ def print_latex():
         plt.text(xdif,0.9-4*dif,'yfor(t) = '+ur''+RespostasEmLatex[5])
         plt.text(xdif,0.9-5*dif,'yc(t) = '+ur''+RespostasEmLatex[6])
         plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
-        #plt.text(xdif,0.9-7*dif,'Raiz(es): '+ur''+str_raizLatex)
+        plt.text(xdif,0.9-7*dif,'Raiz(es): '+ur''+str_raizLatex)
 
         log_figure.show()
 
