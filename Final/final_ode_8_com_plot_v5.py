@@ -581,63 +581,57 @@ Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de resp
 
 
 def log_print():
+        equacao = eq + xT
+        equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
+        equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
+        equacao = equacao.subs("Derivative(d2y(t), t)","d3y(t)")
+        equacao = equacao.subs("Derivative(d3y(t), t)","d4y(t)")
+        equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
 
-		print "Equacao: "
-		pprint(eq,)
-		print "\nForma natural de resposta:\n"
-		pprint(Respostas[1])
-		print "\nResposta natural:\n"
-		pprint(Respostas[2])
+        equacao = str(equacao)
+        equacao = "Equacao: "+equacao+" = "+str(xT)
+        #print equacao
 
-		if(xT != 0):
-			print "\nResposta particular:\n"
-			pprint(Respostas[3])
-			print "\nResposta transitoria:\n"
-			pprint(Respostas[4])
-			print "\nResposta forcada:\n"
-			pprint(Respostas[5])
+        str_raiz = "Raiz(es):"
+        count = 0
+        while(count < len(Respostas[0])):
+                str_raiz = str_raiz+"\tr"+str(count+1)+"= "+str(Respostas[0][count])
+                count = count+ 1
+        #print str_raiz
 
-		print "\nReposta completa:\n"
+        str_yfn = "Forma natural de resposta: Yfn(t) = "+str(Respostas[1])
+        #print str_yfn
 
+        str_yn = "Resposta natural: Yn(t) = "+str(Respostas[2])
+        #print str_yn
 
-		equacao = eq + xT
-		equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
-		equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
-		equacao = equacao.subs("Derivative(d2y(t), t)","d3y(t)")
-		equacao = equacao.subs("Derivative(d3y(t), t)","d4y(t)")
-		equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
-		print "\t\tEquacao: "
-		print "Equacao =", equacao, "=", xT
-		pprint(eq+xT)
-		print "\t\t========"
-		pprint(xT)
-		print "\t\tRaizes:"
-		count = 0
-		while(count < len(Respostas[0])):
-				print "\tr = ", Respostas[0][count]
-				count = count+ 1
-		print "\n\t\tForma natural de resposta:\n"
-		print "Yfn(t) =", Respostas[1]
-		pprint(Respostas[1])
-		print "\n\t\tResposta natural:\n"
-		print "Yn(t) =", Respostas [2]
-		pprint(Respostas[2])
+        if(xT != 0):
+            str_yp = "Resposta particular: Yp(t) = "+str(Respostas[3])
+            #print str_yp
+            
+            str_ytrans = "Resposta Transitoria: Ytrans(t) = "+str(Respostas[4])
+            #print str_ytrans
 
-		if(xT != 0):
-			print "\n\t\tResposta particular:\n"
-			print "Yp(t) =", Respostas[3]
-			pprint(Respostas[3])
-			print "\n\t\tResposta transitoria:\n"
-			print "Ytrans(t) =", Respostas[4]
-			pprint(Respostas[4])
-			print "\n\t\tResposta forcada:\n"
-			print "Yf(t) =", Respostas[5]
-			pprint(Respostas[5])
+            str_yforc = "Resposta forcada: Yforc(t) = "+str(Respostas[5])
+            #print str_yforc
+        else:
+            str_yp = ""
+            str_ytrans = ""
+            str_yforc = ""
 
-		print "\n\t\tReposta completa:\n"
-		print "Yc(t) =", Respostas[6]
+        
+        str_yc = "Resposta completa: Yc(t) = "+str(Respostas[6])
+        #print str_yc
 
-		pprint(Respostas[6])
+        str_resp = equacao+"\n"+str_raiz+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        print str_resp
+
+        #return c tds as respostas em uma variavel
+        return str_resp
+
+        ##return c cada resposta sendo uma variavel
+        #return equacao, str_raiz, str_yfn, str_yn, str_yp, str_ytrans, str_yforc, str_yc
+
 
 log_print()
 
