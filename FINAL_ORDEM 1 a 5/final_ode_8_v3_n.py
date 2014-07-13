@@ -5,16 +5,28 @@ import sympy.assumptions.handlers.sets
 from sympy import Function, dsolve, pprint, exp, cos
 from sympy.abc import t
 from sympy import *
+<<<<<<< HEAD
+#from sympy.mpmath import*
+=======
+>>>>>>> origin/master
 
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
 
 ###Uses the best printing available for pprint
+<<<<<<< HEAD
+init_printing()
+
+# #Loop para testes
+while True:
+        
+=======
 init_printing( use_latex=True)
 
 
 # #Loop para testes
 while True:
-        
+
+>>>>>>> origin/master
         # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
         # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
         # 6- Resposta Completa
@@ -111,13 +123,21 @@ while True:
         ##Resposta transitória alocada em  RespTran, natural em RespNat
 
 
+<<<<<<< HEAD
+        Respostas[3] = RespPart
+=======
         Respostas[3] = RespPart.evalf(prec)
+>>>>>>> origin/master
         formaNatural = sepEq.subs(RespPart, 0)
         Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de respostas
         ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
         ##isso é válido no método conds_iniciais_aplicadas
         fN = formaNatural
+<<<<<<< HEAD
+        rP = RespPart
+=======
         rP = RespPart.evalf(prec)
+>>>>>>> origin/master
 
         ##Tenta resolver parâmetros não terminados, se possível
 ##        try:
@@ -139,6 +159,32 @@ while True:
 
         ##Saida
 
+<<<<<<< HEAD
+        def raizes():
+                #polyroots retorna uma lista
+                if(a5 != 0):
+                        roots = mpmath.polyroots([a5, a4, a3, a2, a1, a0])
+                       # print roots[0], roots[1], roots[2], roots[3], roots[4]
+                elif((a5 == 0) and (a4 !=0)):
+                        roots = mpmath.polyroots([a4, a3, a2, a1, a0])
+                       # print roots[0], roots[1], roots[2], roots[3]
+                elif((a4 == 0) and (a3 !=0)):
+                        roots = mpmath.polyroots([a3, a2, a1, a0])
+                       # print roots[0], roots[1], roots[2]
+                elif((a3 == 0) and (a2 !=0)):
+                        roots = mpmath.polyroots([a2, a1, a0])
+                       # print roots[0], roots[1]
+                elif((a2 == 0) and (a1 !=0)):
+                        roots = mpmath.polyroots([a1, a0])
+                       # print roots[0]
+
+                Respostas[0] = roots        
+                
+        raizes()
+
+
+=======
+>>>>>>> origin/master
         def conds_iniciais_aplicadas():
 
                 print "Favor inserir as conds iniciais y(0) e y'(0)...:"
@@ -180,7 +226,11 @@ while True:
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
                                 yt = sympify(yt, rational = False,evaluate= False).evalf(prec)
                                 yt0 = yt.subs(t, 0) #Aplicando as condicoes iniciais; Ytrans(0)
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> origin/master
                                 #c1 eh o valor de C1
                                 #solve(eq, var); eq=equacao a ser resolvida; var=variavel que se quer achar
                                 #solve iguala a equacao a 0, portanto, yt0 - y0 = 0 => yt0 = y0
@@ -190,7 +240,11 @@ while True:
                                 Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
 
                                 #print "Resposta Transitoria:"
+<<<<<<< HEAD
                                 #pprint(respTrans)       
+=======
+                                #pprint(respTrans)
+>>>>>>> origin/master
 
 
 
@@ -413,7 +467,11 @@ while True:
 
                         if(xT != 0): #Eq. nao homogenea
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/master
                                 #Resposta Transitoria é derivada a primeira , segunda e terceira
                                 y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
                                 y2linhaTran = sympify(yt.diff(t,2), rational = False, evaluate = False).evalf(prec)
@@ -509,7 +567,11 @@ while True:
 
                         if(xT != 0): #Eq. nao homogenea
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/master
                                 #Resposta transitoria é derivada a primeira , segunda, terceira e quarta
                                 y4linhaTran = sympify(yt.diff(t,4), rational = False, evaluate = False).evalf(prec)
                                 y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
@@ -558,17 +620,66 @@ while True:
 
 
         conds_iniciais_aplicadas()
+<<<<<<< HEAD
         
         respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
-        Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
+        Respostas[5] = respForc   #Adiciona Resposta Forcada a lista de respostas
        
+=======
+
+        respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
+        Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
+
+>>>>>>> origin/master
 
         respComp = Respostas[2]  #Resposta completa p/ eqs. homogeneas
         if(xT != 0): #Eqs. nao homogeneas
                 respComp = Respostas[2] + Respostas[5]  #Respsota completa p/ eqs. nao-homogeneas
 
-        Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
+<<<<<<< HEAD
+        Respostas[6] = respComp  #Adiciona Resposta Completa a lista de respostas
         
+        
+        def log_print():
+                equacao = eq + xT
+                equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
+                equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
+                equacao = equacao.subs("Derivative(d2y(t), t)","d3y(t)")
+                equacao = equacao.subs("Derivative(d3y(t), t)","d4y(t)")
+                equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
+                print "\t\tEquacao: "
+                print "Equacao =", equacao, "=", xT
+                pprint(eq+xT)
+                print "\t\t========"
+                pprint(xT)
+                print "\t\tRaizes:"
+                count = 0
+                while(count < len(Respostas[0])):
+                        print "\tr = ", Respostas[0][count]
+                        count = count+ 1
+                print "\n\t\tForma natural de resposta:\n"
+                print "Yfn(t) =", Respostas[1]
+                pprint(Respostas[1])
+                print "\n\t\tResposta natural:\n"
+                print "Yn(t) =", Respostas [2]
+                pprint(Respostas[2])
+
+                if(xT != 0):
+                    print "\n\t\tResposta particular:\n"
+                    print "Yp(t) =", Respostas[3]
+                    pprint(Respostas[3])
+                    print "\n\t\tResposta transitoria:\n"
+                    print "Ytrans(t) =", Respostas[4]
+                    pprint(Respostas[4])
+                    print "\n\t\tResposta forcada:\n"
+                    print "Yf(t) =", Respostas[5]
+                    pprint(Respostas[5])
+                
+                print "\n\t\tReposta completa:\n"
+                print "Yc(t) =", Respostas[6]
+=======
+        Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
+
 
         def log_print():
                 print "Equacao: "
@@ -585,8 +696,9 @@ while True:
                     pprint(Respostas[4])
                     print "\nResposta forcada:\n"
                     pprint(Respostas[5])
-                
+
                 print "\nReposta completa:\n"
+>>>>>>> origin/master
                 pprint(Respostas[6])
 
         log_print()

@@ -14,7 +14,7 @@ init_printing( use_latex=True)
 
 # #Loop para testes
 while True:
-        
+
         # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
         # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
         # 6- Resposta Completa
@@ -180,7 +180,7 @@ while True:
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
                                 yt = sympify(yt, rational = False,evaluate= False).evalf(prec)
                                 yt0 = yt.subs(t, 0) #Aplicando as condicoes iniciais; Ytrans(0)
-            
+
                                 #c1 eh o valor de C1
                                 #solve(eq, var); eq=equacao a ser resolvida; var=variavel que se quer achar
                                 #solve iguala a equacao a 0, portanto, yt0 - y0 = 0 => yt0 = y0
@@ -190,7 +190,7 @@ while True:
                                 Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
 
                                 #print "Resposta Transitoria:"
-                                #pprint(respTrans)       
+                                #pprint(respTrans)
 
 
 
@@ -413,7 +413,7 @@ while True:
 
                         if(xT != 0): #Eq. nao homogenea
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
-                                
+
                                 #Resposta Transitoria é derivada a primeira , segunda e terceira
                                 y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
                                 y2linhaTran = sympify(yt.diff(t,2), rational = False, evaluate = False).evalf(prec)
@@ -509,7 +509,7 @@ while True:
 
                         if(xT != 0): #Eq. nao homogenea
                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
-                                
+
                                 #Resposta transitoria é derivada a primeira , segunda, terceira e quarta
                                 y4linhaTran = sympify(yt.diff(t,4), rational = False, evaluate = False).evalf(prec)
                                 y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
@@ -558,17 +558,17 @@ while True:
 
 
         conds_iniciais_aplicadas()
-        
+
         respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
         Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
-       
+
 
         respComp = Respostas[2]  #Resposta completa p/ eqs. homogeneas
         if(xT != 0): #Eqs. nao homogeneas
                 respComp = Respostas[2] + Respostas[5]  #Respsota completa p/ eqs. nao-homogeneas
 
         Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
-        
+
 
         def log_print():
                 print "Equacao: "
@@ -585,7 +585,7 @@ while True:
                     pprint(Respostas[4])
                     print "\nResposta forcada:\n"
                     pprint(Respostas[5])
-                
+
                 print "\nReposta completa:\n"
                 pprint(Respostas[6])
 
