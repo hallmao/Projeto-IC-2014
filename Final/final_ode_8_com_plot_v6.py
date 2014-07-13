@@ -829,7 +829,7 @@ def print_latex():
         # 7-Sinal de entrada x(t)
 
         ##Perfumaria
-        dif = 0.9 -0.80
+        dif = 0.9 -0.77
         xdif = -0.15
         font = {'family' : 'Sans',
                 'weight' : 'normal',
@@ -858,7 +858,8 @@ def print_latex():
         ax1.get_xaxis().tick_bottom()
         ax1.get_xaxis().set_visible(False)
         ax1.axes.get_yaxis().set_visible(False)
-        for i in range(0,7,1):plt.axhline(dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
+        for i in range(0,8,1):
+                plt.axhline(0.88-dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
         plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
