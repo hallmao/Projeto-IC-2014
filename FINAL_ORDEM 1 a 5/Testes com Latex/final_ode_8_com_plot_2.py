@@ -3,11 +3,11 @@ import sympy.assumptions.handlers.calculus
 import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
-from sympy import Function, dsolve, pprint, exp, cos
+from sympy import Function, pprint, exp, cos
 from sympy.abc import t
 from sympy import *
 import matplotlib.pyplot as plt
-from numpy import arange
+
 
 
 
@@ -17,7 +17,7 @@ prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
 init_printing( use_latex=True)
 
 
-<<<<<<< HEAD
+
 def drange(start,stop,step):
 ## Funcão para criar um vetor de valores decimais,
 #nativo do python só aceita valores inteirosdef seq(start, stop, step=1):
@@ -26,8 +26,7 @@ def drange(start,stop,step):
         return([start + step*i for i in range(n+1)])
     else:
         return([])
-=======
->>>>>>> FETCH_HEAD
+
 
 
 
@@ -155,8 +154,6 @@ rP = RespPart.evalf(prec)
 
 ##Saida
 
-<<<<<<< HEAD
-=======
 
 def raizes():
         #polyroots retorna uma lista
@@ -180,8 +177,7 @@ def raizes():
         
 raizes()
 
-        
->>>>>>> FETCH_HEAD
+
 def conds_iniciais_aplicadas():
 
         print "Favor inserir as conds iniciais y(0) e y'(0)...:"
@@ -614,7 +610,7 @@ Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de resp
 
 
 def log_print():
-<<<<<<< HEAD
+
         print "Equacao: "
         pprint(eq)
         print "\nForma natural de resposta:\n"
@@ -631,7 +627,7 @@ def log_print():
             pprint(Respostas[5])
 
         print "\nReposta completa:\n"
-=======
+
         
         equacao = eq + xT
         equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
@@ -669,13 +665,13 @@ def log_print():
         
         print "\n\t\tReposta completa:\n"
         print "Yc(t) =", Respostas[6]
->>>>>>> FETCH_HEAD
+
         pprint(Respostas[6])
 
 log_print()
 
 
-<<<<<<< HEAD
+
 def conversao_numpy(symbol):
 	###Transforma todas as respostas em funcoes Lambda
 	#Compativeis de forma nativa no python e sem a necessidade de bibliotecas externas
@@ -715,8 +711,16 @@ plots_numpy = conversao_numpy(t)
 
 def show_plots():
 
+
+
+	plt.figure("EDOs a coefs constantes")
+
+def show_plots():
+
+
+
 	## Nossa variável de deslocamento t no eixo x
-	x_t = drange(0,20,0.0001)
+	x_t = drange(0,10,0.0001)
 
 
 	###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
@@ -739,28 +743,11 @@ def show_plots():
 		plotCom[i]  = plots_numpy[6](x_t[i])
 
 
-	plt.figure("EDOs a coefs constantes")
-=======
-def show_plots():
 
-
-	plotNat = lambdify(t,Respostas[2])
-	#t = 0.0
-
-
-	## Nossa variável de deslocamento t no eixo x
-	t = arange(0.0,20.0,0.01)
-
-		##Plot da resposta natural
-	##plotNat = Respostas[2]
-	print "Resposta natural:",plotNat, type(plotNat)
-	plt.figure("EDOs a coefs constantes", dpi = 1024)
->>>>>>> FETCH_HEAD
+	plt.figure("EDOs a coefs constantes",)
 	plt.subplot(333)
 	plt.title("ynat(t)")
 	plt.xlabel("t")
-	plt.ylabel("Amplitude")
-<<<<<<< HEAD
 	respNatPlot = plt.plot(x_t,plotNat,lw = 2)
 
 	plt.subplot(332)
@@ -798,6 +785,9 @@ def show_plots():
 	#plt.xlabel("t")
 	#plt.ylabel("Amplitude")
 	#respXtPlot = plt.plot(x_t,plotXt,lw = 2)
+
+	plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
+                    wspace=0.46, hspace=0.64)
 
 
 
