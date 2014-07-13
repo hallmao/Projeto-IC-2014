@@ -17,9 +17,9 @@ from numpy import  arange
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
 ###Configurações do pprint, registradas somente uma vez
 
-setattr(pprint,'num_columns',5)
-setattr(pprint,'use_unicode',True)
-setattr(pprint,'order','none')
+#setattr(pprint,'num_columns',5)
+#setattr(pprint,'use_unicode',True)
+#setattr(pprint,'order','none')
 
 
 	#("num_columns = 100,use_unicode = True,order = 'none'")
@@ -54,9 +54,9 @@ def input_coefs():
 		global a5, a4, a3, a2, a1, a0, xT
 		print "Insira os coefs e entrada para uma EDO do tipo: "
 		print "a5*y'''''(t) + a4*y''''(t) + a3*y'''(t)  + a2*y''(t) +a1*y'(t) +a0*y(t) = x(t)"
-		a5 = input("a5:")
-		a4 = input("a4:")
-		a3 = input("a3:")
+		#a5 = input("a5:")
+		#a4 = input("a4:")
+		#a3 = input("a3:")
 		a2 = input("a2:")
 		a1 = input("a1:")
 		a0 = input("a0:")
@@ -73,10 +73,14 @@ except:
 ##Defining our function
 y = Function('y')
 
+#### THERMS a3 to a5 DISABLED !!
+a5 = a4 = a3 = 0
+
 ##Adicionando os coefs a eq diferencial
 eq = sympify(
 		a5 * y(t).diff(t, 5) + a4 * y(t).diff(t, 4) + a3 * y(t).diff(t, 3) + a2 * y(t).diff(t, 2) + a1 * y(t).diff(
 				t) + a0 * y(t) - xT)
+
 
 
 
@@ -729,7 +733,7 @@ def show_plots():
 
 
 
-		outputPlots = plt.figure('figxx',facecolor='white')
+		outputPlots = plt.figure('Plots',facecolor='white')
 		plt.subplot(333)
 		plt.grid('on')
 		plt.title("ynat(t)")
@@ -823,9 +827,15 @@ def print_latex():
 	# 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
 	# 6- Resposta Completa
 	# 7-Sinal de entrada x(t)
+
+	##Perfumaria
 	dif = 0.9 -0.75
 	xdif = -0.15
-	fontSize = 19
+	font = {'family' : 'Sans',
+		'weight' : 'normal',
+		'size'   : 18}
+
+	plt.rc('font', **font)
 
 	##Obtendo as respostas em Latex
 	RespostasEmLatex = [0]*(len(Respostas))
@@ -834,21 +844,21 @@ def print_latex():
 	#print RespostasEmLatex
 	xTLatex = '$' + latex(xT) +'$'
 	###Preparando para imprimir
-	log_figure = plt.figure(facecolor='white')
+	log_figure = plt.figure("Representacao",facecolor='white')
 	ax1 = plt.axes(frameon = False)
 	ax1.get_xaxis().tick_bottom()
 	ax1.get_xaxis().set_visible(False)
 	ax1.axes.get_yaxis().set_visible(False)
 	for i in range(0,7,1):plt.axhline(dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
 	#log_figure.figure("Forma_Representativa:")
-	plt.title('Respostas na forma representativa',fontsize = fontSize)
-	plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1],fontsize = fontSize)
-	plt.text(xdif,0.9-dif,'yn(t) = '+ur''+RespostasEmLatex[2],fontsize = fontSize)
-	plt.text(xdif,0.9-2*dif,'ypar(t) = '+ur''+RespostasEmLatex[3],fontsize = fontSize)
-	plt.text(xdif,0.9-3*dif,'ytran(t) = '+ur''+RespostasEmLatex[4],fontsize = fontSize)
-	plt.text(xdif,0.9-4*dif,'yfor(t) = '+ur''+RespostasEmLatex[5],fontsize = fontSize)
-	plt.text(xdif,0.9-5*dif,'yc(t) = '+ur''+RespostasEmLatex[6],fontsize = fontSize)
-	plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex,fontsize = fontSize)
+	plt.title('')
+	plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
+	plt.text(xdif,0.9-dif,'yn(t) = '+ur''+RespostasEmLatex[2])
+	plt.text(xdif,0.9-2*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
+	plt.text(xdif,0.9-3*dif,'ytran(t) = '+ur''+RespostasEmLatex[4])
+	plt.text(xdif,0.9-4*dif,'yfor(t) = '+ur''+RespostasEmLatex[5])
+	plt.text(xdif,0.9-5*dif,'yc(t) = '+ur''+RespostasEmLatex[6])
+	plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
 
 	log_figure.show()
 
