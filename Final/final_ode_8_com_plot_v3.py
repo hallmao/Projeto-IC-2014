@@ -752,8 +752,8 @@ def show_plots():
         #menor e maior raiz aparecendo sempre no limite da borda
         #nao dava pra ver o ponto
         #plt.annotate(xycoords = 'data',)
-        plt.ylim(-abs(abs(float(plotRaizesC[0])) +1),abs(abs(float(plotRaizesC[0]))+ 1)  )
-        plt.xlim(-abs(abs(float(plotRaizesR[0]))+1),abs(abs(float(plotRaizesR[0]))+1)  )
+        plt.ylim(-abs(abs(float(plotRaizesC[0]))*2 +1),abs(abs(float(plotRaizesC[0]))*2+ 1)  )
+        plt.xlim(-abs(abs(float(plotRaizesR[0]))*2+1),abs(abs(float(plotRaizesR[0]))*2+1)  )
         plt.axhline(0, color = 'black',lw =2)
         respRaizesPlot = plt.plot(plotRaizesR,plotRaizesC,'x',lw = 4)
 
