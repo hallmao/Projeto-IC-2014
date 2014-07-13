@@ -82,27 +82,9 @@ else:
 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
 sepEq = solvedEq._args[1]
 
-##Print da Resolução
-##
-##        print "Resolução sem conds Iniciais:"
-##
-##        print(sympify(solvedEq, rational=False, evaluate=False).evalf(prec))
-##        try:
-##                print(solvedEq)
-##                pprint(solve(solvedEq))
-##        except:
-##                pprint(solvedEq)
-##                print(solvedEq)
-
-##PRocesso de separação de resp natural e resposta transitória ---
-#SEPARACAO FUNCIONAL SOMENTE PARA GRAU 1 E 2
-#elementosEq = sepEq.atoms(Symbol)
-#C1 = elementosEq.pop()
-#C2 = elementosEq.pop()
 
 C1, C2, C3, C4, C5 = symbols("C1 C2 C3 C4 C5")
 
-#print C1, C2
 
 if a5 != 0:
         RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
@@ -115,13 +97,7 @@ elif a2 != 0:
 elif a1 != 0:
         RespPart = sepEq.subs(C1, 0)
 
-##    if C2 != t :
-##        #print "Tem c2"
-##        RespTran =  sepEq.subs([(C2,0),(C1,0)])
-##
-##
-##    else:
-##        RespTran =  sepEq.subs(C1,0)
+
 
 ##Resposta transitória alocada em  RespTran, natural em RespNat
 
@@ -744,7 +720,7 @@ def show_plots():
 
 
 
-	plt.figure("EDOs a coefs constantes",)
+	plt.figure("EDOs a coefs constantes")
 	plt.subplot(333)
 	plt.title("ynat(t)")
 	plt.xlabel("t")
