@@ -734,6 +734,15 @@ def show_plots():
             plotCom[i]     = plots_numpy[6](x_t[i])
 
 
+	###Setando o tamanho da fonte  para os plots
+        font = {'family' : 'Arial',
+        'weight' : 'normal',
+        'size'   : 8}
+
+        plt.rc('font', **font)
+
+
+
         outputPlots = plt.figure("EDOs a coefs constantes")
         plt.subplot(333)
         plt.grid('on')
