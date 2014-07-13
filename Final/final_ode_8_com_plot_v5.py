@@ -705,8 +705,8 @@ def show_plots():
 		plotRaizesR[i] = re(plotRaizesT[i])
 
 
-	print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
-	print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)
+	#print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
+	#print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)
 
 
 
@@ -823,44 +823,62 @@ def print_latex():
 
 
 
-	# 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
-	# 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
-	# 6- Resposta Completa
-	# 7-Sinal de entrada x(t)
+        # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
+        # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
+        # 6- Resposta Completa
+        # 7-Sinal de entrada x(t)
 
-	##Perfumaria
-	dif = 0.9 -0.75
-	xdif = -0.15
-	font = {'family' : 'Sans',
+        ##Perfumaria
+        dif = 0.9 -0.75
+        xdif = -0.15
+
+        font = {'family' : 'Arial',
 		'weight' : 'normal',
 		'size'   : 18}
 
-	plt.rc('font', **font)
+        plt.rc('font', **font)
+        #plt.rc('text', usetex=True)
 
-	##Obtendo as respostas em Latex
-	RespostasEmLatex = [0]*(len(Respostas))
-	print len(RespostasEmLatex)
-	for i in range(len(Respostas)):RespostasEmLatex[i] = '$'+str(latex(Respostas[i])) +'$'
-	#print RespostasEmLatex
-	xTLatex = '$' + latex(xT) +'$'
-	###Preparando para imprimir
-	log_figure = plt.figure("Representacao",facecolor='white')
-	ax1 = plt.axes(frameon = False)
-	ax1.get_xaxis().tick_bottom()
-	ax1.get_xaxis().set_visible(False)
-	ax1.axes.get_yaxis().set_visible(False)
-	for i in range(0,7,1):plt.axhline(dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
-	#log_figure.figure("Forma_Representativa:")
-	plt.title('')
-	plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
-	plt.text(xdif,0.9-dif,'yn(t) = '+ur''+RespostasEmLatex[2])
-	plt.text(xdif,0.9-2*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
-	plt.text(xdif,0.9-3*dif,'ytran(t) = '+ur''+RespostasEmLatex[4])
-	plt.text(xdif,0.9-4*dif,'yfor(t) = '+ur''+RespostasEmLatex[5])
-	plt.text(xdif,0.9-5*dif,'yc(t) = '+ur''+RespostasEmLatex[6])
-	plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
+        ##Obtendo as respostas em Latex
+        RespostasEmLatex = [0]*(len(Respostas))
+        #print len(RespostasEmLatex)
+        for i in range(len(Respostas)):RespostasEmLatex[i] = '$'+str(latex(Respostas[i])) +'$'
 
-	log_figure.show()
+        ## Tratamento Inicial para as raizes:
+        #replace(a, old, new[, count])
+        #r'$\left( \begin{array}{ll} 2 & 3 \\ 4 & 5 \end{array} \right)$'
+        #$\begin{bmatrix}-1.5, & 1.0\end{bmatrix}$
+        #\begin{Bmatrix} x & y \\ z & v \end{Bmatrix}
+        #print RespostasEmLatex[0]
+        #RespostasEmLatex[0]= RespostasEmLatex[0].replace("bmatrix","Bmatrix")
+        #RespostasEmLatex[0]= RespostasEmLatex[0].replace("}$","})$",1)
+        #print RespostasEmLatex[0]
+
+        ####
+
+
+        #print RespostasEmLatex
+        xTLatex = '$' + latex(xT) +'$'
+        ###Preparando para imprimir
+        log_figure = plt.figure("Representacao",facecolor='white')
+        ax1 = plt.axes(frameon = False)
+        ax1.get_xaxis().tick_bottom()
+        ax1.get_xaxis().set_visible(False)
+        ax1.axes.get_yaxis().set_visible(False)
+        for i in range(0,7,1):plt.axhline(dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
+        #log_figure.figure("Forma_Representativa:")
+        plt.title('')
+        #print RespostasEmLatex[0]
+        #plt.text(xdif,0.05,'Raizes:'+str(Respostas[0]))
+        plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
+        plt.text(xdif,0.9-dif,'yn(t) = '+ur''+RespostasEmLatex[2])
+        plt.text(xdif,0.9-2*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
+        plt.text(xdif,0.9-3*dif,'ytran(t) = '+ur''+RespostasEmLatex[4])
+        plt.text(xdif,0.9-4*dif,'yfor(t) = '+ur''+RespostasEmLatex[5])
+        plt.text(xdif,0.9-5*dif,'yc(t) = '+ur''+RespostasEmLatex[6])
+        plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
+
+        log_figure.show()
 
 
 
