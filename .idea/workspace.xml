@@ -26,10 +26,11 @@
       <file leaf-file-name="final_ode_8_com_plot_2.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48764417" vertical-offset="10264" max-vertical-offset="11475">
-              <caret line="722" column="40" selection-start-line="722" selection-start-column="40" selection-end-line="722" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.6540362" vertical-offset="10223" max-vertical-offset="11700">
+              <caret line="718" column="44" selection-start-line="718" selection-start-column="44" selection-end-line="718" selection-end-column="44" />
               <folding>
-                <element signature="e#1043#1420#0" expanded="false" />
+                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#1053#1430#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -616,19 +617,19 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1487" y="283" width="1280" height="724" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="725" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49245432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1891" y="215" width="1280" height="724" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -654,10 +655,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10264" max-vertical-offset="11475">
+          <caret line="722" column="40" selection-start-line="722" selection-start-column="40" selection-end-line="722" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1053#1430#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10759" max-vertical-offset="11475">
           <caret line="766" column="0" selection-start-line="766" selection-start-column="0" selection-end-line="766" selection-end-column="0" />
           <folding>
-            <element signature="e#1043#1420#0" expanded="false" />
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -902,10 +915,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48764417" vertical-offset="10264" max-vertical-offset="11475">
-          <caret line="722" column="40" selection-start-line="722" selection-start-column="40" selection-end-line="722" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.6540362" vertical-offset="10223" max-vertical-offset="11700">
+          <caret line="718" column="44" selection-start-line="718" selection-start-column="44" selection-end-line="718" selection-end-column="44" />
           <folding>
-            <element signature="e#1043#1420#0" expanded="false" />
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
       </provider>

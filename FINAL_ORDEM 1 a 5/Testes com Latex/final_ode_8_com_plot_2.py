@@ -7,6 +7,7 @@ from sympy import Function, pprint, exp, cos
 from sympy.abc import t
 from sympy import *
 import matplotlib.pyplot as plt
+from numpy import  arange
 
 
 
@@ -33,7 +34,7 @@ def drange(start,stop,step):
 # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
 # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
 # 6- Resposta Completa
-Respostas = [0, 0, 0, 0, 0, 0, 0]
+Respostas = [0]*7
 
 #Entrada pelo console
 def input_coefs():
@@ -696,7 +697,8 @@ def show_plots():
 
 
 	## Nossa variável de deslocamento t no eixo x
-	x_t = drange(0,10,0.0001)
+	#x_t = drange(0,10,0.00001)
+	x_t  = arange(0.0,5.0,0.1)
 
 
 	###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
@@ -717,6 +719,11 @@ def show_plots():
 		plotTran[i] = plots_numpy[4](x_t[i])
 		plotFor[i]  = plots_numpy[5](x_t[i])
 		plotCom[i]  = plots_numpy[6](x_t[i])
+
+
+	print plotNat
+
+	print plotTran
 
 
 
