@@ -692,7 +692,7 @@ def show_plots():
 
     ## Nossa variável de deslocamento t no eixo x
     #x_t = drange(0,10,0.00001)
-    x_t  = arange(0.0,10.0,0.01)
+    x_t  = arange(0.0,2.0,0.01)
 
 
     ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
@@ -745,15 +745,15 @@ def show_plots():
         plt.subplot(334)
         plt.grid('on')
         plt.title("Raizes")
-        plt.xlabel("X axis")
-        plt.ylabel("Y axis")
+        plt.xlabel("Real")
+        plt.ylabel("Imaginario")
         #plt.scatter(plotRaizesR,plotRaizesC)
         #cli_on=False permite a marcacao 'o' sobrepor a borda do grafico
         #menor e maior raiz aparecendo sempre no limite da borda
         #nao dava pra ver o ponto
         #plt.annotate(xycoords = 'data',)
-        plt.ylim(-abs(float(plotRaizesC[0])+float(plotRaizesC[1]) +1),abs(float(plotRaizesR[0])+ float(plotRaizesC[0]) +1)  )
-        plt.xlim(-abs(float(plotRaizesR[0])+float(plotRaizesR[1])+1),abs(float(plotRaizesR[0])+float(plotRaizesR[1])+1)  )
+        plt.ylim(-abs(abs(float(plotRaizesC[0])) +1),abs(abs(float(plotRaizesC[0]))+ 1)  )
+        plt.xlim(-abs(abs(float(plotRaizesR[0]))+1),abs(abs(float(plotRaizesR[0]))+1)  )
         plt.axhline(0, color = 'black',lw =2)
         respRaizesPlot = plt.plot(plotRaizesR,plotRaizesC,'x',lw = 4)
 
@@ -809,7 +809,7 @@ def show_plots():
                         wspace=0.46, hspace=0.64)
 
 
-        #plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
+        plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
         #e para caberem dentro da janela
 
 
