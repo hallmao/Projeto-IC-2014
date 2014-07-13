@@ -706,11 +706,12 @@ def show_plots():
 
 
         print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
-        print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)
+        print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)               
         #menor raiz na primeira posicao e maior raiz na ultima posicao
         #necessario para o range do plot
         plotRaizesR.sort()
-        plotRaizesC.sort(key=lambda x: x.real)
+        plotRaizesC.sort()
+
 
 
 
