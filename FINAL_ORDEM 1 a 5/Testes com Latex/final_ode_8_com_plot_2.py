@@ -721,9 +721,6 @@ def show_plots():
 		plotCom[i]  = plots_numpy[6](x_t[i])
 
 
-	print plotNat
-
-	print plotTran
 
 
 

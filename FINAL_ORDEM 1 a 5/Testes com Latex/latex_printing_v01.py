@@ -1,6 +1,6 @@
 __author__ = 'Michael'
 
-from  final_ode_8_v4 import  Respostas
+from  final_ode_8_com_plot_2 import  Respostas
 
 from pylatex import Document,Section,Subsection,Table,Math,Plot
 
