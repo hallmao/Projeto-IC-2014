@@ -1,0 +1,672 @@
+﻿from numpy.core.defchararray import decode, replace
+import sympy.assumptions.handlers.calculus
+import sympy.assumptions.handlers.ntheory
+import sympy.assumptions.handlers.order
+import sympy.assumptions.handlers.sets
+from sympy import Function, dsolve, pprint, exp, cos
+from sympy.abc import t
+from sympy import *
+import matplotlib.pyplot as plt
+from numpy import arange
+
+
+
+prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
+
+###Uses the best printing available for pprint
+init_printing( use_latex=True)
+
+
+
+
+
+# 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
+# 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
+# 6- Resposta Completa
+Respostas = [0, 0, 0, 0, 0, 0, 0]
+
+#Entrada pelo console
+def input_coefs():
+        global a5, a4, a3, a2, a1, a0, xT
+        print "Insira os coefs e entrada para uma EDO do tipo: "
+        print "a5*y'''''(t) + a4*y''''(t) + a3*y'''(t)  + a2*y''(t) +a1*y'(t) +a0*y(t) = x(t)"
+        a5 = input("a5:")
+        a4 = input("a4:")
+        a3 = input("a3:")
+        a2 = input("a2:")
+        a1 = input("a1:")
+        a0 = input("a0:")
+        xT = input("x(t):")
+
+
+input_coefs()
+
+try:
+        xT = float(xT)
+except:
+        pass
+#print type(xT)
+
+##Defining our function
+y = Function('y')
+
+##Adicionando os coefs a eq diferencial
+eq = sympify(
+        a5 * y(t).diff(t, 5) + a4 * y(t).diff(t, 4) + a3 * y(t).diff(t, 3) + a2 * y(t).diff(t, 2) + a1 * y(t).diff(
+                t) + a0 * y(t) - xT)
+
+#pprint(eq)
+#print ""
+
+###Dif equation solver
+
+##Sets if it is of homogenous or inhomogenous type and type of resolution method
+if xT == 0:
+        solvedEq = dsolve(sympify(eq), y(t), hint='nth_linear_constant_coeff_homogeneous')
+        #elif (a3 != 0) or (a4 != 0) or (a5 != 0):
+        #solvedEq = dsolve(sympify(eq),y(t),hint='nth_linear_constant_coeff_variation_of_parameters')
+
+else:
+        solvedEq = dsolve(sympify(eq), y(t), hint='nth_linear_constant_coeff_undetermined_coefficients')
+
+##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
+sepEq = solvedEq._args[1]
+
+##Print da Resolução
+##
+##        print "Resolução sem conds Iniciais:"
+##
+##        print(sympify(solvedEq, rational=False, evaluate=False).evalf(prec))
+##        try:
+##                print(solvedEq)
+##                pprint(solve(solvedEq))
+##        except:
+##                pprint(solvedEq)
+##                print(solvedEq)
+
+##PRocesso de separação de resp natural e resposta transitória ---
+#SEPARACAO FUNCIONAL SOMENTE PARA GRAU 1 E 2
+#elementosEq = sepEq.atoms(Symbol)
+#C1 = elementosEq.pop()
+#C2 = elementosEq.pop()
+
+C1, C2, C3, C4, C5 = symbols("C1 C2 C3 C4 C5")
+
+#print C1, C2
+
+if a5 != 0:
+        RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
+elif a4 != 0:
+        RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0)])
+elif a3 != 0:
+        RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0)])
+elif a2 != 0:
+        RespPart = sepEq.subs([(C1, 0), (C2, 0)])
+elif a1 != 0:
+        RespPart = sepEq.subs(C1, 0)
+
+##    if C2 != t :
+##        #print "Tem c2"
+##        RespTran =  sepEq.subs([(C2,0),(C1,0)])
+##
+##
+##    else:
+##        RespTran =  sepEq.subs(C1,0)
+
+##Resposta transitória alocada em  RespTran, natural em RespNat
+
+
+Respostas[3] = RespPart.evalf(prec)
+formaNatural = sepEq.subs(RespPart, 0)
+Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de respostas
+## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
+##isso é válido no método conds_iniciais_aplicadas
+fN = formaNatural
+rP = RespPart.evalf(prec)
+
+##Tenta resolver parâmetros não terminados, se possível
+##        try:
+##
+##                print "Resposta Particular:"
+##                print RespPart
+##                pprint (RespPart)
+##                print "Forma Natural:"
+##                print formaNatural
+##                pprint(formaNatural)
+##        except:
+##                print "Resposta Parciular:"
+##                print RespPart
+##                pprint (RespPart)
+##                print "Forma Natural:"
+##                print formaNatural
+##                pprint(formaNatural)
+
+
+##Saida
+
+
+def raizes():
+        #polyroots retorna uma lista
+        if(a5 != 0):
+                roots = mpmath.polyroots([a5, a4, a3, a2, a1, a0])
+               # print roots[0], roots[1], roots[2], roots[3], roots[4]
+        elif((a5 == 0) and (a4 !=0)):
+                roots = mpmath.polyroots([a4, a3, a2, a1, a0])
+               # print roots[0], roots[1], roots[2], roots[3]
+        elif((a4 == 0) and (a3 !=0)):
+                roots = mpmath.polyroots([a3, a2, a1, a0])
+               # print roots[0], roots[1], roots[2]
+        elif((a3 == 0) and (a2 !=0)):
+                roots = mpmath.polyroots([a2, a1, a0])
+               # print roots[0], roots[1]
+        elif((a2 == 0) and (a1 !=0)):
+                roots = mpmath.polyroots([a1, a0])
+               # print roots[0]
+
+        Respostas[0] = roots        
+        
+raizes()
+
+        
+def conds_iniciais_aplicadas():
+
+        print "Favor inserir as conds iniciais y(0) e y'(0)...:"
+
+        ##Verificando a ordem da EDO para se ter o numero correto de conds Iniciais e
+        #uma resolução própria
+
+        #Ordem 1
+        if ((a5 == 0) and (a4 == 0)
+           and (a3 == 0) and (a2 == 0)):
+                #Entrada cond inicial:
+                y0 = input("y(0): ")
+                ##Resolução para se obter o valor da constante C1:
+
+                #Aplicando t = 0 em y(t)
+                fNt0 = fN.subs(t,0)
+                #print "Valor de fN com t = 0:",fNt0
+                ##Resolvendo o sistema para se obter o valor da constante C1
+                valorConstantes = solve(fNt0 - y0)
+                #print "Valor de C1: ",valorConstantes,type(valorConstantes)
+
+
+
+                ##Agora a resposta natural, com o C1 encontrado na substituição aplicado na funcão natural:
+                nC1 = valorConstantes.pop()
+
+                respNatural = fN.subs(C1,nC1).evalf(prec)
+                Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
+
+                ##Tenta resolver parâmetros não terminados, se possível
+
+
+
+                ##Saida da Resposta Natural no console
+                #print "Resposta Natural:"
+                #pprint(respNatural)
+
+                if(xT != 0):    #Eq. nao homogenea
+                        yt = fN + rP #Yt(t) = Yfn(t) + Yp
+                        yt = sympify(yt, rational = False,evaluate= False).evalf(prec)
+                        yt0 = yt.subs(t, 0) #Aplicando as condicoes iniciais; Ytrans(0)
+
+                        #c1 eh o valor de C1
+                        #solve(eq, var); eq=equacao a ser resolvida; var=variavel que se quer achar
+                        #solve iguala a equacao a 0, portanto, yt0 - y0 = 0 => yt0 = y0
+                        valorConstantes = solve(yt0 - y0) #solve retorna um dictionary(hash)
+                        tC1 = valorConstantes.pop()           #com keys C1
+                        respTrans = yt.subs(C1, tC1)
+                        Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
+
+                        #print "Resposta Transitoria:"
+                        #pprint(respTrans)
+
+
+
+        #Ordem 2
+        elif ((a5 == 0) and (a4 == 0)
+           and (a3 == 0)):
+                y0 = input("y(0): ")
+                dy0 = input("y'(0): ")
+
+                ##Primeiramente a resposta Natural
+                ##Solucao geral é : formaNat
+                #antes de aplicar as conds iniciais é necessário ter y'(t) e y(t) da resp natural
+
+                #Forma natural é derivada uma vez
+                ylinhaNat = sympify(fN.diff(t), rational = False, evaluate = False).evalf(prec)
+                formaNatural  = sympify(fN, rational = False,evaluate= False).evalf(prec)
+                #print"yLinhaNat:", ylinhaNat
+
+                ## Agora é necessário resolver o sistema:
+                #  ynat(t) = y(0)
+                #  ynat'(0)= y'(0)
+                #print "Valor das constantes com t",valorConstantes
+                ### Agora com os valores em t = 0  para y'(t)  e y(t), substituindo:
+                ylinhaNat    = ylinhaNat.subs(t,0)
+                formaNatural = formaNatural.subs(t,0)
+
+                #print "YlinhaNat em t = 0: ",ylinhaNat
+                #print "Forma Natural em t = 0: ",formaNatural
+                ##Resolvendo o sistema:
+                valorConstantes = solve([formaNatural -y0,ylinhaNat -dy0])
+                #print type(valorConstantes)
+                #print "Constantes C1 e C2: ",valorConstantes
+                ### Agora a resposta natural com as constantes encontradase aplicadas na funcão natural:
+                nC1 = valorConstantes[C1]
+                nC2     = valorConstantes[C2]
+                #print "Valor de C1 e C2:",nC1,nC2
+
+                respNatural = fN.subs([(C1,nC1),(C2,nC2)]).evalf(prec)
+                Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
+
+                ##Tenta resolver parâmetros não terminados, se possível
+
+
+                #print "Resposta Natural:"
+                #pprint(respNatural)
+
+                if(xT != 0): #Eq. nao homogenea
+                        yt = fN + rP #Yt(t) = Yfn(t) + Yp
+
+                        #Resposta Transitoria é derivada uma vez
+                        ylinhaTran = sympify(yt.diff(t), rational = False, evaluate = False).evalf(prec)
+                        yt  = sympify(yt, rational = False,evaluate= False).evalf(prec)
+                        #print"yLinhaTran:", ylinhaTran
+
+                        ## Agora é necessário resolver o sistema:
+                        #  ytran(0) = y(0)
+                        #  ytran'(0)= y'(0)
+                        #print "Valor das constantes com t",valorConstantes
+                        ### Agora com os valores em t = 0  para y'(t)  e y(t), substituindo:
+                        ylinhaTran    = ylinhaTran.subs(t,0)
+                        yt0 = yt.subs(t,0)
+
+                        #print "YlinhaTran em t = 0: ",ylinhaNTran
+                        #print "Resposta Transitoria em t = 0: ",yt0
+                        ##Resolvendo o sistema:
+                        valorConstantes = solve([yt0 -y0,ylinhaTran -dy0])
+                        #print type(valorConstantes)
+                        #print "Constantes C1 e C2: ",valorConstantes
+                        ### Agora a resposta transitoria com as constantes encontradase aplicadas na funcão natural:
+                        tC1 = valorConstantes[C1]
+                        tC2     = valorConstantes[C2]
+                        #print "Valor de C1 e C2:",tC1,tC2
+
+                        respTrans = yt.subs([(C1,tC1),(C2,tC2)]).evalf(prec)
+                        Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
+
+                        #print "Respsota Transitoria:"
+                        #pprint(respTrans)
+
+
+
+        #Ordem 3
+        elif ((a5 == 0) and (a4 == 0)):
+                y0 = input("y(0): ")
+                dy0 = input("y'(0): ")
+                d2y0 = input("y''(0): ")
+
+
+                ##Primeiramente a resposta Natural
+                ##Solucao geral é : formaNat
+                #antes de aplicar as conds iniciais é necessário ter y''(t) y'(t) e y(t) da resp natural
+
+                #Forma natural é derivada a primeira e à segunda
+                y2linhaNat = sympify(fN.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                ylinhaNat = sympify(fN.diff(t), rational = False, evaluate = False).evalf(prec)
+                formaNatural  = sympify(fN, rational = False,evaluate= False).evalf(prec)
+                #print"yLinhaTran:", ylinhaTran
+
+                ## Agora é necessário resolver o sistema:
+                #  ynat(t) = y(0)
+                #  ynat'(0)= y'(0)
+                # ynat''(0) = y''(0)
+                #print "Valor das constantes com t",valorConstantes
+                ### Agora com os valores em t = 0  para y'(t)  e y(t), substituindo:
+                y2linhaNat   = y2linhaNat.subs(t,0)
+                ylinhaNat    = ylinhaNat.subs(t,0)
+                formaNatural = formaNatural.subs(t,0)
+
+                #print "YlinhaNat em t = 0: ",ylinhaNat
+                #print "Forma Natural em t = 0: ",formaNatural
+                ##Resolvendo o sistema:
+                valorConstantes = solve([formaNatural -y0,ylinhaNat -dy0,y2linhaNat-d2y0])
+                #print type(valorConstantes)
+                #print "Constantes C1  C2 e C3: ",valorConstantes
+                ### Agora a resposta natural com as constantes encontradase aplicadas na funcão natural:
+               # print valorConstantes
+                nC1 = valorConstantes[C1]
+                nC2     = valorConstantes[C2]
+                nC3 = valorConstantes[C3]
+                #print "Valor de C1 e C2:",nC1,nC2
+
+                respNatural = fN.subs([(C1,nC1),(C2,nC2),(C3,nC3)]).evalf(prec)
+                Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
+
+                ##Tenta resolver parâmetros não terminados, se possível
+
+
+                #print "Resposta Natural:"
+                #pprint(respNatural)
+
+
+                if(xT != 0): #Eq. nao homogenea
+                        yt = fN + rP #Yt(t) = Yfn(t) + Yp
+
+                        #Resposta Transitoria é derivada a primeira e à segunda
+                        y2linhaTran = sympify(yt.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                        ylinhaTran = sympify(yt.diff(t), rational = False, evaluate = False).evalf(prec)
+                        yt  = sympify(yt, rational = False,evaluate= False).evalf(prec)
+                        #print"yLinhaTran:", ylinhaTran
+
+                        ## Agora é necessário resolver o sistema:
+                        #  ytran(t) = y(0)
+                        #  ytran'(0)= y'(0)
+                        #  ytran''(0) = y''(0)
+                        #print "Valor das constantes com t",valorConstantes
+                        ### Agora com os valores em t = 0  para y'(t)  e y(t), substituindo:
+                        y2linhaTran   = y2linhaTran.subs(t,0)
+                        ylinhaTran    = ylinhaTran.subs(t,0)
+                        yt0 = yt.subs(t,0)
+
+                        #print "YlinhaTran em t = 0: ",ylinhaTran
+                        #print "Resposta Transitoria em t = 0: ",yt0
+                        ##Resolvendo o sistema:
+                        valorConstantes = solve([yt0 -y0,ylinhaTran -dy0,y2linhaTran-d2y0])
+                        #print type(valorConstantes)
+                        #print "Constantes C1  C2 e C3: ",valorConstantes
+                        ### Agora a resposta transitoria com as constantes encontradase aplicadas na funcão natural:
+                        print valorConstantes
+                        tC1 = valorConstantes[C1]
+                        tC2     = valorConstantes[C2]
+                        tC3 = valorConstantes[C3]
+                        #print "Valor de C1 e C2:",nC1,nC2
+
+                        respTrans = yt.subs([(C1,tC1),(C2,tC2),(C3,tC3)]).evalf(prec)
+                        Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
+
+                        #print "Respsota Transitoria:"
+                       # pprint(respTrans)
+
+
+        #Ordem 4
+        elif ((a5 == 0)):
+                y0 = input("y(0): ")
+                dy0 = input("y'(0): ")
+                d2y0 = input("y''(0): ")
+                d3y0 = input("y'''(0): ")
+
+
+                ##Primeiramente a resposta Natural
+                ##Solucao geral é : formaNat
+                #antes de aplicar as conds iniciais é necessário ter  y'''(t) y''(t) y'(t) e y(t) da resp natural
+
+                #Forma natural é derivada a primeira , segunda e terceira
+                y3linhaNat = sympify(fN.diff(t,3), rational = False, evaluate = False).evalf(prec)
+                y2linhaNat = sympify(fN.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                ylinhaNat = sympify(fN.diff(t), rational = False, evaluate = False).evalf(prec)
+                formaNatural  = sympify(fN, rational = False,evaluate= False).evalf(prec)
+                #print"yLinhaNat:", ylinhaNat
+
+                ## Agora é necessário resolver o sistema:
+                #  ynat(t) = y(0)
+                #  ynat'(0)= y'(0)
+                # ynat''(0) = y''(0)
+                #ynat'''(0) = y'''(0)
+                #print "Valor das constantes com t",valorConstantes
+                ### Agora com os valores em t = 0  para conds iniciais, substituindo:
+                y3linhaNat   = y3linhaNat.subs(t,0)
+                y2linhaNat   = y2linhaNat.subs(t,0)
+                ylinhaNat    = ylinhaNat.subs(t,0)
+                formaNatural = formaNatural.subs(t,0)
+
+                #print "YlinhaNat em t = 0: ",ylinhaNat
+                #print "Forma Natural em t = 0: ",formaNatural
+                ##Resolvendo o sistema:
+                valorConstantes = solve([formaNatural -y0, ylinhaNat -dy0 , y2linhaNat-d2y0 , y3linhaNat-d3y0])
+                #print type(valorConstantes)
+                #print "Constantes C1  C2 e C3: ",valorConstantes
+                ### Agora a resposta natural com as constantes encontradase aplicadas na funcão natural:
+                nC1 = valorConstantes[C1]
+                nC2     = valorConstantes[C2]
+                nC3 = valorConstantes[C3]
+                nC4 = valorConstantes[C4]
+                #print "Valor de C1 e C2:",nC1,nC2
+
+                respNatural = fN.subs([(C1,nC1),(C2,nC2),(C3,nC3),(C4,nC4)]).evalf(prec)
+                Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
+
+               # print "Resposta Natural:"
+                #pprint(respNatural)
+
+                if(xT != 0): #Eq. nao homogenea
+                        yt = fN + rP #Yt(t) = Yfn(t) + Yp
+
+                        #Resposta Transitoria é derivada a primeira , segunda e terceira
+                        y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
+                        y2linhaTran = sympify(yt.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                        ylinhaTran = sympify(yt.diff(t), rational = False, evaluate = False).evalf(prec)
+                        yt = sympify(yt, rational = False,evaluate= False).evalf(prec)
+                        #print"yLinhaNTran:", ylinhaTran
+
+                        ## Agora é necessário resolver o sistema:
+                        #  ytran(t) = y(0)
+                        #  ytran'(0)= y'(0)
+                        # ytran''(0) = y''(0)
+                        #ytran'''(0) = y'''(0)
+                        #print "Valor das constantes com t",valorConstantes
+                        ### Agora com os valores em t = 0  para conds iniciais, substituindo:
+                        y3linhaTran   = y3linhaTran.subs(t,0)
+                        y2linhaTran   = y2linhaTran.subs(t,0)
+                        ylinhaTran    = ylinhaTran.subs(t,0)
+                        yt0 = yt.subs(t,0)
+
+                        #print "YlinhaTran em t = 0: ",ylinhaTran
+                        #print "Resposta Transitoria em t = 0: ",yt0
+                        ##Resolvendo o sistema:
+                        valorConstantes = solve([yt0 -y0, ylinhaNat -dy0 , y2linhaTran-d2y0 , y3linhaTran-d3y0])
+                        #print type(valorConstantes)
+                        #print "Constantes C1  C2 e C3: ",valorConstantes
+                        ### Agora a resposta transitoria com as constantes encontradase aplicadas na funcão natural:
+                        tC1 = valorConstantes[C1]
+                        tC2     = valorConstantes[C2]
+                        tC3 = valorConstantes[C3]
+                        tC4 = valorConstantes[C4]
+                        #print "Valor de C1 e C2:",tC1,tC2
+
+                        respTrans = yt.subs([(C1,tC1),(C2,tC2),(C3,tC3),(C4,tC4)]).evalf(prec)
+                        Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
+
+                        #print "Respsota Transitoria:"
+                       # pprint(respTrans)
+
+
+        #Ordem 5
+        else:
+                y0 = input("y(0): ")
+                dy0 = input("y'(0): ")
+                d2y0 = input("y''(0): ")
+                d3y0 = input("y'''(0): ")
+                d4y0 = input("y''''(0): ")
+
+                ##Primeiramente a resposta Natural
+                ##Solucao geral é : formaNat
+                #antes de aplicar as conds iniciais é necessário ter y''''(t)  y'''(t) y''(t) y'(t) e y(t) da resp natural
+
+                #Forma natural é derivada a primeira , segunda, terceira e quarta
+                y4linhaNat = sympify(fN.diff(t,4), rational = False, evaluate = False).evalf(prec)
+                y3linhaNat = sympify(fN.diff(t,3), rational = False, evaluate = False).evalf(prec)
+                y2linhaNat = sympify(fN.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                ylinhaNat = sympify(fN.diff(t), rational = False, evaluate = False).evalf(prec)
+                formaNatural  = sympify(fN, rational = False,evaluate= False).evalf(prec)
+                #print"yLinhaNat:", ylinhaNat
+
+                ## Agora é necessário resolver o sistema:
+                #  ynat(t) = y(0)
+                #  ynat'(0)= y'(0)
+                # ynat''(0) = y''(0)
+                #ynat'''(0) = y'''(0)
+                #ynat''''(0) = y''''(0)
+                #print "Valor das constantes com t",valorConstantes
+                ### Agora com os valores em t = 0  para conds iniciais, substituindo:
+                y4linhaNat   = y4linhaNat.subs(t,0)
+                y3linhaNat   = y3linhaNat.subs(t,0)
+                y2linhaNat   = y2linhaNat.subs(t,0)
+                ylinhaNat    = ylinhaNat.subs(t,0)
+                formaNatural = formaNatural.subs(t,0)
+
+                #print "YlinhaNat em t = 0: ",ylinhaNat
+                #print "Forma Natural em t = 0: ",formaNatural
+                ##Resolvendo o sistema:
+                valorConstantes = solve([formaNatural -y0, ylinhaNat -dy0 , y2linhaNat-d2y0 , y3linhaNat-d3y0,  y4linhaNat - d4y0])
+               #print type(valorConstantes)
+                #print "Constantes C1  C2 e C3: ",valorConstantes
+                ### Agora a resposta natural com as constantes encontradase aplicadas na funcão natural:
+                nC1 = valorConstantes[C1]
+                nC2     = valorConstantes[C2]
+                nC3 = valorConstantes[C3]
+                nC4 = valorConstantes[C4]
+                nC5 = valorConstantes[C5]
+                #print "Valor de C1 e C2:",nC1,nC2
+
+                respNatural = fN.subs([(C1,nC1),(C2,nC2),(C3,nC3),(C4,nC4),(C5,nC5)]).evalf(prec)
+                Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
+
+               # print "Resposta Natural:"
+               # pprint(respNatural)
+
+                if(xT != 0): #Eq. nao homogenea
+                        yt = fN + rP #Yt(t) = Yfn(t) + Yp
+
+                        #Resposta transitoria é derivada a primeira , segunda, terceira e quarta
+                        y4linhaTran = sympify(yt.diff(t,4), rational = False, evaluate = False).evalf(prec)
+                        y3linhaTran = sympify(yt.diff(t,3), rational = False, evaluate = False).evalf(prec)
+                        y2linhaTran = sympify(yt.diff(t,2), rational = False, evaluate = False).evalf(prec)
+                        ylinhaTran = sympify(yt.diff(t), rational = False, evaluate = False).evalf(prec)
+                        yt  = sympify(yt, rational = False,evaluate= False).evalf(prec)
+                        #print"yLinhaTran:", ylinhaTran
+
+                        ## Agora é necessário resolver o sistema:
+                        #  ytran(t) = y(0)
+                        #  ytran'(0)= y'(0)
+                        # ytran''(0) = y''(0)
+                        #ytran'''(0) = y'''(0)
+                        #ytran''''(0) = y''''(0)
+                        #print "Valor das constantes com t",valorConstantes
+                        ### Agora com os valores em t = 0  para conds iniciais, substituindo:
+                        y4linhaTran   = y4linhaTran.subs(t,0)
+                        y3linhaTran   = y3linhaTran.subs(t,0)
+                        y2linhaTran   = y2linhaTran.subs(t,0)
+                        ylinhaTran    = ylinhaTran.subs(t,0)
+                        yt0 = yt.subs(t,0)
+
+                        #print "YlinhaTran em t = 0: ",ylinhaTran
+                        #print "Forma Natural em t = 0: ",yt0
+                        ##Resolvendo o sistema:
+                        valorConstantes = solve([yt0 -y0, ylinhaTran -dy0 , y2linhaTran-d2y0 , y3linhaTran-d3y0,  y4linhaTran - d4y0])
+                        #print type(valorConstantes)
+                        #print "Constantes C1  C2 e C3: ",valorConstantes
+                        ### Agora a resposta transitoria com as constantes encontradase aplicadas na funcão natural:
+                        tC1 = valorConstantes[C1]
+                        tC2 = valorConstantes[C2]
+                        tC3 = valorConstantes[C3]
+                        tC4 = valorConstantes[C4]
+                        tC5 = valorConstantes[C5]
+                        #print "Valor de C1 e C2:",tC1,tC2
+
+                        respTrans = yt.subs([(C1,tC1),(C2,tC2),(C3,tC3),(C4,tC4),(C5,tC5)]).evalf(prec)
+                        Respostas[4] = respTrans #Adiciona Resposta Transitoria a lista de respostas
+
+                        #print "Respsota Transitoria:"
+                        #pprint(respTrans)
+
+
+
+        #print "Valor das constantes com t = 0",valorConstantesT0
+
+
+conds_iniciais_aplicadas()
+
+respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
+Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
+
+
+respComp = Respostas[2]  #Resposta completa p/ eqs. homogeneas
+if(xT != 0): #Eqs. nao homogeneas
+        respComp = Respostas[2] + Respostas[5]  #Respsota completa p/ eqs. nao-homogeneas
+
+Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
+
+
+def log_print():
+        
+        equacao = eq + xT
+        equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
+        equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
+        equacao = equacao.subs("Derivative(d2y(t), t)","d3y(t)")
+        equacao = equacao.subs("Derivative(d3y(t), t)","d4y(t)")
+        equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
+        print "\t\tEquacao: "
+        print "Equacao =", equacao, "=", xT
+        pprint(eq+xT)
+        print "\t\t========"
+        pprint(xT)
+        print "\t\tRaizes:"
+        count = 0
+        while(count < len(Respostas[0])):
+                print "\tr = ", Respostas[0][count]
+                count = count+ 1
+        print "\n\t\tForma natural de resposta:\n"
+        print "Yfn(t) =", Respostas[1]
+        pprint(Respostas[1])
+        print "\n\t\tResposta natural:\n"
+        print "Yn(t) =", Respostas [2]
+        pprint(Respostas[2])
+
+        if(xT != 0):
+            print "\n\t\tResposta particular:\n"
+            print "Yp(t) =", Respostas[3]
+            pprint(Respostas[3])
+            print "\n\t\tResposta transitoria:\n"
+            print "Ytrans(t) =", Respostas[4]
+            pprint(Respostas[4])
+            print "\n\t\tResposta forcada:\n"
+            print "Yf(t) =", Respostas[5]
+            pprint(Respostas[5])
+        
+        print "\n\t\tReposta completa:\n"
+        print "Yc(t) =", Respostas[6]
+        pprint(Respostas[6])
+
+log_print()
+
+
+def show_plots():
+
+
+	plotNat = lambdify(t,Respostas[2])
+	#t = 0.0
+
+
+	## Nossa variável de deslocamento t no eixo x
+	t = arange(0.0,20.0,0.01)
+
+		##Plot da resposta natural
+	##plotNat = Respostas[2]
+	print "Resposta natural:",plotNat, type(plotNat)
+	plt.figure("EDOs a coefs constantes", dpi = 1024)
+	plt.subplot(333)
+	plt.title("ynat(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respNatPlot = plt.plot(t,plotNat,lw = 2)
+
+	plt.show()
+
+
+show_plots()
+
+
+
+
