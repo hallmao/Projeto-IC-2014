@@ -3,7 +3,8 @@ import sympy.assumptions.handlers.calculus
 import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
-from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify
+from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
+	re
 from sympy.abc import t
 #from sympy import *
 import matplotlib.pyplot as plt
@@ -11,9 +12,21 @@ from numpy import  arange
 
 
 
+###Parâmetros a serem considerados
 
-
+###Precisão Decimal
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
+###Configurações do pprint, registradas somente uma vez
+
+setattr(pprint,'num_columns',5)
+setattr(pprint,'use_unicode',True)
+setattr(pprint,'order','none')
+
+
+	#("num_columns = 100,use_unicode = True,order = 'none'")
+
+
+
 
 ###Uses the best printing available for pprint
 init_printing( use_latex=True)
@@ -50,7 +63,6 @@ def input_coefs():
         a0 = input("a0:")
         xT = input("x(t):")
 
-
 input_coefs()
 
 try:
@@ -67,8 +79,8 @@ eq = sympify(
         a5 * y(t).diff(t, 5) + a4 * y(t).diff(t, 4) + a3 * y(t).diff(t, 3) + a2 * y(t).diff(t, 2) + a1 * y(t).diff(
                 t) + a0 * y(t) - xT)
 
-#pprint(eq)
-#print ""
+
+
 
 ###Dif equation solver
 
@@ -112,25 +124,6 @@ Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de r
 fN = formaNatural
 rP = RespPart.evalf(prec)
 
-##Tenta resolver parâmetros não terminados, se possível
-##        try:
-##
-##                print "Resposta Particular:"
-##                print RespPart
-##                pprint (RespPart)
-##                print "Forma Natural:"
-##                print formaNatural
-##                pprint(formaNatural)
-##        except:
-##                print "Resposta Parciular:"
-##                print RespPart
-##                pprint (RespPart)
-##                print "Forma Natural:"
-##                print formaNatural
-##                pprint(formaNatural)
-
-
-##Saida
 
 
 def raizes():
@@ -366,7 +359,7 @@ def conds_iniciais_aplicadas():
                         #print type(valorConstantes)
                         #print "Constantes C1  C2 e C3: ",valorConstantes
                         ### Agora a resposta transitoria com as constantes encontradase aplicadas na funcão natural:
-                        print valorConstantes
+                        #print valorConstantes
                         tC1 = valorConstantes[C1]
                         tC2     = valorConstantes[C2]
                         tC3 = valorConstantes[C3]
@@ -591,7 +584,7 @@ Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de resp
 def log_print():
 
         print "Equacao: "
-        pprint(eq)
+        pprint(eq,)
         print "\nForma natural de resposta:\n"
         pprint(Respostas[1])
         print "\nResposta natural:\n"
@@ -699,8 +692,7 @@ def show_plots():
 
     ## Nossa variável de deslocamento t no eixo x
     #x_t = drange(0,10,0.00001)
-    x_t  = arange(0.0,10.0,0.1)
-    x_tr = arange(-5,5,5)
+    x_t  = arange(0.0,10.0,0.01)
 
 
     ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
@@ -711,6 +703,21 @@ def show_plots():
     plotTran  = [0]*len(x_t)
     plotFor   = [0]*len(x_t)
     plotCom   = [0]*len(x_t)
+
+    ##Separando parte real e imaginária das raízes
+    plotRaizesT = (Respostas[0])
+    plotRaizesC = [0]*len(plotRaizesT)
+    plotRaizesR = [0]*len(plotRaizesT)
+
+    for i in range(len(plotRaizesT)):
+
+	    plotRaizesC[i] = im(plotRaizesT[i])
+	    plotRaizesR[i] = re(plotRaizesT[i])
+
+
+    print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
+    print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)
+
 
 
     ##Iteração para calcular nossos vetores para a ordenada(y) nos gráficos
@@ -726,54 +733,66 @@ def show_plots():
 
 
 
-    plt.figure("EDOs a coefs constantes")
+    outputPlots = plt.figure("EDOs a coefs constantes")
     plt.subplot(333)
+    plt.grid('on')
     plt.title("ynat(t)")
     plt.ylabel("Amplitude")
     plt.xlabel("t")
     respNatPlot = plt.plot(x_t,plotNat,lw = 2)
 
-    plotRaizes = Respostas[0]
     plt.subplot(334)
+    plt.grid('on')
     plt.title("Raizes")
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
+    #plt.scatter(plotRaizesR,plotRaizesC)
     #cli_on=False permite a marcacao 'o' sobrepor a borda do grafico
     #menor e maior raiz aparecendo sempre no limite da borda
     #nao dava pra ver o ponto
-    respRaizesPlot = plt.plot(plotRaizes,'o', clip_on=False)
+    #plt.annotate(xycoords = 'data',)
+    plt.ylim(-abs(float(plotRaizesC[0])+1),abs(float(plotRaizesR[0])+1)  )
+    plt.xlim(-abs(float(plotRaizesR[0])+1),abs(float(plotRaizesR[0])+1)  )
+    #plt.axhline(0, color = 'black',lw =2)
+    respRaizesPlot = plt.plot(plotRaizesR,plotRaizesC,'x',lw = 4)
 
     plt.subplot(332)
+    plt.grid('on')
     plt.title("ypar(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
     respParPlot = plt.plot(x_t,plotPar,lw = 2)
 
     plt.subplot(335)
+    plt.grid('on')
     plt.title("ytran(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
     respTranPlot = plt.plot(x_t,plotTran,lw = 2)
 
     plt.subplot(336)
+    plt.grid('on')
     plt.title("yfor(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
     respForPlot = plt.plot(x_t,plotFor,lw = 2)
 
     plt.subplot(338)
+    plt.grid('on')
     plt.title("yfor(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
     respForPlot = plt.plot(x_t,plotFor,lw = 2)
 
     plt.subplot(339)
+    plt.grid('on')
     plt.title("yc(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
     respComPlot = plt.plot(x_t,plotCom,lw = 2)
 
     plt.subplot(331)
+    plt.grid('on')
     plt.title("x(t)")
     plt.xlabel("t")
     plt.ylabel("Amplitude")
@@ -781,12 +800,15 @@ def show_plots():
 
     plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
                     wspace=0.46, hspace=0.64)
+
+
     plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
     #e para caberem dentro da janela
 
 
 
     plt.show()
+    return outputPlots
 
 
 show_plots()

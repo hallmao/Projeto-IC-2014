@@ -23,12 +23,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="final_ode_8_com_plot.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+      <file leaf-file-name="final_ode_8_com_plot_v3.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24711697" vertical-offset="1365" max-vertical-offset="11670">
-              <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
-              <folding />
+            <state vertical-scroll-proportion="0.67874795" vertical-offset="10808" max-vertical-offset="12255">
+              <caret line="755" column="5" selection-start-line="755" selection-start-column="5" selection-end-line="755" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#910#1182#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,6 +70,8 @@
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot.py" />
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/latex_printing_v01.py" />
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py" />
+        <option value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v2.py" />
+        <option value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v3.py" />
       </list>
     </option>
   </component>
@@ -101,6 +106,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -129,31 +135,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="FINAL_ORDEM 1 a 5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projeto IC 2014" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projeto IC 2014" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FINAL_ORDEM 1 a 5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Testes com Latex" />
+              <option name="myItemId" value="Final" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -180,7 +167,7 @@
       <recent name="$PROJECT_DIR$/Segunda ORDEM Finais" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.final_ode_8_com_plot (1)">
+  <component name="RunManager" selected="Python.final_ode_8_com_plot_v3">
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -642,7 +629,41 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="19">
+    <configuration default="false" name="final_ode_8_com_plot_v2" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Final" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto IC 2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="final_ode_8_com_plot_v3" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Final" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto IC 2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v3.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="21">
       <item index="0" class="java.lang.String" itemvalue="Python.Solving_order_2_ode_5" />
       <item index="1" class="java.lang.String" itemvalue="Python.final_ode_1" />
       <item index="2" class="java.lang.String" itemvalue="Python.final_ode_2" />
@@ -662,6 +683,8 @@
       <item index="16" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_2" />
       <item index="17" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_2 (1)" />
       <item index="18" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot (1)" />
+      <item index="19" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_v2" />
+      <item index="20" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_v3" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -678,7 +701,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="725" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -688,7 +711,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="725" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="730" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -721,15 +744,25 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11670">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="11093" max-vertical-offset="11700">
           <caret line="718" column="44" selection-start-line="718" selection-start-column="44" selection-end-line="718" selection-end-column="44" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
             <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
@@ -740,7 +773,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="10264" max-vertical-offset="11475">
           <caret line="722" column="40" selection-start-line="722" selection-start-column="40" selection-end-line="722" selection-end-column="40" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
             <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
@@ -751,7 +784,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="10759" max-vertical-offset="11475">
           <caret line="766" column="0" selection-start-line="766" selection-start-column="0" selection-end-line="766" selection-end-column="0" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
             <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
@@ -946,20 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="36431" max-vertical-offset="46140">
-          <caret line="2466" column="0" selection-start-line="2466" selection-start-column="0" selection-end-line="2466" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3231" max-vertical-offset="128520">
-          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="11416" max-vertical-offset="12120">
@@ -992,26 +1011,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
           <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25252524" vertical-offset="1365" max-vertical-offset="11670">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11048" max-vertical-offset="11655">
+        <state vertical-scroll-proportion="0.46969697" vertical-offset="11061" max-vertical-offset="11655">
           <caret line="766" column="4" selection-start-line="766" selection-start-column="4" selection-end-line="766" selection-end-column="4" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
             <element signature="e#1053#1430#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24711697" vertical-offset="1365" max-vertical-offset="11670">
-          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="11423" max-vertical-offset="12030">
+          <caret line="664" column="25" selection-start-line="664" selection-start-column="25" selection-end-line="664" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="41817" max-vertical-offset="46140">
+          <caret line="2823" column="0" selection-start-line="2823" selection-start-column="0" selection-end-line="2823" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="49883" max-vertical-offset="128520">
+          <caret line="3347" column="0" selection-start-line="3347" selection-start-column="0" selection-end-line="3347" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67874795" vertical-offset="10808" max-vertical-offset="12255">
+          <caret line="755" column="5" selection-start-line="755" selection-start-column="5" selection-end-line="755" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#910#1182#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
