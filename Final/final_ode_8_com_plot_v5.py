@@ -6,7 +6,6 @@ import sympy.assumptions.handlers.sets
 from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
 	re, latex
 from sympy.abc import t
-#from sympy import *
 import matplotlib.pyplot as plt
 from numpy import  arange
 
@@ -805,7 +804,7 @@ def show_plots():
 						wspace=0.46, hspace=0.64)
 
 
-		plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
+		#plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
 		#e para caberem dentro da janela
 
 
@@ -840,6 +839,7 @@ def print_latex():
 	ax1.get_xaxis().tick_bottom()
 	ax1.get_xaxis().set_visible(False)
 	ax1.axes.get_yaxis().set_visible(False)
+	for i in range(0,7,1):plt.axhline(dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
 	#log_figure.figure("Forma_Representativa:")
 	plt.title('Respostas na forma representativa',fontsize = fontSize)
 	plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1],fontsize = fontSize)
