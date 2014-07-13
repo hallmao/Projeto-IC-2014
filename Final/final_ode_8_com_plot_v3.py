@@ -4,7 +4,7 @@ import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
 from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
-	re
+    re
 from sympy.abc import t
 #from sympy import *
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ setattr(pprint,'use_unicode',True)
 setattr(pprint,'order','none')
 
 
-	#("num_columns = 100,use_unicode = True,order = 'none'")
+    #("num_columns = 100,use_unicode = True,order = 'none'")
 
 
 
@@ -711,8 +711,8 @@ def show_plots():
 
     for i in range(len(plotRaizesT)):
 
-	    plotRaizesC[i] = im(plotRaizesT[i])
-	    plotRaizesR[i] = re(plotRaizesT[i])
+        plotRaizesC[i] = im(plotRaizesT[i])
+        plotRaizesR[i] = re(plotRaizesT[i])
 
 
     print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
@@ -720,95 +720,107 @@ def show_plots():
 
 
 
-    ##Iteração para calcular nossos vetores para a ordenada(y) nos gráficos
-    for i in range(len(x_t)):
-        plotXt[i]      = plots_numpy[1](x_t[i])
-        plotNat[i]  = plots_numpy[2](x_t[i])
-        plotPar[i]  = plots_numpy[3](x_t[i])
-        plotTran[i] = plots_numpy[4](x_t[i])
-        plotFor[i]  = plots_numpy[5](x_t[i])
-        plotCom[i]  = plots_numpy[6](x_t[i])
 
 
 
+    try:
+
+        for i in range(len(x_t)):
+            plotXt[i]      = plots_numpy[1](x_t[i])
+            plotNat[i]     = plots_numpy[2](x_t[i])
+            plotPar[i]     = plots_numpy[3](x_t[i])
+            plotTran[i]    = plots_numpy[4](x_t[i])
+            plotFor[i]     = plots_numpy[5](x_t[i])
+            plotCom[i]     = plots_numpy[6](x_t[i])
 
 
-    outputPlots = plt.figure("EDOs a coefs constantes")
-    plt.subplot(333)
-    plt.grid('on')
-    plt.title("ynat(t)")
-    plt.ylabel("Amplitude")
-    plt.xlabel("t")
-    respNatPlot = plt.plot(x_t,plotNat,lw = 2)
+        outputPlots = plt.figure("EDOs a coefs constantes")
+        plt.subplot(333)
+        plt.grid('on')
+        plt.title("ynat(t)")
+        plt.ylabel("Amplitude")
+        plt.xlabel("t")
+        respNatPlot = plt.plot(x_t,plotNat,lw = 2)
 
-    plt.subplot(334)
-    plt.grid('on')
-    plt.title("Raizes")
-    plt.xlabel("X axis")
-    plt.ylabel("Y axis")
-    #plt.scatter(plotRaizesR,plotRaizesC)
-    #cli_on=False permite a marcacao 'o' sobrepor a borda do grafico
-    #menor e maior raiz aparecendo sempre no limite da borda
-    #nao dava pra ver o ponto
-    #plt.annotate(xycoords = 'data',)
-    plt.ylim(-abs(float(plotRaizesC[0])+1),abs(float(plotRaizesR[0])+1)  )
-    plt.xlim(-abs(float(plotRaizesR[0])+1),abs(float(plotRaizesR[0])+1)  )
-    #plt.axhline(0, color = 'black',lw =2)
-    respRaizesPlot = plt.plot(plotRaizesR,plotRaizesC,'x',lw = 4)
+        plt.subplot(334)
+        plt.grid('on')
+        plt.title("Raizes")
+        plt.xlabel("X axis")
+        plt.ylabel("Y axis")
+        #plt.scatter(plotRaizesR,plotRaizesC)
+        #cli_on=False permite a marcacao 'o' sobrepor a borda do grafico
+        #menor e maior raiz aparecendo sempre no limite da borda
+        #nao dava pra ver o ponto
+        #plt.annotate(xycoords = 'data',)
+        plt.ylim(-abs(float(plotRaizesC[0])+float(plotRaizesC[1]) +1),abs(float(plotRaizesR[0])+ float(plotRaizesC[0]) +1)  )
+        plt.xlim(-abs(float(plotRaizesR[0])+float(plotRaizesR[1])+1),abs(float(plotRaizesR[0])+float(plotRaizesR[1])+1)  )
+        plt.axhline(0, color = 'black',lw =2)
+        respRaizesPlot = plt.plot(plotRaizesR,plotRaizesC,'x',lw = 4)
 
-    plt.subplot(332)
-    plt.grid('on')
-    plt.title("ypar(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respParPlot = plt.plot(x_t,plotPar,lw = 2)
+        plt.subplot(332)
+        plt.grid('on')
+        plt.title("ypar(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respParPlot = plt.plot(x_t,plotPar,lw = 2)
 
-    plt.subplot(335)
-    plt.grid('on')
-    plt.title("ytran(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respTranPlot = plt.plot(x_t,plotTran,lw = 2)
+        plt.subplot(335)
+        plt.grid('on')
+        plt.title("ytran(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respTranPlot = plt.plot(x_t,plotTran,lw = 2)
 
-    plt.subplot(336)
-    plt.grid('on')
-    plt.title("yfor(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respForPlot = plt.plot(x_t,plotFor,lw = 2)
+        plt.subplot(336)
+        plt.grid('on')
+        plt.title("yfor(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respForPlot = plt.plot(x_t,plotFor,lw = 2)
 
-    plt.subplot(338)
-    plt.grid('on')
-    plt.title("yfor(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respForPlot = plt.plot(x_t,plotFor,lw = 2)
+        plt.subplot(338)
+        plt.grid('on')
+        plt.title("yfor(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respForPlot = plt.plot(x_t,plotFor,lw = 2)
 
-    plt.subplot(339)
-    plt.grid('on')
-    plt.title("yc(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respComPlot = plt.plot(x_t,plotCom,lw = 2)
+        plt.subplot(339)
+        plt.grid('on')
+        plt.title("yc(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respComPlot = plt.plot(x_t,plotCom,lw = 2)
 
-    plt.subplot(331)
-    plt.grid('on')
-    plt.title("x(t)")
-    plt.xlabel("t")
-    plt.ylabel("Amplitude")
-    respXtPlot = plt.plot(x_t,plotXt,lw = 2)
+        plt.subplot(331)
+        plt.grid('on')
+        plt.title("x(t)")
+        plt.xlabel("t")
+        plt.ylabel("Amplitude")
+        plt.axhline(0, color = 'black',lw =2)
+        respXtPlot = plt.plot(x_t,plotXt,lw = 2)
 
-    plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
-                    wspace=0.46, hspace=0.64)
-
-
-    plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
-    #e para caberem dentro da janela
-
+        plt.subplots_adjust(left=0.05, bottom=0.10, right=0.97, top=0.95,
+                        wspace=0.46, hspace=0.64)
 
 
-    plt.show()
-    return outputPlots
+        #plt.tight_layout()#automaticamente ajusta os subplots para nao se sobreporem
+        #e para caberem dentro da janela
+
+
+
+        plt.show()
+        return outputPlots
+
+    except:
+        pass
+
+
 
 
 show_plots()
