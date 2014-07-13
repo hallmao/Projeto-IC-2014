@@ -606,6 +606,8 @@ log_print()
 
 
 def conversao_numpy(symbol):
+	###Transforma todas as respostas em funcoes Lambda
+	#Compativeis de forma nativa no python e sem a necessidade de bibliotecas externas
 	##Array with same length as Respostas variable
 	plots_numpy = [0]*len(Respostas)
 
@@ -613,6 +615,8 @@ def conversao_numpy(symbol):
 
 ### SIM SIM EU SEI USA UMA ITERACAO AKA FOR, mas ai...
 ## quem é que vai entender isso mês que vem ?
+	##Entrada x(t)
+	#plots_numpy[1] = lambdify(t,sympify(xT))
 ##RespostaNatural
 	plots_numpy[2] = lambdify(t,Respostas[2])
 ##Resposta Particular
@@ -624,7 +628,7 @@ def conversao_numpy(symbol):
 ##Resposta Completa
 	plots_numpy[6] = lambdify(t,Respostas[6])
 
-	##print "plots Numpy",plots_numpy
+	#print "plots Numpy",plots_numpy
 	return plots_numpy
 
 
@@ -644,30 +648,25 @@ def show_plots():
 	x_t = drange(0,20,0.0001)
 
 
-	###Nossas Variaveis de plot
+	###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
 	##Now they have equal length
+	#plotXt    = [0]*len(x_t)
 	plotNat   = [0]*len(x_t)
 	plotPar   = [0]*len(x_t)
 	plotTran  = [0]*len(x_t)
 	plotFor   = [0]*len(x_t)
+	plotCom   = [0]*len(x_t)
 
 
+	##Iteração para calcular nossos vetores para a ordenada(y) nos gráficos
 	for i in range(len(x_t)):
-		plotNat[i] = plots_numpy[2](x_t[i])
+		#plotXt      = plots_numpy[1](x_t[i])
+		plotNat[i]  = plots_numpy[2](x_t[i])
+		plotPar[i]  = plots_numpy[3](x_t[i])
+		plotTran[i] = plots_numpy[4](x_t[i])
+		plotFor[i]  = plots_numpy[5](x_t[i])
+		plotCom[i]  = plots_numpy[6](x_t[i])
 
-
-
-
-
-
-
-	#t = 0.0
-
-
-
-
-	##Plot da resposta natural
-	##plotNat = Respostas[2]
 
 	plt.figure("EDOs a coefs constantes")
 	plt.subplot(333)
@@ -675,6 +674,44 @@ def show_plots():
 	plt.xlabel("t")
 	plt.ylabel("Amplitude")
 	respNatPlot = plt.plot(x_t,plotNat,lw = 2)
+
+	plt.subplot(332)
+	plt.title("ypar(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respParPlot = plt.plot(x_t,plotPar,lw = 2)
+
+	plt.subplot(335)
+	plt.title("ytran(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respTranPlot = plt.plot(x_t,plotTran,lw = 2)
+
+	plt.subplot(336)
+	plt.title("yfor(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respForPlot = plt.plot(x_t,plotFor,lw = 2)
+
+	plt.subplot(338)
+	plt.title("yfor(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respForPlot = plt.plot(x_t,plotFor,lw = 2)
+
+	plt.subplot(339)
+	plt.title("yc(t)")
+	plt.xlabel("t")
+	plt.ylabel("Amplitude")
+	respComPlot = plt.plot(x_t,plotCom,lw = 2)
+
+	#plt.subplot(331)
+	#plt.title("x(t)")
+	#plt.xlabel("t")
+	#plt.ylabel("Amplitude")
+	#respXtPlot = plt.plot(x_t,plotXt,lw = 2)
+
+
 
 	plt.show()
 

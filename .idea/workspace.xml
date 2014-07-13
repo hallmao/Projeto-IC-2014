@@ -23,16 +23,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="final_ode_8_v4.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v4.py">
+      <file leaf-file-name="final_ode_8_v5.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4017094" vertical-offset="2418" max-vertical-offset="3120">
-              <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-                <element signature="e#776#1153#0" expanded="false" />
-                <element signature="e#4260#25012#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.508547" vertical-offset="8958" max-vertical-offset="10800">
+              <caret line="630" column="5" selection-start-line="630" selection-start-column="5" selection-end-line="630" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,6 +63,7 @@
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/final_ode_8_v3.py" />
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/latex_printing_v01.py" />
         <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v4.py" />
+        <option value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v5.py" />
       </list>
     </option>
   </component>
@@ -172,11 +169,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex" />
       <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5" />
       <recent name="$PROJECT_DIR$/Segunda ORDEM Finais" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.final_ode_8_v4">
+  <component name="RunManager" selected="Python.final_ode_8_v5">
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -532,7 +530,25 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="13">
+    <configuration default="false" name="final_ode_8_v5" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto IC 2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v5.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="14">
       <item index="0" class="java.lang.String" itemvalue="Python.Solving_order_2_ode_5" />
       <item index="1" class="java.lang.String" itemvalue="Python.final_ode_1" />
       <item index="2" class="java.lang.String" itemvalue="Python.final_ode_2" />
@@ -546,6 +562,7 @@
       <item index="10" class="java.lang.String" itemvalue="Python.final_ode_8_v3" />
       <item index="11" class="java.lang.String" itemvalue="Python.latex_printing_v01" />
       <item index="12" class="java.lang.String" itemvalue="Python.final_ode_8_v4" />
+      <item index="13" class="java.lang.String" itemvalue="Python.final_ode_8_v5" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -572,7 +589,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1515" y="300" width="1280" height="724" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1515" y="300" width="1280" height="724" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -727,6 +744,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="14226" max-vertical-offset="28560">
           <caret line="975" column="0" selection-start-line="975" selection-start-column="0" selection-end-line="975" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -799,13 +817,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4017094" vertical-offset="2418" max-vertical-offset="3120">
-          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2828" max-vertical-offset="3900">
+          <caret line="652" column="0" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
-            <element signature="e#776#1153#0" expanded="false" />
-            <element signature="e#4260#25012#0" expanded="false" />
+            <element signature="e#560#831#0" expanded="false" />
+            <element signature="e#1073#1450#0" expanded="false" />
+            <element signature="e#4557#25309#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="36431" max-vertical-offset="46140">
+          <caret line="2466" column="0" selection-start-line="2466" selection-start-column="0" selection-end-line="2466" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3231" max-vertical-offset="128520">
+          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_v5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.508547" vertical-offset="8958" max-vertical-offset="10800">
+          <caret line="630" column="5" selection-start-line="630" selection-start-column="5" selection-end-line="630" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
