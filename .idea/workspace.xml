@@ -23,15 +23,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="final_ode_8_com_plot_2.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="final_ode_8_com_plot_2.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6046128" vertical-offset="10313" max-vertical-offset="11655">
-              <caret line="722" column="0" selection-start-line="722" selection-start-column="0" selection-end-line="722" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="11048" max-vertical-offset="11655">
+              <caret line="766" column="4" selection-start-line="766" selection-start-column="4" selection-end-line="766" selection-end-column="4" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
                 <element signature="e#1053#1430#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="final_ode_8_com_plot.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.2487645" vertical-offset="1365" max-vertical-offset="11670">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,7 +180,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Final" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -186,6 +196,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Final" />
       <recent name="$PROJECT_DIR$/.." />
       <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex" />
       <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5" />
@@ -991,12 +1002,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6046128" vertical-offset="10313" max-vertical-offset="11655">
-          <caret line="722" column="0" selection-start-line="722" selection-start-column="0" selection-end-line="722" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="11048" max-vertical-offset="11655">
+          <caret line="766" column="4" selection-start-line="766" selection-start-column="4" selection-end-line="766" selection-end-column="4" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
             <element signature="e#1053#1430#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final/final_ode_8_com_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2487645" vertical-offset="1365" max-vertical-offset="11670">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
