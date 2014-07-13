@@ -738,7 +738,7 @@ def show_plots():
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     #cli_on=False permite a marcacao 'o' sobrepor a borda do grafico
-    #primeira e ultima raiz aparecendo sempre no limite da borda
+    #menor e maior raiz aparecendo sempre no limite da borda
     #nao dava pra ver o ponto
     respRaizesPlot = plt.plot(plotRaizes,'o', clip_on=False)
 
