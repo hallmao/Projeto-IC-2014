@@ -4,10 +4,11 @@ import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
 from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
-        re, latex, mp
+        re, latex
 from sympy.abc import t
 import matplotlib.pyplot as plt
 from numpy import  arange
+from sympy.mpmath import mp
 
 
 
@@ -15,6 +16,7 @@ from numpy import  arange
 
 ###Precisão Decimal
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
+mp.dps = prec
 ###Configurações do pprint, registradas somente uma vez
 
 #setattr(pprint,'num_columns',5)
@@ -98,6 +100,7 @@ else:
 
 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
 sepEq = solvedEq._args[1]
+sepEq = sepEq.evalf(prec)
 
 
 C1, C2, C3, C4, C5 = symbols("C1 C2 C3 C4 C5")
@@ -147,7 +150,6 @@ def raizes():
                                 roots = mpmath.polyroots([a1, a0])
                            # print roots[0]
 
-				mp.dps(prec)
                 Respostas[0] = roots
 
 raizes()
