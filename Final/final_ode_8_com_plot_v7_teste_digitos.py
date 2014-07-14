@@ -4,7 +4,7 @@ import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
 from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
-        re, latex, mp
+        re, latex
 from sympy.abc import t
 import matplotlib.pyplot as plt
 from numpy import  arange
@@ -131,23 +131,24 @@ rP = RespPart.evalf(prec)
 
 def raizes():
                 #polyroots retorna uma lista
+                mpmath.pretty = True
+                mpmath.dps = 4
+
                 if(a5 != 0):
-                                roots = mpmath.polyroots([a5, a4, a3, a2, a1, a0])
+                                roots = mpmath.polyroots([a5, a4, a3, a2, a1, a0],extraprec=2)
                            # print roots[0], roots[1], roots[2], roots[3], roots[4]
                 elif((a5 == 0) and (a4 !=0)):
-                                roots = mpmath.polyroots([a4, a3, a2, a1, a0])
+                                roots = mpmath.polyroots([a4, a3, a2, a1, a0],extraprec=2)
                            # print roots[0], roots[1], roots[2], roots[3]
                 elif((a4 == 0) and (a3 !=0)):
-                                roots = mpmath.polyroots([a3, a2, a1, a0])
+                                roots = mpmath.polyroots([a3, a2, a1, a0],extraprec=2)
                            # print roots[0], roots[1], roots[2]
                 elif((a3 == 0) and (a2 !=0)):
-                                roots = mpmath.polyroots([a2, a1, a0])
+                                roots = mpmath.polyroots([a2, a1, a0],extraprec=2)
                            # print roots[0], roots[1]
                 elif((a2 == 0) and (a1 !=0)):
-                                roots = mpmath.polyroots([a1, a0])
+                                roots = mpmath.polyroots([a1, a0],extraprec=2)
                            # print roots[0]
-
-				mp.dps(prec)
                 Respostas[0] = roots
 
 raizes()
@@ -706,7 +707,7 @@ def show_plots():
 
 
         print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
-        print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)               
+        print  len(plotRaizesR),plotRaizesR,type(plotRaizesR)
         #menor raiz na primeira posicao e maior raiz na ultima posicao
         #necessario para o range do plot
         plotRaizesR.sort()
