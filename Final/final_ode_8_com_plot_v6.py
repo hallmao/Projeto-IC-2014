@@ -864,7 +864,7 @@ def print_latex():
         ax1.get_xaxis().set_visible(False)
         ax1.axes.get_yaxis().set_visible(False)
         for i in range(0,8,1):
-                plt.axhline(0.88-dif*i,xmin = -5,xmax = 5, color = 'black',lw =1.5, linestyle = ':')
+                plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
         plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
