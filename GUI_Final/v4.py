@@ -118,10 +118,10 @@ class EDO_Solver:
         self.TNotebook1.configure(takefocus="")
         self.TNotebook1_pg0 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg0, padding=3)
-        self.TNotebook1.tab(0, text="Representação Algébrica",underline="-1",)
+        self.TNotebook1.tab(0, text="Representacao Algebrica",underline="-1",)
         self.TNotebook1_pg1 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg1, padding=3)
-        self.TNotebook1.tab(1, text="Gráficos",underline="-1",)
+        self.TNotebook1.tab(1, text="Graficos",underline="-1",)
         self.TNotebook1_pg2 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg2, padding=3)
         self.TNotebook1.tab(2, text="Log Texto",underline="-1",)
@@ -168,7 +168,7 @@ class EDO_Solver:
         self.eq_label.configure(foreground="#000000")
         self.eq_label.configure(highlightbackground="#d9d9d9")
         self.eq_label.configure(highlightcolor="black")
-        self._img1 = PhotoImage(file="Leibniz_im.gif")
+        self._img1 = PhotoImage(file="")
         self.eq_label.configure(image=self._img1)
         self.eq_label.configure(text='''Label''')
         self.eq_label.configure(width=1002)
@@ -256,13 +256,13 @@ class EDO_Solver:
                 foreground="#000000",
                 label="Idioma")
         self.idioma.add_radiobutton(
-                value="Português",
+                value="Portugues",
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
                 command=v4_support.TODO,
                 foreground="#000000",
-                label="Português")
+                label="Portugues")
         self.idioma.add_radiobutton(
                 value="English",
                 activebackground="#d9d9d9",
@@ -272,13 +272,13 @@ class EDO_Solver:
                 foreground="#000000",
                 label="English")
         self.idioma.add_radiobutton(
-                value="Español",
+                value="Espanol",
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
                 command=v4_support.TODO,
                 foreground="#000000",
-                label="Español")
+                label="Espanol")
         self.notacao = Menu(master,tearoff=0)
         self.menubar.add_cascade(menu=self.notacao,
                 activebackground="#d9d9d9",
