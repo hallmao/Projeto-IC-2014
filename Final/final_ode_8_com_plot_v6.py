@@ -852,7 +852,7 @@ def print_latex():
                 rn = "r"+str(i+1)+" = "
                 rn = '$'+str(latex(rn)) +'$'
                 str_raizLatex = str_raizLatex+"\t"+rn+raizEmLatex[i]
-        print len(RespostasEmLatex)
+        ##print len(RespostasEmLatex)
         for i in range(len(Respostas)):
                 RespostasEmLatex[i] = '$'+str(latex(Respostas[i])) +'$'
         #print RespostasEmLatex
