@@ -868,8 +868,8 @@ def print_latex():
         for i in range(0,8,1):
                 plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
-        plt.title("Eq dif:"+ur''+eqDiferencialEntradaLatex)
-        plt.text(xdif,0.9,'Forma Natural:'+ur''+RespostasEmLatex[1])
+        plt.title("Eq dif:"+ur'$'+eqDiferencialEntradaLatex+'$', loc = 'left',fontsize = 15)
+        plt.text(xdif,0.89,'Forma Natural:'+ur''+RespostasEmLatex[1])
         plt.text(xdif,0.9-dif,'yn(t) = '+ur''+RespostasEmLatex[2])
         plt.text(xdif,0.9-2*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
         plt.text(xdif,0.9-3*dif,'ytran(t) = '+ur''+RespostasEmLatex[4])
