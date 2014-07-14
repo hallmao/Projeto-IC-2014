@@ -6,20 +6,13 @@
 import sys
 
 import final_ode_8_com_plot_v9
-import final_ode_8_com_plot_v9 as ode
+
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 
-try:
-    from Tkinter import *
-except ImportError:
-    from tkinter import *
 
-try:
-    import ttk
-    py3 = 0
-except ImportError:
-    import tkinter.ttk as ttk
-    py3 = 1
+from Tkinter import *
+import ttk
+
 
 import v4_support
 
@@ -145,7 +138,7 @@ class EDO_Solver:
         self.frame_latex.configure(width=1105)
 
         ##Inicio do processo de saida
-        canvas_latex = FigureCanvasTkAgg(ode.print_latex(),self.frame_latex)
+        canvas_latex = FigureCanvasTkAgg(final_ode_8_com_plot_v9.print_latex(),self.frame_latex)
         canvas_latex.show()
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
@@ -160,6 +153,11 @@ class EDO_Solver:
         self.frame_plot.configure(highlightcolor="black")
         self.frame_plot.configure(width=1025)
 
+         ##Inicio do processo de saida
+        canvas_plots = FigureCanvasTkAgg(final_ode_8_com_plot_v9.show_plots(),self.frame_plot)
+        canvas_plots.show()
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+
         self.saida_log_txt = Text (self.TNotebook1_pg2)
         self.saida_log_txt.place(relx=0.0,rely=0.0,relheight=1.09,relwidth=1.0)
         self.saida_log_txt.configure(background="white")
@@ -171,6 +169,12 @@ class EDO_Solver:
         self.saida_log_txt.configure(selectbackground="#c4c4c4")
         self.saida_log_txt.configure(selectforeground="black")
         self.saida_log_txt.configure(width=1024)
+
+        ##LOG de texto na caixa de texto da GUI
+        #FRASE REPETITIVA ? DEAL WITH IT
+        self.saida_log_txt.insert(END,final_ode_8_com_plot_v9.log_print())
+
+
 
         self.eq_label = Label (master)
         self.eq_label.place(relx=0.0,rely=0.0,height=70,width=1024)
@@ -373,6 +377,10 @@ class EDO_Solver:
         self.label_menu_plot.configure(relief=RIDGE)
         self.label_menu_plot.configure(text='''Label''')
         self.label_menu_plot.configure(width=1052)
+
+        ###Config Label Saida Latex, Menu
+        toolbar = NavigationToolbar2TkAgg(canvas_latex,self.label_menu_plot)
+        toolbar.pack(side = TOP, fill = Y)
 
         self.in_y0 = Entry (master)
         self.in_y0.place(relx=0.15,rely=0.13,relheight=0.05,relwidth=0.06)

@@ -24,10 +24,20 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="v4.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GUI_Final/v4.py">
+        <entry file="file://$PROJECT_DIR$/GUI_Final/testesv01/v4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.733114" vertical-offset="5423" max-vertical-offset="6030">
-              <caret line="170" column="38" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.3181818" vertical-offset="2241" max-vertical-offset="6180">
+              <caret line="173" column="40" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="final_ode_8_com_plot_v9.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI_Final/testesv01/final_ode_8_com_plot_v9.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="8877" max-vertical-offset="13665">
+              <caret line="613" column="13" selection-start-line="613" selection-start-column="13" selection-end-line="613" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -75,12 +85,15 @@
         <option value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v7_teste_digitos.py" />
         <option value="$PROJECT_DIR$/Final/final_ode_8_com_plot_v8.py" />
         <option value="$PROJECT_DIR$/GUI_Final/v4.py" />
+        <option value="$PROJECT_DIR$/GUI_Final/testesv01/final_ode_8_com_plot_v9.py" />
+        <option value="$PROJECT_DIR$/GUI_Final/testesv01/v4.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1280" />
+    <option name="x" value="89" />
+    <option name="y" value="23" />
+    <option name="width" value="694" />
     <option name="height" value="725" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -147,7 +160,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Final" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GUI_Final/testesv01" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -163,14 +176,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GUI_Final/testesv01" />
       <recent name="$PROJECT_DIR$/Final" />
       <recent name="$PROJECT_DIR$/.." />
       <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex" />
       <recent name="$PROJECT_DIR$/FINAL_ORDEM 1 a 5" />
-      <recent name="$PROJECT_DIR$/Segunda ORDEM Finais" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.v4">
+  <component name="RunManager" selected="Python.v4 (1)">
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -756,7 +769,25 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="26">
+    <configuration default="false" name="v4 (1)" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GUI_Final/testesv01" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto IC 2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI_Final/testesv01/v4.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="27">
       <item index="0" class="java.lang.String" itemvalue="Python.Solving_order_2_ode_5" />
       <item index="1" class="java.lang.String" itemvalue="Python.final_ode_1" />
       <item index="2" class="java.lang.String" itemvalue="Python.final_ode_2" />
@@ -783,6 +814,7 @@
       <item index="23" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_v7_teste_digitos" />
       <item index="24" class="java.lang.String" itemvalue="Python.final_ode_8_com_plot_v8" />
       <item index="25" class="java.lang.String" itemvalue="Python.v4" />
+      <item index="26" class="java.lang.String" itemvalue="Python.v4 (1)" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -798,7 +830,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="725" extended-state="0" />
+    <frame x="89" y="23" width="694" height="725" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -809,19 +841,19 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="177" y="269" width="926" height="231" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="317" width="1062" height="231" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49245432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="618" y="92" width="1280" height="566" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.36164382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="618" y="92" width="1280" height="566" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -847,20 +879,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11093" max-vertical-offset="11700">
-          <caret line="718" column="44" selection-start-line="718" selection-start-column="44" selection-end-line="718" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10264" max-vertical-offset="11475">
-          <caret line="722" column="40" selection-start-line="722" selection-start-column="40" selection-end-line="722" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FINAL_ORDEM 1 a 5/Testes com Latex/final_ode_8_com_plot_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10759" max-vertical-offset="11475">
@@ -1202,8 +1220,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUI_Final/v4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.733114" vertical-offset="5423" max-vertical-offset="6030">
-          <caret line="170" column="38" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.15151516" vertical-offset="0" max-vertical-offset="6225">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI_Final/testesv01/final_ode_8_com_plot_v9.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8877" max-vertical-offset="13665">
+          <caret line="613" column="13" selection-start-line="613" selection-start-column="13" selection-end-line="613" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI_Final/testesv01/v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3181818" vertical-offset="2241" max-vertical-offset="6180">
+          <caret line="173" column="40" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="40" />
           <folding />
         </state>
       </provider>
