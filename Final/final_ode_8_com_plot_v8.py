@@ -9,7 +9,7 @@ from sympy.abc import t
 import matplotlib.pyplot as plt
 from numpy import  arange
 from sympy.mpmath import mp
-
+import matplotlib.cbook as cbook
 
 
 ###Parâmetros a serem considerados
@@ -820,8 +820,8 @@ def show_plots():
 
 
 
-                plt.show()
-                return outputPlots
+                #plt.show()
+                return outputPlots.get_axes(),outputPlots
 
         except:
                 pass
@@ -882,7 +882,10 @@ def print_latex():
         plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
         plt.text(xdif,0.9-7*dif,'Raiz(es): '+ur''+str_raizLatex)
 
-        log_figure.show()
+        ##log_figure.set_size_inches(19.2,10.8)
+        log_figure_image = plt.savefig('latex.png',portrait = 'landscape')
+        #log_figure.show()
+        
         return log_figure
 
 
@@ -892,14 +895,22 @@ def print_latex():
 
 def merge_plots_and_latex():
 
-        latex,plot = print_latex(),show_plots()
-        print type(latex),type(plot)
+        print_latex() 
+        show_plots()
 
-        merged_figure = plt.figure("Relat Completo",facecolor = "white")
 
-        plt.add_subplot(11,latex)
+        imgLatex = plt.imread('latex.png')
+        
 
- 
+        mergeFig = plt.figure("Relat Completo",facecolor = "white")
+        plt.subplot(211)
+        #extent = [0,-1, 0,-1]
+        plt.imshow(imgLatex,extent=[0,800,0,600], aspect='equal')
+        plt.axis('off')
+        plt.subplot(212)
+
+        
+
 
         plt.show()
 

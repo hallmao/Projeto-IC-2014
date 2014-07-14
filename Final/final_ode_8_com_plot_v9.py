@@ -9,7 +9,7 @@ from sympy.abc import t
 import matplotlib.pyplot as plt
 from numpy import  arange
 from sympy.mpmath import mp
-
+import matplotlib.cbook as cbook
 
 
 ###Parâmetros a serem considerados
@@ -819,8 +819,8 @@ def show_plots():
                 #e para caberem dentro da janela
 
 
-
                 plt.show()
+                #plt.show()
                 return outputPlots
 
         except:
@@ -882,7 +882,9 @@ def print_latex():
         plt.text(xdif,0.9-6*dif,'x(t) = '+ur''+xTLatex)
         plt.text(xdif,0.9-7*dif,'Raiz(es): '+ur''+str_raizLatex)
 
-        log_figure.show()
+        ##log_figure.set_size_inches(19.2,10.8)
+        #log_figure.show()
+        plt.show()
         return log_figure
 
 
@@ -891,21 +893,24 @@ def print_latex():
 
 
 def merge_plots_and_latex():
-
-        latex,plot = print_latex(),show_plots()
-        print type(latex),type(plot)
-
-        merged_figure = plt.figure("Relat Completo",facecolor = "white")
-
-        plt.add_subplot(11,latex)
-
- 
-
-        plt.show()
+        pass
+##
+##        latex,plot = print_latex(),show_plots()
+##
+##
+##        merge = plt.figure("Relatorio Completo",facecolor = "white")
+##        merge.set_picker(latex)
+##
+##
+##        
+##
+##        plt.draw()
+##        plt.show()
+        
 
         
-        
-
+show_plots()
+print_latex()
 
 
 
