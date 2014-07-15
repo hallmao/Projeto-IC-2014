@@ -862,10 +862,16 @@ def print_latex():
 
         ##log_figure.set_size_inches(19.2,10.8)
         #log_figure.show()
-        #plt.show()
+        plt.show()
         return log_figure
 
 def edo_main():
+        #const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
+        print "Valores",const
+        
+        ##Criando uma variavel para guardar valores digitados anteriormente,este só vai calcular as coisas novamente se
+        # e somente se parâmetros de entrada diferentes forem colocados
+        constAnterior = const
  
               
         #a5, a4, a3, a2, a1, a0, xT = input_coefs()
@@ -919,7 +925,7 @@ def edo_main():
 
         Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
 
-        #a = log_print()
+        print "Respostas em ODE_main", Respostas
         #b = print_latex()
         #c = show_plots()
 
