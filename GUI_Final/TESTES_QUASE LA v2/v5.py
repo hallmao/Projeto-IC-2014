@@ -83,7 +83,7 @@ class EDO_Solver:
         self.frame_plot.configure(highlightcolor="black")
         self.frame_plot.configure(width=1025)
         canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
-        canvas_plots.show()
+        
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
 
@@ -106,7 +106,7 @@ class EDO_Solver:
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
    
- 
+        canvas_plots.show()
 
 
         

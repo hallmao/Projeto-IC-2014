@@ -83,15 +83,20 @@ class EDO_Solver:
         self.frame_plot.configure(highlightcolor="black")
         self.frame_plot.configure(width=1025)
         canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
-        canvas_plots.show()
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+        canvas_plots.show()
+        self.frame_plot.pack_forget()
+        self.frame_plot.update()
 
 
-
-        ## Forma Algébrica setando
+    ## Forma Algébrica setando
         
         self.frame_latex.destroy()
         latex_fig = print_latex()
+
+        ###O QUE EU FIZ
+        latex_fig.canvas.draw()
+        #####
         self.frame_latex = Frame (self.TNotebook1_pg0)
         self.frame_latex.place(relx=-0.06,rely=-0.12,relheight=1.24
                 ,relwidth=1.08)
@@ -118,6 +123,7 @@ class EDO_Solver:
         print "apertei",self.in_a2.get()
         self.in_a2.update()
         set_a2(self.in_a2.get())
+        self.in_a2.update()
         edo_main()
         self.update_saida()
  
@@ -274,9 +280,9 @@ class EDO_Solver:
         self.frame_plot.configure(width=1025)
 
          #Inicio do processo de saida
-        #canvas_plots = FigureCanvasTkAgg(show_plots(),self.frame_plot)
-        #canvas_plots.show()
-        #canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+        canvas_plots = FigureCanvasTkAgg(show_plots(),self.frame_plot)
+        canvas_plots.show()
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
         self.saida_log_txt = Text (self.TNotebook1_pg2)
         self.saida_log_txt.place(relx=0.0,rely=0.0,relheight=1.09,relwidth=1.0)
@@ -358,6 +364,8 @@ class EDO_Solver:
         self.in_a2.configure(insertbackground="black")
         self.in_a2.configure(selectbackground="#c4c4c4")
         self.in_a2.configure(selectforeground="black")
+        #######
+        self.in_a2.configure(validate= "focusout")
         
         
 
@@ -372,7 +380,8 @@ class EDO_Solver:
         self.in_a1.configure(insertbackground="black")
         self.in_a1.configure(selectbackground="#c4c4c4")
         self.in_a1.configure(selectforeground="black")
-        set_a1(self.in_a1.get())
+        #####
+        self.in_a1.configure(validate= "focusout")
 
         self.in_a0 = Entry (master)
         self.in_a0.place(relx=0.83,rely=0.03,relheight=0.05,relwidth=0.03)
@@ -385,7 +394,8 @@ class EDO_Solver:
         self.in_a0.configure(insertbackground="black")
         self.in_a0.configure(selectbackground="#c4c4c4")
         self.in_a0.configure(selectforeground="black")
-        set_a0(self.in_a0.get())
+        ####
+        self.in_a0.configure(validate= "focusout")
 
         self.menubar = Menu(master,bg=_bgcolor,fg=_fgcolor)
         master.configure(menu = self.menubar)
@@ -504,8 +514,11 @@ class EDO_Solver:
         self.label_menu_plot.configure(width=1052)
 
         ###Config Label Saida Latex, Menu
-        toolbar = NavigationToolbar2TkAgg(canvas_latex,self.label_menu_plot)
-        toolbar.pack(side = TOP, fill = Y)
+        try:
+            toolbar = NavigationToolbar2TkAgg(canvas_latex,self.label_menu_plot)
+            toolbar.pack(side = TOP, fill = Y)
+        except:
+            pass
 
         self.in_y0 = Entry (master)
         self.in_y0.place(relx=0.15,rely=0.13,relheight=0.05,relwidth=0.06)
@@ -530,7 +543,7 @@ class EDO_Solver:
         self.in_xT.configure(width=186)
         self.in_xT.configure(takefocus="")
         self.in_xT.configure(cursor="ibeam")
-        set_xT(self.in_xT.get())
+        self.in_xT.configure(validate= "focusout")
         
 
 
@@ -539,7 +552,7 @@ class EDO_Solver:
 
 if __name__ == '__main__':
     init(1,-3,-4,t,2,3)
-    set_flagInit(True)
+    #set_flagInit(True)
     vp_start_gui()
     
 
