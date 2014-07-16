@@ -65,9 +65,7 @@ class EDO_Solver:
         ##Log de texto setando
         self.saida_log_txt.delete(1.0, END)
         self.saida_log_txt.insert(END,log_print())
-        
-        
-
+       
         
         ##Plots Setando
         self.frame_plot.destroy()
@@ -84,6 +82,7 @@ class EDO_Solver:
         self.frame_plot.configure(width=1025)
         canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+        plot_fig.canvas.draw()
         canvas_plots.show()
         self.frame_plot.pack_forget()
         self.frame_plot.update()
@@ -95,7 +94,7 @@ class EDO_Solver:
         latex_fig = print_latex()
 
         ###O QUE EU FIZ
-        latex_fig.canvas.draw()
+       
         #####
         self.frame_latex = Frame (self.TNotebook1_pg0)
         self.frame_latex.place(relx=-0.06,rely=-0.12,relheight=1.24
@@ -109,8 +108,11 @@ class EDO_Solver:
         self.frame_latex.configure(width=1105)
         canvas_latex = FigureCanvasTkAgg(latex_fig,self.frame_latex)
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+        canvas_latex.show()
+        latex_fig.canvas.draw()
 
-   
+        self.frame_plot.pack_forget()
+        self.frame_latex.pack_forget()
  
 
 
@@ -119,11 +121,10 @@ class EDO_Solver:
     ##HAndlers -- Entradas
 
     def a2_handler(self,event):
-        global DELAY_ENTRIES
+
         print "apertei",self.in_a2.get()
         self.in_a2.update()
         set_a2(self.in_a2.get())
-        self.in_a2.update()
         edo_main()
         self.update_saida()
  
@@ -131,23 +132,21 @@ class EDO_Solver:
    
 
     def a1_handler(self,event):
-        global DELAY_ENTRIES
+       
         print "apertei",self.in_a1.get()
-        self.in_a1.update()
         set_a1(self.in_a1.get())
         edo_main()
         self.update_saida()
 
     def a0_handler(self,event):
-        global DELAY_ENTRIES
+
         print "apertei",self.in_a0.get()
-        self.in_a0.update()
         set_a0(self.in_a0.get())
         edo_main()
         self.update_saida()
 
     def inxT_handler(self,event):
-        global DELAY_ENTRIES
+  
         print "apertei",self.in_xT.get()
         set_xT(self.in_xT.get())
         edo_main()
@@ -158,7 +157,7 @@ class EDO_Solver:
             
 
     def set_bind_entries(self):
-
+        
         self.in_a2.bind("<FocusOut>",self.a2_handler)
         self.in_a1.bind("<FocusOut>",self.a1_handler)
         self.in_a0.bind("<FocusOut>",self.a0_handler)
@@ -264,8 +263,9 @@ class EDO_Solver:
         self.frame_latex.configure(width=1105)
 
         ##Inicio do processo de saida
-        canvas_latex = FigureCanvasTkAgg(print_latex(),self.frame_latex)
-        canvas_latex.show()
+        fig_latex = print_latex()
+        canvas_latex = FigureCanvasTkAgg(fig_latex,self.frame_latex)
+        fig_latex.canvas.draw()
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
 
@@ -280,8 +280,9 @@ class EDO_Solver:
         self.frame_plot.configure(width=1025)
 
          #Inicio do processo de saida
-        canvas_plots = FigureCanvasTkAgg(show_plots(),self.frame_plot)
-        canvas_plots.show()
+        fig_plot = show_plots()
+        canvas_plots = FigureCanvasTkAgg(fig_plot,self.frame_plot)
+        fig_plot.canvas.draw()
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
         self.saida_log_txt = Text (self.TNotebook1_pg2)

@@ -114,7 +114,6 @@ class EDO_Solver:
     ##HAndlers -- Entradas
 
     def a2_handler(self,event):
-        global DELAY_ENTRIES
         print "apertei",self.in_a2.get()
         self.in_a2.update()
         set_a2(self.in_a2.get())
@@ -125,7 +124,6 @@ class EDO_Solver:
    
 
     def a1_handler(self,event):
-        global DELAY_ENTRIES
         print "apertei",self.in_a1.get()
         self.in_a1.update()
         set_a1(self.in_a1.get())
@@ -133,7 +131,6 @@ class EDO_Solver:
         self.update_saida()
 
     def a0_handler(self,event):
-        global DELAY_ENTRIES
         print "apertei",self.in_a0.get()
         self.in_a0.update()
         set_a0(self.in_a0.get())
@@ -141,7 +138,6 @@ class EDO_Solver:
         self.update_saida()
 
     def inxT_handler(self,event):
-        global DELAY_ENTRIES
         print "apertei",self.in_xT.get()
         set_xT(self.in_xT.get())
         edo_main()
