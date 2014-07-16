@@ -239,6 +239,10 @@ class EDO_Solver:
         self.frame_plot.configure(highlightbackground="#d9d9d9")
         self.frame_plot.configure(highlightcolor="black")
         self.frame_plot.configure(width=1025)
+        
+        plot_fig  = show_plots()
+        canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
         self.saida_log_txt = Text (self.TNotebook1_pg2)
         self.saida_log_txt.place(relx=0.0,rely=0.0,relheight=0.95,relwidth=1.0)
@@ -463,6 +467,12 @@ class EDO_Solver:
         self.label_menu_plot.configure(highlightbackground="#d9d9d9")
         self.label_menu_plot.configure(highlightcolor="black")
         self.label_menu_plot.configure(relief=RIDGE)
+
+        try:
+            toolbar = NavigationToolbar2TkAgg(canvas_plots,self.label_menu_plot)
+            toolbar.pack(side = TOP, fill = Y)
+        except:
+            pass
 
         self.in_y0 = Entry (master)
         self.in_y0.place(relx=0.21,rely=0.12,relheight=0.04,relwidth=0.04)
