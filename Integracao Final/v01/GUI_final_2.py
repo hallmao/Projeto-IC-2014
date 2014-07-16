@@ -497,12 +497,20 @@ class EDO_Solver:
         self.in_xT.configure(takefocus="")
         self.in_xT.configure(cursor="ibeam")
 
+        #-----------------------------INIT configs-------------------------------------
+        self.in_xT.insert(END, '1')
+        self.in_y0.insert(END, '1')
+        self.in_dy0.insert(END, '1')
+        self.in_a0.insert(END, '1')
+        self.in_a1.insert(END, '1')
+        self.in_a2.insert(END, '1')
+
 
 
 
 
 if __name__ == '__main__':
-    init(1,3,1,1,1,1)
+    init(1,1,1,1,1,1)
     vp_start_gui()
 
 
