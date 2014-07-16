@@ -36,63 +36,36 @@ class EDO_Solver:
 
 
     def update_saida(self):
+
         
-        global canvas_latex
+        global canvas_latex,canvas_plots,latex_fig,plot_fig
         ##Log de texto setando
         self.saida_log_txt.delete(1.0, END)
         self.saida_log_txt.insert(END,log_print())
 
 
-        ##Plots Setando
-        self.frame_plot.destroy()
+        canvas_plots.get_tk_widget().destroy()
+        canvas_latex.get_tk_widget().destroy()
+
+        latex_fig.clear()
+        plot_fig.clear()
+
+        latex_fig = print_latex()
         plot_fig  = show_plots()
 
-        self.frame_plot = Frame (self.TNotebook1_pg1)
-        self.frame_plot.place(relx=0.0,rely=0.0,relheight=1.07,relwidth=1.0)
-        self.frame_plot.configure(relief=GROOVE)
-        self.frame_plot.configure(borderwidth="2")
-        self.frame_plot.configure(relief=GROOVE)
-        self.frame_plot.configure(background="white")
-        self.frame_plot.configure(highlightbackground="#d9d9d9")
-        self.frame_plot.configure(highlightcolor="black")
-        self.frame_plot.configure(width=1025)
+
         canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
-        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
-        plot_fig.canvas.draw()
-        canvas_plots.show()
-        self.frame_plot.pack_forget()
-        self.frame_plot.update()
-        
-        ##PLOT TOOLBAR
-        toolbar = NavigationToolbar2TkAgg(canvas_plots,self.label_menu_plot)
-        toolbar.pack(side = TOP, fill = Y)
-
-
-        ## Forma Algébrica setando
-
-        self.frame_latex.destroy()
-        latex_fig = print_latex()
-
-        ###O QUE EU FIZ
-
-        #####
-        self.frame_latex = Frame (self.TNotebook1_pg0)
-        self.frame_latex.place(relx=-0.06,rely=-0.12,relheight=1.24
-                ,relwidth=1.08)
-        self.frame_latex.configure(relief=GROOVE)
-        self.frame_latex.configure(borderwidth="2")
-        self.frame_latex.configure(relief=GROOVE)
-        self.frame_latex.configure(background="white")
-        self.frame_latex.configure(highlightbackground="#d9d9d9")
-        self.frame_latex.configure(highlightcolor="black")
-        self.frame_latex.configure(width=1105)
         canvas_latex = FigureCanvasTkAgg(latex_fig,self.frame_latex)
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
-        canvas_latex.show()
-        latex_fig.canvas.draw()
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
-        self.frame_plot.pack_forget()
-        self.frame_latex.pack_forget()
+
+
+
+
+
+
+
 
 
 
@@ -154,6 +127,7 @@ class EDO_Solver:
 
 
     def __init__(self, master=None):
+        global canvas_latex,canvas_plots,latex_fig,plot_fig
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
@@ -215,10 +189,10 @@ class EDO_Solver:
         self.TNotebook1.configure(takefocus="")
         self.TNotebook1_pg0 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg0, padding=3)
-        self.TNotebook1.tab(0, text="Representação Algébrica",underline="-1",)
+        self.TNotebook1.tab(0, text="Representacao Algebrica",underline="-1",)
         self.TNotebook1_pg1 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg1, padding=3)
-        self.TNotebook1.tab(1, text="Gráficos",underline="-1",)
+        self.TNotebook1.tab(1, text="Graficos",underline="-1",)
         self.TNotebook1_pg2 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg2, padding=3)
         self.TNotebook1.tab(2, text="Log Texto",underline="-1",)
@@ -244,11 +218,7 @@ class EDO_Solver:
         self.frame_plot.configure(highlightcolor="black")
         self.frame_plot.configure(width=1025)
         
-        plot_fig  = show_plots()
-        canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
-        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
-        plot_fig.canvas.draw()
-        canvas_plots.show()
+
 
         self.saida_log_txt = Text (self.TNotebook1_pg2)
         self.saida_log_txt.place(relx=0.0,rely=0.0,relheight=0.95,relwidth=1.0)
@@ -367,13 +337,13 @@ class EDO_Solver:
                 foreground="#000000",
                 label="Idioma")
         self.idioma.add_radiobutton(
-                value="Português",
+                value="Portugues",
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
                 command=v5_support.TODO,
                 foreground="#000000",
-                label="Português")
+                label="Portugues")
         self.idioma.add_radiobutton(
                 value="English",
                 activebackground="#d9d9d9",
@@ -383,13 +353,13 @@ class EDO_Solver:
                 foreground="#000000",
                 label="English")
         self.idioma.add_radiobutton(
-                value="Español",
+                value="Espanol",
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
                 command=v5_support.TODO,
                 foreground="#000000",
-                label="Español")
+                label="Espanol")
         self.notacao = Menu(master,tearoff=0)
         self.menubar.add_cascade(menu=self.notacao,
                 activebackground="#d9d9d9",
@@ -521,6 +491,27 @@ class EDO_Solver:
         self.in_a1.insert(END, '1')
         self.in_a2.insert(END, '1')
 
+        latex_fig = print_latex()
+        plot_fig  = show_plots()
+        canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
+        canvas_latex = FigureCanvasTkAgg(latex_fig,self.frame_latex)
+        canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+        canvas_latex.get_renderer(cleared=True)
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+
+        toolbar = NavigationToolbar2TkAgg(canvas_plots,self.label_menu_plot)
+        toolbar.pack(side = TOP, fill = Y)
+
+
+        #canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+
+
+
+
+
+        #latex_fig.canvas.draw()
+        #canvas_latex.draw()
+        #canvas_latex.show()
 
 
 
