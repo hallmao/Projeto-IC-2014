@@ -592,7 +592,6 @@ def conds_iniciais_aplicadas(fN, rP):
                 #print "Valor das constantes com t = 0",valorConstantesT0
 
 def log_print():
-        edo_main()
         equacao = Respostas[8] + Respostas[7]
         equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
         equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
@@ -645,7 +644,6 @@ def log_print():
         #return equacao, str_raiz, str_yfn, str_yn, str_yp, str_ytrans, str_yforc, str_yc
 
 
-#log_print()
 
 
 
@@ -674,7 +672,7 @@ def conversao_numpy(symbol):
         return plots_numpy
 
 def show_plots():
-        #edo_main()
+      
         plt.clf()
         plots_numpy = conversao_numpy(t)
         ## Nossa variável de deslocamento t no eixo x
