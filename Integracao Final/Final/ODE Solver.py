@@ -21,6 +21,7 @@ def vp_start_gui():
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
+    root.wm_iconbitmap('ode_icon.ico')
     w = EDO_Solver (root)
     v5_support.init(root, w)
     w.set_bind_entries()
