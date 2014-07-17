@@ -1,5 +1,3 @@
-
-
 from Tkinter import *
 import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
@@ -15,7 +13,7 @@ def vp_start_gui():
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
-    root.wm_iconbitmap('ode_icon.ico')
+    root.wm_iconbitmap('C:\PyInstaller-2.1\ode_icon.ico')
     w = EDO_Solver (root)
     w.set_bind_options()
     root.after(250,w.set_bind_entries())
@@ -259,7 +257,7 @@ class EDO_Solver:
         self.eq_label.configure(foreground="#000000")
         self.eq_label.configure(highlightbackground="#d9d9d9")
         self.eq_label.configure(highlightcolor="black")
-        self._img1 = PhotoImage(file="Leibniz_im.gif")
+        self._img1 = PhotoImage(file="C:\PyInstaller-2.1\Leibniz_im.gif")
         self.eq_label.configure(image=self._img1)
         self.eq_label.configure(text='''Label''')
         self.eq_label.configure(width=1002)
