@@ -77,7 +77,7 @@ def set_a2(cte):
                 const[2] = float(cte)
         except:
                 pass
-        print "oi:", const[2]
+        
         
 def set_a1(cte):
         try:
@@ -102,7 +102,7 @@ def set_xT(expr):
                Respostas [7] = xT = float(expr)
         except:
                 pass
-        print xT,Respostas[7]
+        
         
         
 def set_y0(cte):
@@ -153,7 +153,6 @@ def init(a2, a1, a0, xT, y0, dy0):
         set_y0(y0)
         set_dy0(dy0)
         Respostas[7] = get_xT()
-        print "XT:",xT,Respostas[7]
         edo_main()
         
 
@@ -863,7 +862,7 @@ def print_latex():
                 plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
-        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$')
+        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$'+"\tConds Iniciais: y(t)= "+str(cond_ini[0])+"\ty'(t)= "+str(cond_ini[1]))
         plt.text(xdif,0.89-dif,'Forma Natural:'+ur''+RespostasEmLatex[1])
         plt.text(xdif,0.9-2*dif,'yn(t) = '+ur''+RespostasEmLatex[2])
         plt.text(xdif,0.9-3*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
@@ -886,46 +885,6 @@ def print_latex():
 
         return log_figure
 
-def print_latex_new():
-
-    ##Obtendo as respostas em Latex
-    RespostasEmLatex = [0]*(len(Respostas))
-    raizEmLatex = [0]*(len(Respostas[0]))
-    str_raizLatex =""
-    for i in range(len(Respostas[0])):
-                raizEmLatex[i] = '$'+str(latex(Respostas[0][i])) +'$'
-    for i in range(len(raizEmLatex)):
-                rn = "r"+str(i+1)+" = "
-                rn = '$'+str(latex(rn)) +'$'
-                str_raizLatex = str_raizLatex+"\t"+rn+raizEmLatex[i]
-        ##print len(RespostasEmLatex)
-    for i in range(len(Respostas)):
-                RespostasEmLatex[i] = '$'+str(latex(Respostas[i])) +'$'
-        #print RespostasEmLatex
-        #xTLatex = '$' + latex(xT) +'$'
-        ###Preparando para imprimir
-
-
-    dif = 0.9 -0.77
-    xdif = -0.15
-    font = {'family' : 'Sans',
-                'weight' : 'normal',
-                'size'   : 18}
-
-    figure_latex = Figure(facecolor = 'white')
-    plot_latex = figure_latex.add_subplot(111)
-    #plot_latex.rc('font',**font)
-    #axes_latex = plot_latex.axes(frameon = False)
-    #axes_latex.get_xaxis().tick_bottom()
-    #axes_latex.get_xaxis().set_visible(False)
-    #axes_latex.axes.get_yaxis().set_visible(False)
-    plot_latex.plot(arange(0.0,50.0,1.2))
-    plot_latex.canvas.draw()
-
-
-
-
-
 
 def edo_main():
         #const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
@@ -939,9 +898,6 @@ def edo_main():
         #flag_init = get_flagInit()
 
         #print "FLAG INIT",flag_init
-
-
-        print "Calculando"
 
         ##Adicionando os coefs a eq diferencial
         eq = sympify(const[5] * y(t).diff(t, 5) + const[4] * y(t).diff(t, 4) + const[3] * y(t).diff(t, 3) +
