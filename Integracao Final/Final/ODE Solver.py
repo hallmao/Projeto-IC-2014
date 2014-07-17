@@ -23,7 +23,7 @@ def vp_start_gui():
     root.resizable(width = False, height = False)
     root.wm_iconbitmap('ode_icon.ico')
     w = EDO_Solver (root)
-    root.after(100,w.set_bind_entries())
+    root.after(250,w.set_bind_entries())
     v5_support.init(root, w)
     w.set_bind_entries()
     root.mainloop()
@@ -85,7 +85,6 @@ class EDO_Solver:
 
     def a2_handler(self,event):
         #print "apertei",self.in_a2.get()
-        self.in_a2.update()
         set_a2(self.in_a2.get())
         edo_main()
         self.update_saida()
