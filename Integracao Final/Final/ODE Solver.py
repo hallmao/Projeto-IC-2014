@@ -23,6 +23,7 @@ def vp_start_gui():
     root.resizable(width = False, height = False)
     root.wm_iconbitmap('ode_icon.ico')
     w = EDO_Solver (root)
+    root.after(100,w.set_bind_entries())
     v5_support.init(root, w)
     w.set_bind_entries()
     root.mainloop()
@@ -118,7 +119,6 @@ class EDO_Solver:
         #KeyRelease
         #FocusOut
         #<Leave>
-        sleep(100e-3)
         self.in_a2.bind("<Leave>",self.a2_handler)
         self.in_a1.bind("<Leave>",self.a1_handler)
         self.in_a0.bind("<Leave>",self.a0_handler)

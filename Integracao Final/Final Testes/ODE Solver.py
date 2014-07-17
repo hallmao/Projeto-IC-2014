@@ -22,9 +22,11 @@ def vp_start_gui():
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
     root.wm_iconbitmap('ode_icon.ico')
+
     w = EDO_Solver (root)
+    root.after(100,w.set_bind_entries())
     v5_support.init(root, w)
-    w.set_bind_entries()
+    #w.set_bind_entries()
     root.mainloop()
 
 
@@ -77,40 +79,40 @@ class EDO_Solver:
       
 
 
-    def a1_handler(self,event):
+    def a1_handler(self,event): 
             set_a1(self.in_a1.get())
-            self.in_a1._root().after(100,edo_main())
+            edo_main()
             self.update_saida()
 
     def a2_handler(self,event):
-        #set_a2(self.in_a2.get())
-        self.in_a2._root().after(400,set_a2(self.in_a2.get()))
-        self.in_a2._root().after(150,edo_main())
-
+        #print "apertei",self.in_a2.get()
+        self.in_a2.update()
+        set_a2(self.in_a2.get())
+        edo_main()
         self.update_saida()
 
     def a0_handler(self,event):
 
         #print "apertei",self.in_a0.get()
         set_a0(self.in_a0.get())
-        self.in_a0._root().after(100,edo_main())
+        edo_main()
         self.update_saida()
 
     def inxT_handler(self,event):
 
         #print "apertei",self.in_xT.get()
         set_xT(self.in_xT.get())
-        self.in_xT._root().after(100,edo_main())
+        edo_main()
         self.update_saida()
 
     def y0_handler(self,event):
         set_y0(self.in_y0.get())
-        self.in_y0._root().after(100,edo_main())
+        edo_main()
         self.update_saida()
 
     def dy0_handler(self,event):
          set_dy0(self.in_dy0.get())
-         self.in_dy0._root().after(100,edo_main())
+         edo_main()
          self.update_saida()
 
     def set_bind_entries(self):
@@ -118,13 +120,7 @@ class EDO_Solver:
         #KeyRelease
         #FocusOut
         #<Leave>
-        #sleep(100e-3)
-        #Key
-
-        #self.in_a2.after(1000,self.in_a2.bind("<KeyRelease>",self.a2_handler))
-        #self.in_a2.bind("<KeyRelease>",sleep(300e-3))
-        #self.in_a2._root().after(10
-        self.in_a2.bind("<KeyRelease>",self.a2_handler)
+        self.in_a2.bind("<Leave>",self.a2_handler)
         self.in_a1.bind("<Leave>",self.a1_handler)
         self.in_a0.bind("<Leave>",self.a0_handler)
         self.in_xT.bind("<Leave>",self.inxT_handler)
