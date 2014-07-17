@@ -11,17 +11,17 @@ import v5_support
 
 ##---------------------File Image Encoder
 
-import base64
-
-im_filename = 'leibniz_im.gif'
-im_variable_name = 'background'
-py_filename = 'embeddedImage.py'
-
-with open(im_filename,'rb') as f:
-    str64 = base64.b64encode(f.read())
-
-with open(py_filename,'w') as f:
-    f.write('%s="%s"'%(im_variable_name,str64))
+##import base64
+##
+##im_filename = 'C:\PyInstaller-2.1\leibniz_im.gif'
+##im_variable_name = 'background'
+##py_filename = 'embeddedImage.py'
+##
+##with open(im_filename,'rb') as f:
+##    str64 = base64.b64encode(f.read())
+##
+##with open(py_filename,'w') as f:
+##    f.write('%s="%s"'%(im_variable_name,str64))
 
 from PIL import Image,ImageTk
 import cStringIO
