@@ -607,7 +607,7 @@ def log_print():
         str_raiz = "Raiz(es):"
         count = 0
         while(count < len(Respostas[0])):
-                str_raiz = str_raiz+"\tr"+str(count+1)+"= "+str(Respostas[0][count])
+                str_raiz = str_raiz+"    "+"r"+str(count+1)+"= "+str(Respostas[0][count])
                 count = count+ 1
         #print str_raiz
 
@@ -635,7 +635,7 @@ def log_print():
         str_yc = "Resposta completa: Yc(t) = "+str(Respostas[6])
         #print str_yc
 
-        str_resp = equacao+"\n"+str_raiz+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        str_resp = equacao+"\nCondicoes iniciais:  y(0) = "+str(cond_ini[0])+"    y'(0) = "+str(cond_ini[1])+"\n"+str_raiz+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
         #print str_resp
 
         #return c tds as respostas em uma variavel
@@ -862,7 +862,7 @@ def print_latex():
                 plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
-        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$'+"\tConds Iniciais: y(t)= "+str(cond_ini[0])+"\ty'(t)= "+str(cond_ini[1]))
+        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$'+"\tConds Iniciais: y(0)= "+str(cond_ini[0])+"\ty'(0)= "+str(cond_ini[1]))
         plt.text(xdif,0.89-dif,'Forma Natural:'+ur''+RespostasEmLatex[1])
         plt.text(xdif,0.9-2*dif,'yn(t) = '+ur''+RespostasEmLatex[2])
         plt.text(xdif,0.9-3*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])

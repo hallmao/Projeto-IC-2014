@@ -522,6 +522,9 @@ class EDO_Solver:
         toolbar = NavigationToolbar2TkAgg(canvas_latex,self.label_menu_plot)
         toolbar.pack(side = TOP, fill = Y)
 
+        self.saida_log_txt.delete(1.0, END)
+        self.saida_log_txt.insert(END,log_print())
+
 
         #canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
