@@ -2,18 +2,27 @@ from Tkinter import *
 import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from ODE_methods  import*
-
+import tempfile
 
 import v5_support
 
 def vp_start_gui():
+
+    ICON = (b'\x00\x00\x01\x00\x01\x00\x10\x10\x00\x00\x01\x00\x08\x00h\x05\x00\x00'
+    b'\x16\x00\x00\x00(\x00\x00\x00\x10\x00\x00\x00 \x00\x00\x00\x01\x00'
+    b'\x08\x00\x00\x00\x00\x00@\x05\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    b'\x00\x01\x00\x00\x00\x01') + b'\x00'*1282 + b'\xff'*64
+
+    _, ICON_PATH = tempfile.mkstemp()
+    with open(ICON_PATH, 'wb') as icon_file:
+     icon_file.write(ICON)
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
-    root.wm_iconbitmap('C:\PyInstaller-2.1\ode_icon.ico')
+    root.wm_iconbitmap(default = ICON_PATH)
     w = EDO_Solver (root)
     w.set_bind_options()
     root.after(250,w.set_bind_entries())
