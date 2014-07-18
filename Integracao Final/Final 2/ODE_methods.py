@@ -1,11 +1,11 @@
 ﻿from matplotlib.figure import Figure
-from numpy.core.defchararray import decode, replace
+#from numpy.core.defchararray import decode, replace
 import sympy.assumptions.handlers.calculus
 import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
-from sympy import Function, pprint, exp, cos,  sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
-        re, latex,simplify
+from sympy import Function, exp, cos,  sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
+        re, latex,simplify, nsimplify
 from sympy.abc import t
 import matplotlib.pyplot as plt
 
@@ -811,7 +811,7 @@ def print_latex():
 
         #plt.clf()
         #edo_main()
-        for i in range(1,7):Respostas[i] = sympy.nsimplify(Respostas[i], rational = True,tolerance = 0.05).evalf(prec)
+        for i in range(1,7):Respostas[i] = nsimplify(Respostas[i], rational = True,tolerance = 0.05).evalf(prec)
 
         # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
         # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada

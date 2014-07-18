@@ -1,21 +1,55 @@
-
-
 from Tkinter import *
 import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 from ODE_methods  import*
-
+import tempfile
 
 import v5_support
 
+
+
+
+##---------------------File Image Encoder
+
+##import base64
+##
+##im_filename = 'C:\PyInstaller-2.1\leibniz_im.gif'
+##im_variable_name = 'background'
+##py_filename = 'embeddedImage.py'
+##
+##with open(im_filename,'rb') as f:
+##    str64 = base64.b64encode(f.read())
+##
+##with open(py_filename,'w') as f:
+##    f.write('%s="%s"'%(im_variable_name,str64))
+
+from PIL import Image,ImageTk
+import cStringIO
+import base64
+
+from embeddedImage import background 
+# or copy paste the background variable found in embeddedImage.py
+leibniz_im = Image.open(cStringIO.StringIO(base64.b64decode(background)))
+
+#------------------------------------------------------------------
+
 def vp_start_gui():
+
+    ICON = (b'\x00\x00\x01\x00\x01\x00\x10\x10\x00\x00\x01\x00\x08\x00h\x05\x00\x00'
+    b'\x16\x00\x00\x00(\x00\x00\x00\x10\x00\x00\x00 \x00\x00\x00\x01\x00'
+    b'\x08\x00\x00\x00\x00\x00@\x05\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    b'\x00\x01\x00\x00\x00\x01') + b'\x00'*1282 + b'\xff'*64
+
+    _, ICON_PATH = tempfile.mkstemp()
+    with open(ICON_PATH, 'wb') as icon_file:
+     icon_file.write(ICON)
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
-    root.wm_iconbitmap('ode_icon.ico')
+    root.wm_iconbitmap(default = ICON_PATH)
     w = EDO_Solver (root)
     w.set_bind_options()
     root.after(250,w.set_bind_entries())
@@ -259,7 +293,7 @@ class EDO_Solver:
         self.eq_label.configure(foreground="#000000")
         self.eq_label.configure(highlightbackground="#d9d9d9")
         self.eq_label.configure(highlightcolor="black")
-        self._img1 = PhotoImage(file="Leibniz_im.gif")
+        self._img1 =ImageTk.PhotoImage(leibniz_im)
         self.eq_label.configure(image=self._img1)
         self.eq_label.configure(text='''Label''')
         self.eq_label.configure(width=1002)

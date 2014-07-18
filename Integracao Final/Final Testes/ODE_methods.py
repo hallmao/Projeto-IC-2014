@@ -4,12 +4,14 @@ import sympy.assumptions.handlers.calculus
 import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
-from sympy import Function, pprint, exp, cos,  sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
+from sympy import Function, pprint, exp, cos, init_printing, sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
         re, latex,simplify
 from sympy.abc import t
 import matplotlib.pyplot as plt
-
+import matplotlib.pyplot
+from numpy import  arange
 from sympy.mpmath import mp
+import matplotlib.cbook as cbook
 
 
 ###Parâmetros a serem considerados
@@ -32,6 +34,9 @@ y = Function('y')
 
 
 
+
+###Uses the best printing available for pprint
+init_printing( use_latex=True)
 
 
 
@@ -72,7 +77,7 @@ def set_a2(cte):
                 const[2] = float(cte)
         except:
                 pass
-        
+        print "oi:", const[2]
         
 def set_a1(cte):
         try:
@@ -97,7 +102,7 @@ def set_xT(expr):
                Respostas [7] = xT = float(expr)
         except:
                 pass
-        
+        print xT,Respostas[7]
         
         
 def set_y0(cte):
@@ -148,6 +153,7 @@ def init(a2, a1, a0, xT, y0, dy0):
         set_y0(y0)
         set_dy0(dy0)
         Respostas[7] = get_xT()
+        print "XT:",xT,Respostas[7]
         edo_main()
         
 
@@ -602,7 +608,7 @@ def log_print():
         str_raiz = "Raiz(es):"
         count = 0
         while(count < len(Respostas[0])):
-                str_raiz = str_raiz+"    "+"r"+str(count+1)+"= "+str(Respostas[0][count])
+                str_raiz = str_raiz+"\tr"+str(count+1)+"= "+str(Respostas[0][count])
                 count = count+ 1
         #print str_raiz
 
@@ -630,7 +636,7 @@ def log_print():
         str_yc = "Resposta completa: Yc(t) = "+str(Respostas[6])
         #print str_yc
 
-        str_resp = equacao+"\nCondicoes iniciais:  y(0) = "+str(cond_ini[0])+"    y'(0) = "+str(cond_ini[1])+"\n"+str_raiz+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        str_resp = equacao+"\n"+str_raiz+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
         #print str_resp
 
         #return c tds as respostas em uma variavel
@@ -673,7 +679,7 @@ def show_plots():
         plots_numpy = conversao_numpy(t)
         ## Nossa variável de deslocamento t no eixo x
         #x_t = drange(0,10,0.00001)
-        x_t  = drange(0.0,5.0,0.01)
+        x_t  = arange(0.0,5.0,0.01)
 
 
         ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
@@ -857,7 +863,7 @@ def print_latex():
                 plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
-        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$'+"\tConds Iniciais: y(0)= "+str(cond_ini[0])+"\ty'(0)= "+str(cond_ini[1]))
+        plt.text(xdif,0.89,"Eq dif: 0="+ur'$'+eqDiferencialEntradaLatex+'$')
         plt.text(xdif,0.89-dif,'Forma Natural:'+ur''+RespostasEmLatex[1])
         plt.text(xdif,0.9-2*dif,'yn(t) = '+ur''+RespostasEmLatex[2])
         plt.text(xdif,0.9-3*dif,'ypar(t) = '+ur''+RespostasEmLatex[3])
@@ -880,6 +886,46 @@ def print_latex():
 
         return log_figure
 
+def print_latex_new():
+
+    ##Obtendo as respostas em Latex
+    RespostasEmLatex = [0]*(len(Respostas))
+    raizEmLatex = [0]*(len(Respostas[0]))
+    str_raizLatex =""
+    for i in range(len(Respostas[0])):
+                raizEmLatex[i] = '$'+str(latex(Respostas[0][i])) +'$'
+    for i in range(len(raizEmLatex)):
+                rn = "r"+str(i+1)+" = "
+                rn = '$'+str(latex(rn)) +'$'
+                str_raizLatex = str_raizLatex+"\t"+rn+raizEmLatex[i]
+        ##print len(RespostasEmLatex)
+    for i in range(len(Respostas)):
+                RespostasEmLatex[i] = '$'+str(latex(Respostas[i])) +'$'
+        #print RespostasEmLatex
+        #xTLatex = '$' + latex(xT) +'$'
+        ###Preparando para imprimir
+
+
+    dif = 0.9 -0.77
+    xdif = -0.15
+    font = {'family' : 'Sans',
+                'weight' : 'normal',
+                'size'   : 18}
+
+    figure_latex = Figure(facecolor = 'white')
+    plot_latex = figure_latex.add_subplot(111)
+    #plot_latex.rc('font',**font)
+    #axes_latex = plot_latex.axes(frameon = False)
+    #axes_latex.get_xaxis().tick_bottom()
+    #axes_latex.get_xaxis().set_visible(False)
+    #axes_latex.axes.get_yaxis().set_visible(False)
+    plot_latex.plot(arange(0.0,50.0,1.2))
+    plot_latex.canvas.draw()
+
+
+
+
+
 
 def edo_main():
         #const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
@@ -893,6 +939,9 @@ def edo_main():
         #flag_init = get_flagInit()
 
         #print "FLAG INIT",flag_init
+
+
+        print "Calculando"
 
         ##Adicionando os coefs a eq diferencial
         eq = sympify(const[5] * y(t).diff(t, 5) + const[4] * y(t).diff(t, 4) + const[3] * y(t).diff(t, 3) +
