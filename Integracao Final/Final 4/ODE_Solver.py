@@ -63,7 +63,7 @@ def vp_start_gui():
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)
-    root.after(250,w.set_bind_entries())
+    root.after(50,w.set_bind_entries())
     v5_support.init(root, w)
     w.set_bind_entries()
     root.mainloop()
