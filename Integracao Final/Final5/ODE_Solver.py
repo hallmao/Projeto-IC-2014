@@ -197,7 +197,7 @@ class EDO_Solver:
             "roman -underline 0 -overstrike 0"
         self.style = ttk.Style()
         if sys.platform == "win32":
-            self.style.theme_use('winnative')
+            self.style.theme_use('clam')#winnative
         self.style.configure('.',background=_bgcolor)
         self.style.configure('.',foreground=_fgcolor)
         self.style.configure('.',font="TkDefaultFont")
