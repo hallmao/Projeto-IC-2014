@@ -58,7 +58,7 @@ def vp_start_gui():
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
-    root.wm_iconbitmap(default = ICON_PATH)
+    #root.wm_iconbitmap(default = ICON_PATH)
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)

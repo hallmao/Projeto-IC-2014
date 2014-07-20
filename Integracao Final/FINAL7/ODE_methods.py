@@ -1031,15 +1031,15 @@ def print_latex():
         plt.title('')
         plt.text(xdif,0.89,idi_eq+"0="+ur'$'+eqDiferencialEntradaLatex+'$')
         plt.text(xdif,0.9-dif,str_r+ur''+str_raizLatex)
-        plt.text(xdif,0.9-2*dif,idi_yfn+ur''+RespostasEmLatex[1])
+        plt.text(xdif,0.9-2*dif,idi_yfn+ur''+RespostasEmLatex[1]+"u(t)")
         if((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
-            plt.text(xdif,0.9-3*dif,idi_yn+ur''+RespostasEmLatex[2]+"\t"+idi_cond_sing+"y(0)= "+str(cond_ini[0]))
+            plt.text(xdif,0.9-3*dif,idi_yn+ur''+RespostasEmLatex[2]+"u(t)"+"\t"+idi_cond_sing+"y(0)= "+str(cond_ini[0]))
         else:
-            plt.text(xdif,0.9-3*dif,idi_yn+ur''+RespostasEmLatex[2]+"\t"+idi_cond_pl+"y(0)= "+str(cond_ini[0])+"\ty'(0)= "+str(cond_ini[1]))
-        plt.text(xdif,0.9-4*dif,idi_yp+ur''+RespostasEmLatex[3]+"\t\t"+'x(t) = '+ur''+RespostasEmLatex[7])
-        plt.text(xdif,0.9-5*dif,idi_yt+ur''+RespostasEmLatex[4])
-        plt.text(xdif,0.9-6*dif,idi_yf+ur''+RespostasEmLatex[5])
-        plt.text(xdif,0.9-7*dif,idi_yc+ur''+RespostasEmLatex[6])
+            plt.text(xdif,0.9-3*dif,idi_yn+ur''+RespostasEmLatex[2]+"u(t)"+"\t"+idi_cond_pl+"y(0)= "+str(cond_ini[0])+"\ty'(0)= "+str(cond_ini[1]))
+        plt.text(xdif,0.9-4*dif,idi_yp+ur''+RespostasEmLatex[3]+"u(t)"+"\t\t"+'x(t) = '+ur''+RespostasEmLatex[7])
+        plt.text(xdif,0.9-5*dif,idi_yt+ur''+RespostasEmLatex[4]+"u(t)")
+        plt.text(xdif,0.9-6*dif,idi_yf+ur''+RespostasEmLatex[5]+"u(t)")
+        plt.text(xdif,0.9-7*dif,idi_yc+ur''+RespostasEmLatex[6]+"u(t)")
         #plt.text(xdif,0.9-7*dif,'x(t) = '+ur''+RespostasEmLatex[7])
         
 
