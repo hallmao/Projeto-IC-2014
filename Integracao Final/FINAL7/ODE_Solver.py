@@ -709,7 +709,7 @@ class EDO_Solver:
         canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
         canvas_latex = FigureCanvasTkAgg(latex_fig,self.frame_latex)
         canvas_latex.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
-        canvas_latex.get_renderer(cleared=True)
+        #canvas_latex.get_renderer(cleared=True)
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
         toolbar = NavigationToolbar2TkAgg(canvas_latex,self.label_menu_plot)

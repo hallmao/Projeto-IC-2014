@@ -990,9 +990,9 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'family' : 'Sans',
+        font = {'family' : 'Arial',
                 'weight' : 'normal',
-                'size'   : 18}
+                'size'   : 15}
 
 
         plt.rc('font', **font)
