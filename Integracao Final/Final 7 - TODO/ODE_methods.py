@@ -96,12 +96,21 @@ def set_a0(cte):
 def set_xT(expr):
         global xT
         try:
-               Respostas [7]= xT = sympify(expr)
+        #sympify reconhece letras como a,b,c como symbols, portanto se
+        #o usuario digitar algo do tipo, o programa efetuaria o sympify
+        # e daria crash. O valid transforma nossa variavel t em uma cte
+        # e se conseguir transformar o valid em um float, ou seja, foi
+        #digitado apenas a letra t(unica variavel valida), o programa
+        # reconhece a entrada como valida
+                valid = sympify(expr)
+                valid = valid.subs(t,1)
+                if(float(valid)):
+                        Respostas [7]= xT = sympify(expr)
         except:
                 pass
         
         try:
-               Respostas [7] = xT = float(expr)
+               Respostas[7] = xT = float(expr)
         except:
                 pass
         

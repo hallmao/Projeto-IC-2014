@@ -53,8 +53,8 @@ def vp_start_gui():
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
-    #root.wm_iconbitmap(default = icon)
-    root.iconbitmap(bitmap=icon)
+    #root.wm_iconbitmap(bitmap = icon)
+    root.iconbitmap(default=icon)
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)
@@ -354,7 +354,7 @@ class EDO_Solver:
         self.cond_ini_label.configure(highlightbackground="#d9d9d9")
         self.cond_ini_label.configure(highlightcolor="#000000")
         self.cond_ini_label.configure(relief=RIDGE)
-        self.cond_ini_label.configure(text='''Condicoes  Iniciais     y(t) =                         y'(t) =''')
+        self.cond_ini_label.configure(text='''Condicoes  Iniciais     y(0) =                         y'(0) =''')
 
         self.xT_label = Label (master)
         self.xT_label.place(relx=0.57,rely=0.095,height=63,width=442)
@@ -526,7 +526,7 @@ class EDO_Solver:
                 activeforeground="#111111",
                 background="#d9d9d9",
                 foreground="#000000",
-                label="Idioma")
+                label="Idioma/Language/Idioma")
 
         self.idioma.add_radiobutton(
                 variable = idi,
@@ -562,6 +562,7 @@ class EDO_Solver:
                 activeforeground="#111111",
                 background="#d9d9d9",
                 foreground="#000000",
+                state="disabled",                 
                 label="Notacao")
         self.notacao.add_radiobutton(
                 value="Leibniz",
@@ -601,6 +602,7 @@ class EDO_Solver:
                 activeforeground="#111111",
                 background="#d9d9d9",
                 foreground="#000000",
+                state="disabled",
                 label="DigitosFracionarios")
         self.digitosfracionarios.add_radiobutton(
                 value="2 Digitos",
