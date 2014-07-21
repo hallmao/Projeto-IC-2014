@@ -113,8 +113,8 @@ class EDO_Solver:
             latex_fig.clear()
             plot_fig.clear()
 
-            latex_fig = print_latex()
             plot_fig  = show_plots()
+            latex_fig = print_latex()
 
 
             canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)

@@ -24,10 +24,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="ODE_Solver.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_Solver.py">
+        <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_Solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19385342" vertical-offset="4202" max-vertical-offset="12461">
-              <caret line="252" column="50" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.6" vertical-offset="867" max-vertical-offset="12461">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -36,10 +36,10 @@
         </entry>
       </file>
       <file leaf-file-name="ODE_methods.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py">
+        <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_methods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.04" vertical-offset="16826" max-vertical-offset="21233">
-              <caret line="1006" column="55" selection-start-line="1006" selection-start-column="55" selection-end-line="1006" selection-end-column="55" />
+            <state vertical-scroll-proportion="-6.12" vertical-offset="14943" max-vertical-offset="21590">
+              <caret line="888" column="22" selection-start-line="888" selection-start-column="22" selection-end-line="888" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -63,6 +63,8 @@
         <option value="$PROJECT_DIR$/Integracao Final/Final 7 - TODO/ODE_Solver.py" />
         <option value="$PROJECT_DIR$/Integracao Final/Final 8/ODE_Solver.py" />
         <option value="$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py" />
+        <option value="$PROJECT_DIR$/Integracao Final/Final 9/ODE_Solver.py" />
+        <option value="$PROJECT_DIR$/Integracao Final/Final 9/ODE_methods.py" />
       </list>
     </option>
   </component>
@@ -97,6 +99,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,13 +146,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Final 8" />
+              <option name="myItemId" value="Final 9" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -166,43 +168,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.ODE_Solver (3)">
-    <configuration default="false" name="ODE Solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integracao Final/Final" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Projeto-IC-2014" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integracao Final/Final/ODE Solver.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ODE_Solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integracao Final/FINAL7" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Projeto-IC-2014" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integracao Final/FINAL7/ODE_Solver.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.ODE_Solver (4)">
     <configuration default="false" name="ODE_Solver (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,6 +219,42 @@
       <module name="Projeto-IC-2014" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py" />
       <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ODE_methods (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integracao Final/Final 9" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto-IC-2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integracao Final/Final 9/ODE_methods.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ODE_Solver (4)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integracao Final/Final 9" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Projeto-IC-2014" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integracao Final/Final 9/ODE_Solver.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
@@ -415,19 +417,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.ODE_methods" />
       <item index="1" class="java.lang.String" itemvalue="Python.ODE_Solver (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Python.ODE Solver" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ODE_Solver" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ODE_Solver (2)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.ODE_Solver (3)" />
-      <item index="6" class="java.lang.String" itemvalue="Python.ODE_methods (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ODE_Solver (2)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.ODE_Solver (3)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ODE_methods (1)" />
+      <item index="5" class="java.lang.String" itemvalue="Python.ODE_methods (2)" />
+      <item index="6" class="java.lang.String" itemvalue="Python.ODE_Solver (4)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ODE_Solver (3)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ODE_methods (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ODE_Solver (2)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ODE_Solver" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ODE Solver" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ODE_Solver (4)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ODE_methods (2)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ODE_Solver (3)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ODE_methods (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ODE_Solver (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -455,7 +457,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33612272" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -505,6 +507,38 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_Solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="12461">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="21590">
+          <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_Solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4202" max-vertical-offset="12461">
+          <caret line="252" column="50" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16826" max-vertical-offset="21233">
+          <caret line="1006" column="55" selection-start-line="1006" selection-start-column="55" selection-end-line="1006" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Integracao Final/FINAL7/ODE_Solver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1460" max-vertical-offset="12546">
@@ -558,24 +592,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33090025" vertical-offset="816" max-vertical-offset="12512">
           <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.04" vertical-offset="16826" max-vertical-offset="21233">
-          <caret line="1006" column="55" selection-start-line="1006" selection-start-column="55" selection-end-line="1006" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_Solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19385342" vertical-offset="4202" max-vertical-offset="12461">
+        <state vertical-scroll-proportion="0.12349398" vertical-offset="4202" max-vertical-offset="12461">
           <caret line="252" column="50" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 8/ODE_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40828404" vertical-offset="16826" max-vertical-offset="21233">
+          <caret line="1006" column="55" selection-start-line="1006" selection-start-column="55" selection-end-line="1006" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.12" vertical-offset="14943" max-vertical-offset="21590">
+          <caret line="888" column="22" selection-start-line="888" selection-start-column="22" selection-end-line="888" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integracao Final/Final 9/ODE_Solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6" vertical-offset="867" max-vertical-offset="12461">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
