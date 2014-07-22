@@ -56,7 +56,7 @@ cond_ini = [0]*5 #y0, dy0, d2y0, d3y0, d4y0     ; nessa ordem
 xT = 0
 #----------------------Tal - constante de tempo, para cálculo do coef de amortecimento
 tal = []
-maiorTal = 0.0 #5*tal
+maiorTal = 0 #5*tal
 ##a2 = None
 ##a1 = 0
 ##a0 = 0
@@ -209,14 +209,20 @@ def cte_tempo():
                 plotRaizesR.sort()
                 # Define o vetor de tal e inverte todas as raizes  reais
                 tal = [None]*len(plotRaizesR)
+
+
                 for i in range(len(plotRaizesR)):
-                    tal[i] = abs((1/plotRaizesR[i]))
-                    #Define qual o maior valor de tal e aloca este valor em talMaior
-                    tal.sort()
-                    ##----Pega o maior valor de tal e calcula o coef de amortecimento
+                    if(plotRaizesR[i]==0):
+                        tal[i]=0
+                    else:
+                        tal[i] = abs(plotRaizesR[i]**-1)
+                #Define qual o maior valor de tal e aloca este valor em talMaior
+                tal.sort()
+                ##----Pega o maior valor de tal e calcula o coef de amortecimento
+                if(tal[-1]==0):
+                    maiorTal = 5
+                else:
                     maiorTal = 5*tal[-1]
-
-
                 print "Raizes, reais inversas  (tal)",tal
                 print "5 Tal = ",maiorTal
 
@@ -848,7 +854,7 @@ def idioma_show_plots():
 
 
 def show_plots():
-        global tal,maiorTal
+        global tal
         idi_amp, idi_yn, idi_raiz, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc = idioma_show_plots()
 
         #plt.clf()
@@ -877,26 +883,9 @@ def show_plots():
         plotRaizesR.sort()
         plotRaizesC.sort()
 
-
-        tal = [None]*len(plotRaizesR)
-        for i in range(len(plotRaizesR)):
-                tal[i] = abs((1/plotRaizesR[i]))
-                #Define qual o maior valor de tal e aloca este valor em talMaior
-        tal.sort()
-        ##----Pega o maior valor de tal e calcula o coef de amortecimento
-        print "Raizes, reais inversas  (tal)",tal
-        maiorTal = 5*tal[-1]
-        print "olaaaaa"
-
-        print "Raizes, reais inversas  (tal)",tal
-        print "5 Tal = ",maiorTal
-
         ## Nossa variável de deslocamento t no eixo x, varia de 0 a 5tal
         #x_t = drange(0,10,0.00001)
         x_t  = drange(0.0,maiorTal,0.01)
-
-
-
 
         ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
         ##Now they have equal length
@@ -1078,8 +1067,6 @@ def idioma_print_latex():
 
 
 def print_latex():
-        print "type tal", type(tal)
-        print "tal::",tal
 
         idi_raiz, idi_tal, idi_eq, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl = idioma_print_latex()
         #plt.clf()
@@ -1157,10 +1144,9 @@ def print_latex():
         plt.text(xdif,0.9-dif,str_r+ur''+str_raizLatex+'   '+str_t+ur''+str_talLatex)
         plt.text(xdif,0.9-2*dif,ur''+idi_yfn+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[1]+ur'$'+latex(")u(t)")+'$')
         if((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
-            plt.text(xdif,0.9-3*dif,ur''+idi_yn+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+ur'$'+latex(")u(t)")+'$'+"    "+idi_cond_sing+ur'$'+latex("y(0)= ") +
-            '$'+ur'$'+latex(cond_ini[0]))+'$'
+            plt.text(xdif,0.9-3*dif,ur''+idi_yn+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+ur'$'+latex(")u(t)")+'$'+"    "+idi_cond_sing+ur'$'+latex("\ y(0)=\ ")+'$'+ur'$'+str(latex(cond_ini[0]))+'$')
         else:
-            plt.text(xdif,0.9-3*dif,ur''+idi_yn+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+ur'$'+latex(")u(t)")+'$'+"    "+idi_cond_pl+"y(0)= "+str(cond_ini[0])+"\ty'(0)= "+str(cond_ini[1]))
+            plt.text(xdif,0.9-3*dif,ur''+idi_yn+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+ur'$'+latex(")u(t)")+'$'+"    "+idi_cond_pl+ur'$'+latex("\ y(0)=\ ")+'$'+ur'$'+str(latex(cond_ini[0]))+'$'+ur'$'+latex("\quad dy(0)=\ ")+'$'+ur'$'+str(latex(cond_ini[1]))+'$')
         plt.text(xdif,0.9-4*dif,ur''+idi_yp+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[3]+ur'$'+latex(")u(t)")+'$'+"    "+ur'$'+latex("x(t) = ($")+ur''+RespostasEmLatex[7]+ur'$'+latex(")u(t)")+'$')
         plt.text(xdif,0.9-5*dif,ur''+idi_yt+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[4]+ur'$'+latex(")u(t)")+'$')
         plt.text(xdif,0.9-6*dif,ur''+idi_yf+ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[5]+ur'$'+latex(")u(t)")+'$')
@@ -1243,7 +1229,7 @@ def edo_main():
                 fN = formaNatural
                 rP = RespPart.evalf(prec)
                 raizes()
-                #cte_tempo()
+                cte_tempo()
                 conds_iniciais_aplicadas(fN, rP)
 
                 respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp

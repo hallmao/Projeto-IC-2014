@@ -1,0 +1,4 @@
+O problema dos plots dando infinito estava no maiorTal(que também dava infinito), bugando os graficos.
+qndo a raiz é 0, o tal esta sendo definido como 0 também e se o maior tal for 0, o maiorTal esta definido como 5.
+Precisa-se pesquisar se qndo a raiz(ou autovalor) é 0, o tau também será zero ou se realmente é infinito e,neste caso,
+qnto será o valor do maiorTal
