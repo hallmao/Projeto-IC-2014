@@ -254,7 +254,7 @@ def conds_iniciais_aplicadas(fN, rP):
                                 ##Agora a resposta natural, com o C1 encontrado na substituição aplicado na funcão natural:
                                 nC1 = valorConstantes.pop()
 
-                                respNatural = fN.subs(C1,nC1)#.evalf(prec)
+                                respNatural = fN.subs(C1,nC1).evalf(prec)
                                 Respostas[2] = respNatural #Adiciona Resposta Natural na lista de respostas
 
                                 ##Tenta resolver parâmetros não terminados, se possível
@@ -1249,7 +1249,7 @@ def edo_main():
         
                 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
                 sepEq = solvedEq._args[1]
-                sepEq = sepEq#.evalf(prec)
+                sepEq = sepEq.evalf(prec)
 
                 if const[5] != 0:
                                 RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
@@ -1267,7 +1267,7 @@ def edo_main():
                 ##Resposta transitória alocada em  RespTran, natural em RespNat
 
 
-                Respostas[3] = RespPart#.evalf(prec)
+                Respostas[3] = RespPart.evalf(prec)
                 formaNatural = sepEq.subs(RespPart, 0)
  
                 
@@ -1309,13 +1309,13 @@ def edo_main():
                 Respostas[1] = fN #Adicionando Forma natural de resposta na lista de respostas                
 
                 
-                rP = RespPart#.evalf(prec)
+                rP = RespPart.evalf(prec)
                 raizes()
                 cte_tempo()
                 conds_iniciais_aplicadas(fN, rP)
 
                 respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
-                Respostas[5] = respForc#.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
+                Respostas[5] = respForc.evalf(prec)   #Adiciona Resposta Forcada a lista de respostas
 
 
                 respComp = Respostas[2]  #Resposta completa p/ eqs. homogeneas

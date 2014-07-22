@@ -30,8 +30,16 @@ import base64
 from icon_embedded import icone
 from leibniz_image_embedded import leibniz
 # or copy paste the background variable found in embeddedImage.py
-icon = Image.open(cStringIO.StringIO(base64.b64decode(icone)))
+#icon = Image.open(cStringIO.StringIO(base64.b64decode(icone)))
 leibniz_im = Image.open(cStringIO.StringIO(base64.b64decode(leibniz)))
+
+ICON = (b'\x00\x00\x01\x00\x01\x00\x10\x10\x00\x00\x01\x00\x08\x00h\x05\x00\x00'
+    b'\x16\x00\x00\x00(\x00\x00\x00\x10\x00\x00\x00 \x00\x00\x00\x01\x00'
+    b'\x08\x00\x00\x00\x00\x00@\x05\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    b'\x00\x01\x00\x00\x00\x01') + b'\x00'*1282 + b'\xff'*64
+
+_, ICON_PATH = tempfile.mkstemp()
+with open(ICON_PATH, 'wb') as icon_file:icon_file.write(ICON)
 
 
 #------------------------------------------------------------------
@@ -48,13 +56,18 @@ def destroy_EDO_Solver():
 def vp_start_gui():
 
     '''Starting point when module is the main routine.'''
+
+
+
     global val, w, root
     root = Tk()
     root.title('EDO_Solver')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
     #root.wm_iconbitmap(bitmap = icon)
-    #root.iconbitmap(bitmap=icon)
+    root.iconbitmap(default= ICON_PATH )
+    #root.iconbitmap(instance = icon)
+    #print "Icon",type(icon)
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)
