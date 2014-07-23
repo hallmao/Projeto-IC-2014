@@ -5,7 +5,7 @@ import sympy.assumptions.handlers.ntheory
 import sympy.assumptions.handlers.order
 import sympy.assumptions.handlers.sets
 from sympy import Function, exp, cos,  sympify, dsolve, symbols,mpmath, solve, lambdify, sin, im, \
-        re, latex,simplify, nsimplify
+        re, latex,simplify, nsimplify, expand
 from sympy.abc import t, tau
 import matplotlib.pyplot as plt
 
@@ -1263,13 +1263,16 @@ def edo_main():
                                 RespPart = sepEq.subs(C1, 0)
 
 
-
                 ##Resposta transitória alocada em  RespTran, natural em RespNat
-
-
+                #print "Equacao:",sepEq
+                #print "RespPart",RespPart
                 Respostas[3] = RespPart.evalf(prec)
+                sepEq = expand(sepEq) #conserta o erro das raizes iguais com entrada igual
+                #a eq vinha simplificada e o metodo subs nao reconhecia o RespPart na sepEq, por isso dava erro
+                #print "Equacao:",sepEq
                 formaNatural = sepEq.subs(RespPart, 0)
- 
+                #print "FN=",formaNatural
+                
                 
                 ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
                 ##isso é válido no método conds_iniciais_aplicadas
