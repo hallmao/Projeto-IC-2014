@@ -215,7 +215,7 @@ def cte_tempo():
                                 temp   = abs(plotRaizesR[i])
                                 tal[i] = float(temp**-1)
 
-                        elif plotRaizesR[i] < 1e-5:
+                        elif plotRaizesR[i] < 1e-3:
 
                                 tal[i] = 1.0
                                 
@@ -225,6 +225,8 @@ def cte_tempo():
                 tal.sort()
                 ##----Pega o maior valor de tal e calcula o coef de amortecimento
                 maiorTal = 5*tal[-1]
+                if maiorTal > 100e3:
+                        maiorTal = 10
                 print "Raizes, reais inversas  (tal)",tal
                 print "5 Tal = ",maiorTal
 
