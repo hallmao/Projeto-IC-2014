@@ -61,7 +61,7 @@ def vp_start_gui():
 
     global val, w, root
     root = Tk()
-    root.title('EDO_Solver')
+    root.title('EDLCC')
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
     #root.wm_iconbitmap(bitmap = icon)
@@ -71,7 +71,7 @@ def vp_start_gui():
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)
-    root.after(5,w.set_bind_entries())
+    w.set_bind_entries()
     v5_support.init(root, w)
     w.set_bind_entries()
     root.mainloop()
