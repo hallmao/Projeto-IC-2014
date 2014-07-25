@@ -720,10 +720,10 @@ def log_print():
         equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
 
         equacao = str(equacao)
-
-
         equacao = idi_eq+equacao+" = "+str(Respostas[7])
         #print equacao
+        str_xT = "x(t) = "
+        str_xT = str_xT+"( "+str(Respostas[7])+" )*u(t)"
 
         str_raiz = idi_raiz
         count = 0
@@ -746,27 +746,27 @@ def log_print():
 
         #print str_raiz
 
-        str_yfn = idi_yfn+str(Respostas[1])
+        str_yfn = idi_yfn+"( "+str(Respostas[1])+" )*u(t)"
         #print str_yfn
 
-        str_yn = idi_yn+str(Respostas[2])
+        str_yn = idi_yn+"( "+str(Respostas[2])+" )*u(t)"
         #print str_yn
 
         if(Respostas[7] != 0):
-            str_yp = idi_yp+str(Respostas[3])
+            str_yp = idi_yp+"( "+str(Respostas[3])+" )*u(t)"
             #print str_yp
 
-            str_ytrans = idi_ytrans+str(Respostas[4])
+            str_ytrans = idi_ytrans+"( "+str(Respostas[4])+" )*u(t)"
             #print str_ytrans
 
-            str_yforc = idi_yf+str(Respostas[5])
+            str_yforc = idi_yf+"( "+str(Respostas[5])+" )*u(t)"
             #print str_yforc
         else:
             str_yp = ""
             str_ytrans = ""
             str_yforc = ""
 
-        str_yc = idi_yc+str(Respostas[6])
+        str_yc = idi_yc+"( "+str(Respostas[6])+" )*u(t)"
         #print str_yc
 
         if ((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
@@ -774,7 +774,7 @@ def log_print():
         else: #eq ordem 2
             str_cond_ini = idi_cond_pl+"y(0) = "+str(cond_ini[0])+"    y'(0) = "+str(cond_ini[1])
 
-        str_resp = equacao+"\n"+str_cond_ini+"\n"+str_raiz+"    "+str_tal+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        str_resp = equacao+"\n"+str_cond_ini+"\n"+str_raiz+"    "+str_tal+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"    "+str_xT+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
         #print str_resp
 
         #return c tds as respostas em uma variavel
