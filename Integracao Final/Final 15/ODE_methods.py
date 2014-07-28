@@ -1115,8 +1115,23 @@ def print_latex():
         # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
         # 6- Resposta Completa; 7-Sinal de entrada x(t); 8 - eq
         ###
-        eqD = Respostas[8] + Respostas[7] #xT esta negativo dentro da equacao, por isso a soma
+
+        # eqD = Respostas[8] + Respostas[7] #xT esta negativo dentro da equacao, por isso a soma
+        # eqDiferencialEntradaLatex = latex(eqD)
+
+#-------------------Equacao em Latex na ordem correta-------------------------------
+        eqD = str(const[2])+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}" # as partes escritas entre as aspas
+        if(const[1]<0):                                                     # sao as formulas das derivadas em latex
+            eqD = eqD+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
+        else:
+            eqD = eqD+"+"+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
+        if(const[0]<0):
+            eqD = eqD+str(const[0])+"y{\left (t \\right )}"
+        else:
+            eqD = eqD+"+"+str(const[0])+"y{\left (t \\right )}"
+
         eqDiferencialEntradaLatex = latex(eqD)
+#----------------------FIM-----------------------------------------------------------
 
 
         ##Perfumaria

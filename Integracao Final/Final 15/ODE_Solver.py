@@ -204,9 +204,9 @@ class EDO_Solver:
         if(n_changes != 0):
             #tal=get_tal()
             edo_main()
-            self.ScaleMin.configure(from_=0.0, to= self.ScaleMax.get())
+            self.ScaleMin.configure(from_=0.0, to= self.ScaleMax.get()-1)
             self.ScaleMin.set(0)
-            self.ScaleMax.configure(from_= self.ScaleMin.get() , to= 10.0)
+            self.ScaleMax.configure(from_= self.ScaleMin.get()+1 , to= 10.0)
             self.ScaleMax.set(5.0)
             self.update_saida()
 
@@ -336,7 +336,7 @@ class EDO_Solver:
         if(rangeMin != get_limx_min()):
             minTauMaior = maiorTal*rangeMin
             set_limx_min(minTauMaior)
-            self.ScaleMax.configure(from_=self.ScaleMin.get())
+            self.ScaleMax.configure(from_=self.ScaleMin.get()+1)
             canvas_plots.get_tk_widget().destroy()
             plot_fig.clear()
 
@@ -348,7 +348,7 @@ class EDO_Solver:
         if(rangeMax != get_limx_max()):
             maxTauMaior = maiorTal*rangeMax
             set_limx_max(maxTauMaior)
-            self.ScaleMin.configure(to=self.ScaleMax.get())
+            self.ScaleMin.configure(to=self.ScaleMax.get()-1)
             canvas_plots.get_tk_widget().destroy()
             plot_fig.clear()
 
@@ -397,11 +397,11 @@ class EDO_Solver:
         self.ScaleMax.set(5)
 
         # Init Parameters
-        self.ScaleMin.configure(from_=0.0,  to=  ( 10 - self.ScaleMax.get()  ) )
+        self.ScaleMin.configure(from_=0.0,  to=  ( 9 - self.ScaleMax.get()  ) )
         self.ScaleMin.bind("<ButtonRelease-1>", self.new_range)
 
         
-        self.ScaleMax.configure(from_= self.ScaleMin.get(),   to= 10.0  )
+        self.ScaleMax.configure(from_= self.ScaleMin.get()+1,   to= 10.0  )
         self.ScaleMax.bind("<ButtonRelease-1>", self.new_range)
 
 
