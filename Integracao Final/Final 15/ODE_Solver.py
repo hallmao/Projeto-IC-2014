@@ -856,7 +856,7 @@ class EDO_Solver:
 
 
         #-----------------------------INIT configs-------------------------------------
-        self.in_xT.insert(END, '1/2*sin(t-2)+exp(t/3) -t**2')
+        self.in_xT.insert(END, '1/2*sin(t)*exp(t/3) -t**2')
         self.in_y0.insert(END, '1')
         self.in_dy0.insert(END, '1')
         self.in_a0.insert(END, '1')
@@ -868,7 +868,7 @@ class EDO_Solver:
         user_input[2] = '1'
         user_input[3] = '1'
         user_input[4] = '1'
-        user_input[5] = '1/2*sin(t-2)+exp(t/3) -t**2'
+        user_input[5] = '1/2*sin(t)*exp(t/3) -t**2'
        # # self.in_a2.register(last_entry_equal,'%s')
        #  okay_entry_a2 = self.in_a2.register(self.last_entry_equal)
        #  okay_entry_a1 = self.in_a2.register(self.last_entry_equal)
@@ -903,7 +903,7 @@ class EDO_Solver:
 
 
 if __name__ == '__main__':
-    init(1.0,1.0,1.0,'1/2*sin(t-2)+exp(t/3) -t**2',1.0,1.0)
+    init(1.0,1.0,1.0,'1/2*sin(t)*exp(t/3) -t**2',1.0,1.0)
     vp_start_gui()
 
 
