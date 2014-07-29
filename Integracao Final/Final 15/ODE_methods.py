@@ -921,30 +921,35 @@ def show_plots():
 
         ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
         ##Now they have equal length
-        plotXt    = [0]*len(x_t)
-        plotNat   = [0]*len(x_t)
-        plotPar   = [0]*len(x_t)
-        plotTran  = [0]*len(x_t)
-        plotFor   = [0]*len(x_t)
-        plotCom   = [0]*len(x_t)
-        print len(x_t)
+        plotXt    = [None]*len(x_t)
+        plotNat   = [None]*len(x_t)
+        plotPar   = [None]*len(x_t)
+        plotTran  = [None]*len(x_t)
+        plotFor   = [None]*len(x_t)
+        plotCom   = [None]*len(x_t)
+
 
         for i in range(len(x_t)):
-            try: #resolve problema de alguns indicies nao serem calculados
-                plotXt[i]      = plots_numpy[1](x_t[i])
-                plotNat[i]     = plots_numpy[2](x_t[i])
-                plotPar[i]     = plots_numpy[3](x_t[i])
-                plotTran[i]    = plots_numpy[4](x_t[i])
-                plotFor[i]     = plots_numpy[5](x_t[i])
-                plotCom[i]     = plots_numpy[6](x_t[i])
-                ultimo_valido=i #ultimo indice em que foi possivel fazer o calculo
-            except:
-                plotXt[i]      = plots_numpy[1](x_t[ultimo_valido])
-                plotNat[i]     = plots_numpy[2](x_t[ultimo_valido])
-                plotPar[i]     = plots_numpy[3](x_t[ultimo_valido])
-                plotTran[i]    = plots_numpy[4](x_t[ultimo_valido])
-                plotFor[i]     = plots_numpy[5](x_t[ultimo_valido])
-                plotCom[i]     = plots_numpy[6](x_t[ultimo_valido])
+
+            if((plotNat[i-1]>1e12) or (plotPar[i-1]>1e12) or(plotTran[i-1]>1e12)
+               or (plotFor[i-1]>1e12) or (plotCom[i-1]>1e12)): #limita o ymax para melhorar a performance
+                break
+            else:
+                try: #resolve problema de alguns indicies nao serem calculados
+                    plotXt[i]      = plots_numpy[1](x_t[i])
+                    plotNat[i]     = plots_numpy[2](x_t[i])
+                    plotPar[i]     = plots_numpy[3](x_t[i])
+                    plotTran[i]    = plots_numpy[4](x_t[i])
+                    plotFor[i]     = plots_numpy[5](x_t[i])
+                    plotCom[i]     = plots_numpy[6](x_t[i])
+                    ultimo_valido=i #ultimo indice em que foi possivel fazer o calculo
+                except:
+                    plotXt[i]      = plots_numpy[1](x_t[ultimo_valido])
+                    plotNat[i]     = plots_numpy[2](x_t[ultimo_valido])
+                    plotPar[i]     = plots_numpy[3](x_t[ultimo_valido])
+                    plotTran[i]    = plots_numpy[4](x_t[ultimo_valido])
+                    plotFor[i]     = plots_numpy[5](x_t[ultimo_valido])
+                    plotCom[i]     = plots_numpy[6](x_t[ultimo_valido])
 
 
 
@@ -1080,8 +1085,8 @@ def idioma_print_latex():
         idi_yt = '$'+latex("Y_{trans}(t) = ")+'$'
         idi_yf = '$'+latex("Y_{forc}(t) = ")+'$'
         idi_yc = '$'+latex("Y_{c}(t) = ")+'$'
-        idi_cond_sing = latex("Initial\ condition:\ ")
-        idi_cond_pl = latex("Initial\ conditions:\ ")
+        idi_cond_sing = latex("\ Initial\ condition:\ ")
+        idi_cond_pl = latex("\ Initial\ conditions:\ ")
         return idi_raiz, idi_tal, idi_eq, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
     else:
@@ -1112,11 +1117,7 @@ def print_latex():
         idi_raiz, idi_tal, idi_eq, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl = idioma_print_latex()
         #plt.clf()
         #edo_main()
-        for i in range(1,7):
-                
-                        Respostas[i] = expand(Respostas[i])
-                        Respostas[i] = Respostas[i].evalf(prec)
-                
+
         # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
         # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
         # 6- Resposta Completa; 7-Sinal de entrada x(t); 8 - eq
@@ -1143,7 +1144,7 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'monospace' : 'Computer Modern Typewriter',
+        font = {'serif' : 'New Century Schoolbook',
                 'weight' : 'normal',
                 'size'   : 15}
 
@@ -1358,7 +1359,7 @@ def edo_main():
 ##                                         fN = sympify(fN - valorEmT)
 ##                                         print "Entrei"+ " ValoremT ",valorEmT,"Fn:",fN,type(valorEmT),type(fN)
  
-                Respostas[1] = fN #Adicionando Forma natural de resposta na lista de respostas                
+                Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de respostas
 
                 
                 rP = RespPart.evalf(prec)
@@ -1375,6 +1376,10 @@ def edo_main():
                                 respComp = Respostas[2] + Respostas[5]  #Respsota completa p/ eqs. nao-homogeneas
 
                 Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
+
+                for i in range(1,7): #arruma precisao
+                        # Respostas[i] = expand(Respostas[i])
+                        Respostas[i] = nsimplify(Respostas[i], rational = True,tolerance = 0.05).evalf(prec)
         except:
                 pass
 

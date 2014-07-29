@@ -134,6 +134,13 @@ class EDO_Solver:
         
         global canvas_latex,canvas_plots,latex_fig,plot_fig
         try:
+
+            if(float(self.in_a2.get())==0):
+                self.in_dy0.configure(state="disabled")
+
+            if(float(self.in_a2.get())!=0):
+                self.in_dy0.configure(state="normal")
+
             ##Log de texto setando
             self.saida_log_txt.delete(1.0, END)
             self.saida_log_txt.insert(END,log_print())
@@ -436,7 +443,7 @@ class EDO_Solver:
             self.TNotebook1.tab(1,text="Graficos")
             self.TNotebook1.tab(2,text="Log Texto")
             self.cond_ini_label.configure(text='''Condicoes  Iniciais     y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Entrada x(t) =''')
+            self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
             set_lingua(1)
             self.update_saida()
             #print "port"
@@ -450,7 +457,7 @@ class EDO_Solver:
             self.TNotebook1.tab(1,text="Graphics")
             self.TNotebook1.tab(2,text="Text Log")
             self.cond_ini_label.configure(text='''Initial Conditions      y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Entry x(t) =''')
+            self.xT_label.configure(text='''Input x(t) =\t\t\t\t\t     u(t)''')
             set_lingua(2)
             self.update_saida()
             #print "english"
@@ -464,7 +471,7 @@ class EDO_Solver:
             self.TNotebook1.tab(1,text="Graficos")
             self.TNotebook1.tab(2,text="Log Texto")
             self.cond_ini_label.configure(text='''Condiciones Iniciales   y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Entrada x(t) =''')
+            self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
             set_lingua(3)
             self.update_saida()
             #print "espanol"
