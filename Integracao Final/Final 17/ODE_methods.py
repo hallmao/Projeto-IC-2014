@@ -915,6 +915,11 @@ def show_plots():
         plotRaizesR.sort()
         plotRaizesC.sort()
 
+        raizesRabs = [None]*len(plotRaizesR)
+
+        for i in range(len(plotRaizesR)):raizesRabs[i] = abs(float(plotRaizesR[i]))
+        raizesRabs.sort()
+
         ## Nossa variável de deslocamento t no eixo x, varia de 0 a 5tal
         #x_t = drange(0,10,0.00001)
         x_t  = drange(limx_min,limx_max,1e-3)
@@ -976,7 +981,7 @@ def show_plots():
         plt.xlabel("t")
         plt.ylabel(idi_amp)
         plt.axhline(0, color = 'black',lw =2)
-        plt.axvline(-0.05, color = 'black',lw =2)
+        plt.axvline(-0.01, color = 'black',lw =2)
         if plotXt[1] == plotXt[-1]:
                 plt.ylim(ymax = plotXt[0] + 0.2*plotXt[0])
         respXtPlot = plt.plot(x_t,plotXt,lw = 2)
@@ -997,9 +1002,12 @@ def show_plots():
         #plt.annotate(xycoords = 'data',)
        # ax.set_ylim(-abs(abs(float(plotRaizesC[0])) +1),abs(abs(float(plotRaizesC[len(plotRaizesC)-1]))+ 1)  )
         #ax.set_xlim(-abs(abs(float(plotRaizesR[0]))+1),abs(abs(float(plotRaizesR[len(plotRaizesR)-1]))+1)  )
-        ax.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
-        ax.set_xlim(float(-abs(plotRaizesR[0]+ 0.2*plotRaizesR[0])),float(abs(plotRaizesR[-1]+ 0.2*plotRaizesR[-1]) ) )
-        respRaizesPlot = ax.stem(plotRaizesR,plotRaizesC,markerfmt='bx')
+        if plotRaizesC[0] != 0:
+                ax.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
+        else:
+                ax.set_ylim(-1,1)
+        ax.set_xlim(-(raizesRabs[-1]+ 0.1*raizesRabs[-1]),(raizesRabs[-1]+ 0.1*raizesRabs[-1]))
+        respRaizesPlot = ax.plot(plotRaizesR,plotRaizesC,'bx', markersize = 9)
         #ax.axhline(0, color = 'black',lw =1)
         ax.spines['left'].set_position('center')
         ax.spines['right'].set_color('none')
