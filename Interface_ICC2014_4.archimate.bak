@@ -97,12 +97,7 @@
         </child>
         <child xsi:type="archimate:DiagramObject" id="f4f06cd0" textAlignment="1" targetConnections="5013f91b" archimateElement="aa5035a9">
           <bounds x="672" y="210" width="385" height="307"/>
-          <sourceConnection xsi:type="archimate:Connection" id="659cd5b6" source="f4f06cd0" target="0d74fef7" relationship="a3db913f">
-            <bendpoint startX="-192" startY="-15" endX="396" endY="-3"/>
-            <bendpoint startX="-384" startY="-15" endX="204" endY="-3"/>
-            <bendpoint startX="-456" startY="-15" endX="132" endY="-3"/>
-            <bendpoint startX="-504" startY="-15" endX="84" endY="-3"/>
-          </sourceConnection>
+          <sourceConnection xsi:type="archimate:Connection" id="659cd5b6" source="f4f06cd0" target="0d74fef7" relationship="a3db913f"/>
           <child xsi:type="archimate:DiagramObject" id="04337480" textAlignment="2" fillColor="#66ccff" archimateElement="785e8a4b">
             <bounds x="24" y="36" width="313" height="73"/>
           </child>
