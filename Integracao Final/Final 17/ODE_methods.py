@@ -679,6 +679,8 @@ def idioma_log_print():
 
     if(lingua==1):
         idi_eq = "Equacao diferencial: "
+        idi_hom = "Equacao homogenea: "
+        idi_car = "Equacao caracteristica: "
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz: "
         else:
@@ -695,10 +697,12 @@ def idioma_log_print():
         idi_yc = "Resposta completa: Yc(t) = "
         idi_cond_sing = "Condicao inicial:  "
         idi_cond_pl = "Condicoes iniciais:  "
-        return idi_eq, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
+        return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
     elif(lingua==2):
         idi_eq = "Differential equation: "
+        idi_hom = "Homogenous\ Equation: "
+        idi_car = "Characteristic Equation: "
         if(len(Respostas[0])==1):
             idi_raiz = "Root: "
         else:
@@ -715,10 +719,12 @@ def idioma_log_print():
         idi_yc = "Complete solution: Yc(t) = "
         idi_cond_sing = "Initial condition:  "
         idi_cond_pl = "Initial conditions:  "
-        return idi_eq, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
+        return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
     else:
         idi_eq = "Ecuacion diferencial: "
+        idi_hom = "Ecuacion homogenea: "
+        idi_car = "Ecuacion caracteristica: "
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz: "
         else:
@@ -735,23 +741,34 @@ def idioma_log_print():
         idi_yc = "Respuesta completa: Yc(t) = "
         idi_cond_sing = "Condicion inicial:  "
         idi_cond_pl = "Condiciones iniciales:  "
-        return idi_eq, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
+        return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
 def log_print():
 
-        idi_eq, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl = idioma_log_print()
+        idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl = idioma_log_print()
         equacao = Respostas[8] + Respostas[7]
         equacao = equacao.subs("Derivative(y(t), t)","dy(t)")
         equacao = equacao.subs("Derivative(dy(t), t)","d2y(t)")
         equacao = equacao.subs("Derivative(d2y(t), t)","d3y(t)")
         equacao = equacao.subs("Derivative(d3y(t), t)","d4y(t)")
         equacao = equacao.subs("Derivative(d4y(t), t)","d5y(t)")
+        eqCar = equacao
 
         equacao = str(equacao)
-        equacao = idi_eq+equacao+" = "+str(Respostas[7])
+        eqGer = idi_eq+equacao+" = "+str(Respostas[7])
         #print equacao
         str_xT = "x(t) = "
         str_xT = str_xT+"( "+str(Respostas[7])+" )*u(t)"
+
+        eqHom = idi_hom+equacao+" = 0"
+
+        eqCar = eqCar.subs("d2y(t)","r**(2)")
+        eqCar = eqCar.subs("dy(t)","r")
+        eqCar = eqCar.subs("y(t)","1")
+        eqCar = str(eqCar)
+        eqCar = idi_car+eqCar+" = 0"
+
+
 
         str_raiz = idi_raiz
         count = 0
@@ -802,7 +819,7 @@ def log_print():
         else: #eq ordem 2
             str_cond_ini = idi_cond_pl+"y(0) = "+str(cond_ini[0])+"    y'(0) = "+str(cond_ini[1])
 
-        str_resp = equacao+"\n"+str_cond_ini+"\n"+str_raiz+"    "+str_tal+"\n"+str_yfn+"\n"+str_yn+"\n"+str_yp+"    "+str_xT+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        str_resp = eqGer+"\n"+eqHom+"\n"+eqCar+"\n"+str_raiz+"\n"+str_tal+"\n"+str_yfn+"\n"+str_cond_ini+"\n"+str_yn+"\n"+str_xT+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
         #print str_resp
 
         #return c tds as respostas em uma variavel
@@ -1235,8 +1252,10 @@ def print_latex():
         ax1.get_xaxis().tick_bottom()
         ax1.get_xaxis().set_visible(False)
         ax1.axes.get_yaxis().set_visible(False)
-        for i in range(0,8,1):
-                plt.axhline(0.86-dif*i,xmin = -5,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
+        for i in range(0,9,1):
+            plt.axhline(0.86-dif*i,xmin = -10,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
+        plt.axhline(0.86-dif*4, color='black', lw=2)
+        plt.axhline(0.86-dif*5, color='black', lw=2)
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
         plt.text(xdif,0.89,idi_eq+
@@ -1249,10 +1268,6 @@ def print_latex():
                  ur'$'+latex("=\ 0")+'$'+"   "+
                  idi_car+ur'$'+eqCaracEmLatex+'$'+"  "+
                  ur'$'+latex("=\ 0")+'$')
-
-        # plt.text(xdif, 0.9-2*dif,idi_car+
-        #            ur'$'+eqCaracEmLatex+'$'+"  "+
-        #            ur'$'+latex("=\ 0")+'$')
 
         plt.text(xdif,0.9-2*dif,str_r+ur''+
                  str_raizLatex)
