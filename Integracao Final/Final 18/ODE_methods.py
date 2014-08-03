@@ -1379,7 +1379,7 @@ def edo_main():
                 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
                 sepEq = solvedEq._args[1]
                 sepEq = sepEq.evalf(prec)
-
+                print "sepEq", sepEq
                 if const[5] != 0:
                                 RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
                 elif const[4] != 0:
@@ -1394,13 +1394,13 @@ def edo_main():
 
                 ##Resposta transitória alocada em  RespTran, natural em RespNat
                 #print "Equacao:",sepEq
-                #print "RespPart",RespPart
+                print "RespPart",RespPart
                 Respostas[3] = RespPart.evalf(prec)
                 sepEq = expand(sepEq) #conserta o erro das raizes iguais com entrada igual
                 #a eq vinha simplificada e o metodo subs nao reconhecia o RespPart na sepEq, por isso dava erro
-                #print "Equacao:",sepEq
-                formaNatural = sepEq.subs(RespPart, 0)
-                #print "FN=",formaNatural
+                print "Equacao:",sepEq
+                formaNatural = sepEq - RespPart #usar o metodo subs aqui da problema em algumas situações
+                print "FN=",formaNatural
                 
                 
                 ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
