@@ -1262,8 +1262,8 @@ def print_latex():
         ax1.axes.get_yaxis().set_visible(False)
         for i in range(0,9,1):
             plt.axhline(0.86-dif*i,xmin = -10,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
-        plt.axhline(0.86-dif*4, color='black', lw=2)
-        plt.axhline(0.86-dif*5, color='black', lw=2)
+        #plt.axhline(0.86-dif*4, color='black', lw=2)
+        #plt.axhline(0.86-dif*5, color='black', lw=2)
         #log_figure.figure("Forma_Representativa:")
         plt.title('')
         plt.text(xdif,0.89,idi_eq+
