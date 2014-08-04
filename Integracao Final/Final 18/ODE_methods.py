@@ -1524,7 +1524,7 @@ def edo_main():
 
 
                 for i in range(1,7): #arruma precisao
-                        t = map(sympy.Symbol,'t')
+
                         #Respostas[i] = sympy.expand(Respostas[i])
                         #Respostas[i] = sympy.powsimp(Respostas[i])
                         Respostas[i] = sympy.ratsimp(Respostas[i])
