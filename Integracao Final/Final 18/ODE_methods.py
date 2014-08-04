@@ -1458,7 +1458,7 @@ def edo_main():
 
                 for i in range(1,7): #arruma precisao
                         # Respostas[i] = expand(Respostas[i])
-                        Respostas[i] = nsimplify(Respostas[i], rational = True,tolerance = 0.05).evalf(prec)
+                        Respostas[i] = nsimplify(Respostas[i], rational = True,tolerance = 1e-3).evalf(prec)
         except:
                 pass
 

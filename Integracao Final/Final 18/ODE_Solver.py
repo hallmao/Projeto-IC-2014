@@ -65,7 +65,7 @@ def vp_start_gui():
     root.geometry('1024x768+401+170')
     root.resizable(width = False, height = False)
     #root.wm_iconbitmap(bitmap = icon)
-    root.iconbitmap(default= ICON_PATH )
+    #root.iconbitmap(default= ICON_PATH )
     #root.iconbitmap(instance = icon)
     #print "Icon",type(icon)
     w = EDO_Solver (root)
