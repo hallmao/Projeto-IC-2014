@@ -60,6 +60,7 @@ tal = []
 maiorTal = 0#5*tal
 limx_min = 0
 limx_max = maiorTal
+autoScale = 0
 ##a2 = None
 ##a1 = 0
 ##a0 = 0
@@ -89,6 +90,10 @@ def set_limx_max(l_max):
 def get_limx_max():
     global limx_max
     return limx_max
+
+def set_autoScale(autoS):
+    global autoScale
+    autoScale = autoS
 
 def get_tal():
         global tal
@@ -854,7 +859,7 @@ def conversao_numpy(symbol):
         return plots_numpy
 
 def idioma_show_plots():
-    global lingua
+    global lingua, tal
 
     if(lingua==1):
         idi_amp = "Amplitude"
@@ -863,13 +868,17 @@ def idioma_show_plots():
             idi_raiz = "Raiz"
         else:
             idi_raiz = "Raizes"
+        if(len(tal)==1):
+            idi_tal = "Constante de tempo: "
+        else:
+            idi_tal = "Constantes de tempo: "
         idi_real = "Real"
         idi_imag = "Imaginario"
         idi_yp = "Ypart(t)"
         idi_yt = "Ytrans(t)"
         idi_yf = "Yforc(t)"
         idi_yc = "Yc(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
 
     elif(lingua==2):
         idi_amp = "Amplitude"
@@ -878,13 +887,17 @@ def idioma_show_plots():
             idi_raiz = "Root"
         else:
             idi_raiz = "Roots"
+        if(len(tal)==1):
+            idi_tal = "Time constant: "
+        else:
+            idi_tal = "Time constants: "
         idi_real = "Real"
         idi_imag = "Imaginary"
         idi_yp = "Ypart(t)"
         idi_yt = "Ytrans(t)"
         idi_yf = "Yforc(t)"
         idi_yc = "Ycomplete(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
 
     else:
         idi_amp = "Amplitud"
@@ -893,18 +906,22 @@ def idioma_show_plots():
             idi_raiz = "Raiz"
         else:
             idi_raiz = "Raices"
+        if(len(tal)==1):
+            idi_tal = "Constante de tiempo: "
+        else:
+            idi_tal = "Constantes de tiempo: "
         idi_real = "Real"
         idi_imag = "Imaginario"
         idi_yp = "ypart(t)"
         idi_yt = "ytrans(t)"
         idi_yf = "yforz(t)"
         idi_yc = "yc(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
 
 
 def show_plots():
-        global tal, limx_max, limx_min
-        idi_amp, idi_yn, idi_raiz, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc = idioma_show_plots()
+        global tal, limx_max, limx_min, autoScale
+        idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc = idioma_show_plots()
 
         #plt.clf()
         plots_numpy = conversao_numpy(t)
@@ -973,8 +990,38 @@ def show_plots():
                     plotFor[i]     = plots_numpy[5](x_t[ultimo_valido])
                     plotCom[i]     = plots_numpy[6](x_t[ultimo_valido])
 
+        ###-----raiz e tau em latex----####
+        raizEmLatex = [0]*(len(Respostas[0]))
+        str_raizLatex = [0]*(len(Respostas[0]))
+        str_raizLatex[0] =""
+        for i in range(len(Respostas[0])):
+                raizEmLatex[i] = '$'+str(latex(Respostas[0][i])) +'$'
+        if(len(Respostas[0]) == 1):
+           rn = "r = "
+           rn = '$'+str(latex(rn)) +'$'
+           str_raizLatex[i] = rn+raizEmLatex[0]
+        else:
+                for i in range(len(raizEmLatex)):
+                        rn = "r_{"+str(i+1)+"} = "
+                        rn = '$'+str(latex(rn)) +'$'
+                        str_raizLatex[i] ="\n"+rn+raizEmLatex[i]
+        talEmLatex = [0]*(len(tal))
+        str_talLatex = [0]*(len(tal))
+        str_talLatex[0] = ""
+        for i in range(len(tal)):
+                talEmLatex[i] = '$'+str(latex(round(tal[i],prec))) +'$'
+        if(len(tal) == 1):
+           taln = "\\tau = "
+           taln = '$'+str(latex(taln)) +'$'
+           str_talLatex[i] = taln+talEmLatex[0]
 
+        else:
+                for i in range(len(talEmLatex)):
+                        taln = "\\tau_{"+str(i+1)+"} = "
+                        taln = '$'+str(latex(taln)) +'$'
+                        str_talLatex[i] ="\n"+taln+talEmLatex[i]
 
+        ###-----------FIM----------
 
         ###Setando o tamanho da fonte  para os plots
         font = {'family' : 'Arial',
@@ -983,8 +1030,22 @@ def show_plots():
 
         plt.rc('font', **font)
 
-     
+
+
+
         outputPlots = plt.figure('Plots',facecolor='white')
+
+        plt_txt = plt.subplot(337, frameon=False)
+        plt_txt.get_xaxis().tick_bottom()
+        plt_txt.get_xaxis().set_visible(False)
+        plt_txt.axes.get_yaxis().set_visible(False)
+        plt_txt.text(-0.3, 0.9, idi_raiz+":",fontsize=12)
+        plt.text(0.23, 0.9, idi_tal, fontsize=12)
+        for i in range(len(str_raizLatex)):
+            plt_txt.text(-0.3, 0.7-(0.25*i),str_raizLatex[i], fontsize=12)
+            plt_txt.text(0.23, 0.7-(0.25*i),str_talLatex[i], fontsize=12)
+
+
         plt_yn = plt.subplot(333)
         plt_yn.grid('on')
         plt_yn.set_title(idi_yn)
@@ -1025,7 +1086,7 @@ def show_plots():
         else:
                 plt_r.set_ylim(-1,1)
         plt_r.set_xlim(-(raizesRabs[-1]+ 0.1*raizesRabs[-1]),(raizesRabs[-1]+ 0.1*raizesRabs[-1]))
-        respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx', markersize = 9)
+        respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
         #plt_r.axhline(0, color = 'black',lw =1)
         plt_r.spines['left'].set_position('center')
         plt_r.spines['right'].set_color('none')
@@ -1044,8 +1105,8 @@ def show_plots():
         plt_yp.set_xlabel("t")
         plt_yp.set_ylabel(idi_amp)
         plt_yp.axhline(0, color = 'black',lw =2)
-        # if plotPar[0] == plotXt[-1]:
-        #         plt_yp.set_ylim(ymax = plotPar[0] + 0.2*plotPar[0])
+        if plotPar[0] == plotXt[-1]:
+                plt_yp.set_ylim(ymax = plotPar[0] + 0.2*plotPar[0])
         respParPlot = plt_yp.plot(x_t,plotPar,lw = 2)
 
         plt_yt = plt.subplot(335)
@@ -1080,14 +1141,18 @@ def show_plots():
         plt_yc.axhline(0, color = 'black',lw =2)
         respComPlot = plt_yc.plot(x_t,plotCom,lw = 2)
 
-        #graficos na mesma coluna com o mesmo limite superior no eixo y
-        ymin, ymax = plt_yf1.get_ylim()
-        plt_yp.set_ylim(ymax=ymax)
-        plt_yt.set_ylim(ymax=ymax)
 
-        ymin, ymax = plt_yc.get_ylim()
-        plt_yn.set_ylim(ymax=ymax)
-        plt_yf2.set_ylim(ymax=ymax)
+        if(autoScale==0):
+            #graficos na mesma coluna com o mesmo limite superior no eixo y
+            ymin, ymax = plt_yf1.get_ylim()
+            plt_yp.set_ylim(ymax=ymax)
+            plt_yt.set_ylim(ymax=ymax)
+
+            ymin, ymax = plt_yc.get_ylim()
+            plt_yn.set_ylim(ymax=ymax)
+            plt_yf2.set_ylim(ymax=ymax)
+
+
 
         
 
@@ -1102,9 +1167,9 @@ def idioma_print_latex():
 
     if(lingua==1):
         if(len(Respostas[0])==1):
-            idi_raiz = '$'+latex("Raiz: ")+'$'
+            idi_raiz = '$'+latex("Raiz:\ ")+'$'
         else:
-            idi_raiz = '$'+latex("Raizes: ")+'$'
+            idi_raiz = '$'+latex("Raizes:\ ")+'$'
         if(len(tal)==1):
             idi_tal = '$'+latex("Constante\ de\ tempo:\ ")+'$'
         else:
@@ -1125,9 +1190,9 @@ def idioma_print_latex():
 
     elif(lingua==2):
         if(len(Respostas[0])==1):
-            idi_raiz = '$'+latex("Root: ")+'$'
+            idi_raiz = '$'+latex("Root:\ ")+'$'
         else:
-            idi_raiz = '$'+latex("Roots: ")+'$'
+            idi_raiz = '$'+latex("Roots:\ ")+'$'
         if(len(tal)==1):
             idi_tal = '$'+latex("Time\ constant:\ ")+'$'
         else:
@@ -1148,9 +1213,9 @@ def idioma_print_latex():
 
     else:
         if(len(Respostas[0])==1):
-            idi_raiz = '$'+latex("Raiz: ")+'$'
+            idi_raiz = '$'+latex("Raiz:\ ")+'$'
         else:
-            idi_raiz = '$'+latex("Raices: ")+'$'
+            idi_raiz = '$'+latex("Raices:\ ")+'$'
         if(len(tal)==1):
             idi_tal = '$'+latex("Constante\ de\ tiempo:\ ")+'$'
         else:
@@ -1230,7 +1295,7 @@ def print_latex():
            str_r = idi_raiz
         else:
                 for i in range(len(raizEmLatex)):
-                        rn = "r"+str(i+1)+" = "
+                        rn = "r_{"+str(i+1)+"} = "
                         rn = '$'+str(latex(rn)) +'$'
                         str_raizLatex = str_raizLatex+"    "+rn+raizEmLatex[i]
                 str_r = idi_raiz
@@ -1245,7 +1310,7 @@ def print_latex():
            str_t = idi_tal
         else:
                 for i in range(len(talEmLatex)):
-                        taln = "\\tau"+str(i+1)+" = "
+                        taln = "\\tau_{"+str(i+1)+"} = "
                         taln = '$'+str(latex(taln)) +'$'
                         str_talLatex = str_talLatex+"    "+taln+talEmLatex[i]
                 str_t = idi_tal
@@ -1368,7 +1433,7 @@ def edo_main():
                 ###Dif equation solver
                 ##Sets if it is of homogenous or inhomogenous type and type of resolution method
                 if Respostas[7] == 0:
-                                solvedEq = dsolve(sympify(Respostas[8]), y(t), hint='nth_linear_constant_coeff_homogeneous')
+                                solvedEq = dsolve(sympify(Respostas[8]), y(t), hint='nth_linear_constant_coeff_homogeneous',)
                                 #elif (a3 != 0) or (a4 != 0) or (a5 != 0):
                                 #solvedEq = dsolve(sympify(eq),y(t),hint='nth_linear_constant_coeff_variation_of_parameters')
 
@@ -1378,7 +1443,7 @@ def edo_main():
         
                 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
                 sepEq = solvedEq._args[1]
-                sepEq = sepEq.evalf(prec)
+                #sepEq = sepEq.evalf(prec)
                 print "sepEq", sepEq
                 if const[5] != 0:
                                 RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
@@ -1456,9 +1521,19 @@ def edo_main():
 
                 Respostas[6] = respComp.evalf(prec)  #Adiciona Resposta Completa a lista de respostas
 
+
+
                 for i in range(1,7): #arruma precisao
-                        # Respostas[i] = expand(Respostas[i])
-                        Respostas[i] = nsimplify(Respostas[i], rational = False,tolerance = 1e-4).evalf(prec)
+                        t = map(sympy.Symbol,'t')
+                        #Respostas[i] = sympy.expand(Respostas[i])
+                        #Respostas[i] = sympy.powsimp(Respostas[i])
+                        Respostas[i] = sympy.ratsimp(Respostas[i])
+                        #Respostas[i] = sympy.radsimp(Respostas[i])
+
+                        Respostas[i] = nsimplify(Respostas[i],tolerance = 1e-4).evalf(prec)
+
+
+                        #Respostas[i] = sympy.collect(Respostas[i], t )
         except:
                 pass
 

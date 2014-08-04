@@ -364,14 +364,32 @@ class EDO_Solver:
             canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
             canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
+    def autoScale_handler(self):
+        global checkButton_state, canvas_plots, plot_fig
+
+        print "CheckButton value", checkButton_state.get()
+        set_autoScale(checkButton_state.get())
+
+        canvas_plots.get_tk_widget().destroy()
+        plot_fig.clear()
+
+        plot_fig  = show_plots()
+
+
+        canvas_plots = FigureCanvasTkAgg(plot_fig,self.frame_plot)
+
+        canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
+
+
+
     def slider(self):
 
         self.ScaleMin = Scale(self.TNotebook1_pg1)
-        self.ScaleMin.place(relx=0.08,rely=0.65,relwidth=0.24,relheight=0.0
-                ,height=63,width=45)
+        self.ScaleMin.place(relx=0.265,rely=0.7,relwidth=0.0,relheight=0.17
+                ,height=20,width=45)
         self.ScaleMin.configure(activebackground="#d9d9d9")
         self.ScaleMin.configure(background="white")
-        self.ScaleMin.configure(label = " t = [0...t*tau] - >lim.Min")
+        #self.ScaleMin.configure(label = " t = [0...t*tau] - >lim.Min")
         self.ScaleMin.configure(bd=0)
         #self.Scale1.configure(command=self.new_range)
         self.ScaleMin.configure(highlightthickness="0")
@@ -379,27 +397,27 @@ class EDO_Solver:
         self.ScaleMin.configure(foreground="#000000")
         self.ScaleMin.configure(highlightbackground="#d9d9d9")
         self.ScaleMin.configure(highlightcolor="black")
-        self.ScaleMin.configure(orient="horizontal")
+        self.ScaleMin.configure(orient="vertical")
         self.ScaleMin.configure(troughcolor="#d9d9d9")
         self.ScaleMin.configure(resolution = 0.1)
         self.ScaleMin.set(0)
         
 
         self.ScaleMax = Scale(self.TNotebook1_pg1)
-        self.ScaleMax.place(relx=0.08,rely=0.80,relwidth=0.24,relheight=0.0
-                ,height=63,width=45)
+        self.ScaleMax.place(relx=0.32,rely=0.70,relwidth=0.0,relheight=0.17
+                ,height=20,width=45)
         self.ScaleMax.configure(activebackground="#d9d9d9")
         self.ScaleMax.configure(background="white")
         self.ScaleMax.configure(bd=0)
         #self.Scale1.configure(command=self.new_range)
         self.ScaleMax.configure(highlightthickness="0")
         self.ScaleMax.configure(font="TkTextFont")
-        self.ScaleMax.configure(label = " t = [t*tau...10tau]- >lim.Max")
+        #self.ScaleMax.configure(label = " t = [t*tau...10tau]- >lim.Max")
         self.ScaleMax.configure(foreground="#000000")
         self.ScaleMax.configure(highlightbackground="#d9d9d9")
         self.ScaleMax.configure(resolution = 0.1)
         self.ScaleMax.configure(highlightcolor="black")
-        self.ScaleMax.configure(orient="horizontal")
+        self.ScaleMax.configure(orient="vertical")
         self.ScaleMax.configure(troughcolor="#d9d9d9")
         self.ScaleMax.set(5)
 
@@ -497,10 +515,12 @@ class EDO_Solver:
 
     def __init__(self, master):
         global canvas_latex,canvas_plots,latex_fig,plot_fig,toolbar
-        global  user_input, idi
+        global  user_input, idi, checkButton_state
         self.mast = master
         idi = IntVar()
+        checkButton_state = IntVar()
         idi.set(1)
+        checkButton_state.set(0)
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
@@ -569,6 +589,7 @@ class EDO_Solver:
         self.TNotebook1_pg2 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg2, padding=3)
         self.TNotebook1.tab(2, text="Log Texto",underline="-1",)
+
 
         self.frame_latex = Frame (self.TNotebook1_pg0)
         self.frame_latex.place(relx=-0.06,rely=-0.11,relheight=1.18
@@ -858,6 +879,20 @@ class EDO_Solver:
         self.in_xT.configure(width=226)
         self.in_xT.configure(takefocus="")
         self.in_xT.configure(cursor="ibeam")
+
+        self.autoScaleButton = Checkbutton (self.TNotebook1_pg1)
+        self.autoScaleButton.place(relx=0.21,rely=0.635,relheight=0.04
+                ,relwidth=0.17)
+        self.autoScaleButton.configure(activebackground="#d9d9d9")
+        self.autoScaleButton.configure(activeforeground="#000000")
+        self.autoScaleButton.configure(background="white")
+        self.autoScaleButton.configure(disabledforeground="#a3a3a3")
+        self.autoScaleButton.configure(foreground="#000000")
+        self.autoScaleButton.configure(highlightbackground="#d9d9d9")
+        self.autoScaleButton.configure(highlightcolor="black")
+        self.autoScaleButton.configure(text='''Auto Scale Amplitude''')
+        self.autoScaleButton.configure(variable=checkButton_state)
+        self.autoScaleButton.configure(command=self.autoScale_handler)
 
 
 
