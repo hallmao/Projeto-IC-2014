@@ -1076,7 +1076,17 @@ def show_plots():
                 plt_r.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
         else:
                 plt_r.set_ylim(-1,1)
-        plt_r.set_xlim(-(raizesRabs[-1]+ 0.1*raizesRabs[-1]),(raizesRabs[-1]+ 0.1*raizesRabs[-1]))
+
+
+        if((-(raizesRabs[-1]+ 0.1*raizesRabs[-1])) != (raizesRabs[-1]+ 0.1*raizesRabs[-1]) ):
+            plt_r.set_xlim(-(raizesRabs[-1]+ 0.1*raizesRabs[-1]),(raizesRabs[-1]+ 0.1*raizesRabs[-1]))
+        else:
+            plt_r.set_xlim(-1,1)
+
+
+        # print "xlim max", -(raizesRabs[-1]+ 0.1*raizesRabs[-1])
+        # print "slim min", raizesRabs[-1]+ 0.1*raizesRabs[-1]
+
 
         if(len(plotRaizesT)>1):
             for i in range(len(plotRaizesC)):
@@ -1089,9 +1099,11 @@ def show_plots():
                              respRaizesPlot = plt_r.plot(plotRaizesR[i-1] ,plotRaizesC[i-1] ,'bx',mew=1.5, markersize = 9)
                              respRaizesPlot = plt_r.plot(plotRaizesR[i] - 0.05*plotRaizesR[i],plotRaizesC[i] + 0.05*plotRaizesC[i],'bx',mew=1.5, markersize = 9)
                              #print"Raizes repetidas"
-        else:
+        else:#eqs de ordem 1
             #print "ordem 1"
             respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
+
+
 
                 
         #respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
@@ -1172,6 +1184,16 @@ def show_plots():
 
 def idioma_print_latex():
     global lingua
+    raizRealNeg = 0
+    real = None
+
+    for i in range(len(Respostas[0])):
+
+        if(re(Respostas[0][i]) < 0):
+            raizRealNeg += 1
+        elif(re(Respostas[0][i]) == 0):
+            real = 0
+
 
     if(lingua==1):
         if(len(Respostas[0])==1):
@@ -1182,6 +1204,15 @@ def idioma_print_latex():
             idi_tal = '$'+latex("Constante\ de\ tempo:\ ")+'$'
         else:
             idi_tal = '$'+latex("Constantes\ de\ tempo:\ ")+'$'
+        if(raizRealNeg == len(Respostas[0])):
+            idi_est_sis = '$'+latex("Sistema\ estavel,\ componente\ real\ das\ raizes\ sao\ negativas")+'$'
+        elif(real==0):
+            idi_est_sis = ""
+        else:
+            idi_est_sis = '$'+latex("Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ eh\ positiva")+'$'
+
+
+
         idi_eq = '$'+latex("Equacao\ diferencial:\ ")+'$'
         idi_hom = '$'+latex("Equacao\ homogenea:\ ")+'$'
         idi_car = '$'+latex("Equacao\ caracteristica:\ ")+ '$'
@@ -1194,7 +1225,7 @@ def idioma_print_latex():
         idi_cond_sing = latex("Condicao\ inicial:\ ")
         idi_cond_pl =   latex("Condicoes\ iniciais:\ ")
         str_xt = latex("Entrada\ ")
-        return idi_raiz, idi_tal, idi_eq,idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
+        return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
     elif(lingua==2):
         if(len(Respostas[0])==1):
@@ -1205,6 +1236,14 @@ def idioma_print_latex():
             idi_tal = '$'+latex("Time\ constant:\ ")+'$'
         else:
             idi_tal = '$'+latex("Time\ constants:\ ") +'$'
+        if(raizRealNeg == len(Respostas[0])):
+            idi_est_sis = '$'+latex("Stable\ system,\ roots\ real\ components\ are\ negatives")+'$'
+        elif(real==0):
+            idi_est_sis = ""
+        else:
+            idi_est_sis = '$'+latex("Unstable\ system,\ root\ real\ component\ is\ positive")+'$'
+
+
         idi_eq = '$'+latex("Differential\ Equation:\ ")+'$'
         idi_hom = '$'+latex("Homogenous\ Equation:\ ")+'$'
         idi_car = '$'+latex("Characteristic\ Equation:\ ")+ '$'
@@ -1217,7 +1256,7 @@ def idioma_print_latex():
         idi_cond_sing = latex("Initial\ condition:\ ")
         idi_cond_pl = latex("Initial\ conditions:\ ")
         str_xt = latex("Input\ ")
-        return idi_raiz, idi_tal, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
+        return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
     else:
         if(len(Respostas[0])==1):
@@ -1228,6 +1267,14 @@ def idioma_print_latex():
             idi_tal = '$'+latex("Constante\ de\ tiempo:\ ")+'$'
         else:
             idi_tal = '$'+latex("Constantes\ de\ tiempo:\ ")+'$'
+        if(raizRealNeg == len(Respostas[0])):
+            idi_est_sis = '$'+latex("Sistema\ estable,\ componente\ reales\ de\ las\ raices\ son\ negativas")+'$'
+        elif(real==0):
+            idi_est_sis = ""
+        else:
+            idi_est_sis = '$'+latex("Sistema\ no\ es\ estable,\ componente\ real\ de\ la\ raiz\ es\ positiva")+'$'
+
+
         idi_eq = '$'+latex("Ecuacion\ diferencial:\ ")+'$'
         idi_hom = '$'+latex("Ecuacion\ homogenea:\ ")+'$'
         idi_car = '$'+latex("Ecuacion\ caracteristica:\ ")+ '$'
@@ -1240,14 +1287,14 @@ def idioma_print_latex():
         idi_cond_sing = latex("Condicion\ inicial:\  ")
         idi_cond_pl = latex("Condiciones\ iniciales:\  ")
         str_xt = latex("Entrada\ ")
-        return idi_raiz, idi_tal, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
+        return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
 
 def print_latex():
         global t
 
 
-        idi_raiz, idi_tal, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt = idioma_print_latex()
+        idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt = idioma_print_latex()
         #plt.clf()
         #edo_main()
 
@@ -1307,6 +1354,7 @@ def print_latex():
                         rn = '$'+str(latex(rn)) +'$'
                         str_raizLatex = str_raizLatex+"    "+rn+raizEmLatex[i]
                 str_r = idi_raiz
+
         talEmLatex= [0]*(len(tal))
         str_talLatex=""
         for i in range(len(tal)):
@@ -1351,7 +1399,8 @@ def print_latex():
                  ur'$'+latex("=\ 0")+'$')
 
         plt.text(xdif,0.9-2*dif,str_r+ur''+
-                 str_raizLatex)
+                 str_raizLatex+"    "+
+                  idi_est_sis)
 
         plt.text(xdif,0.9-3*dif,str_t+ur''+str_talLatex)
         
