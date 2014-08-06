@@ -1064,9 +1064,6 @@ def show_plots():
         if plotXt[1] == plotXt[-1]:
                 plt_xt.set_ylim(ymax = plotXt[0] + 0.2*plotXt[0])
         respXtPlot = plt_xt.plot(x_t,plotXt,lw = 2)
-   
-
-        
 
 
         plt_r = plt.subplot(334)
@@ -1074,7 +1071,6 @@ def show_plots():
         plt_r.set_title(idi_raiz)
         plt_r.set_xlabel(idi_real)
         plt_r.set_ylabel(idi_imag)
-
   
         if plotRaizesC[0] != 0:
                 plt_r.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
@@ -1082,20 +1078,21 @@ def show_plots():
                 plt_r.set_ylim(-1,1)
         plt_r.set_xlim(-(raizesRabs[-1]+ 0.1*raizesRabs[-1]),(raizesRabs[-1]+ 0.1*raizesRabs[-1]))
 
-        for i in range(len(plotRaizesC)):
-                if  complex( round ( plotRaizesR[i], 2), round ( plotRaizesC[i], 2) ) !=  complex( round ( plotRaizesR[i-1], 2), round (plotRaizesC[i-1],2 )) :
-                         #print "Raizes Diferentes"
-                         #print "Raiz: ",complex(plotRaizesR[i],plotRaizesC[i])
-                         respRaizesPlot = plt_r.plot(plotRaizesR[i],plotRaizesC[i],'bx',mew=1.5, markersize = 9)
-                         
-                elif (plotRaizesR[i] + plotRaizesC[i]) != 0 and (plotRaizesR[i-1] + plotRaizesC[i-1])  != 0 :
-                         respRaizesPlot = plt_r.plot(plotRaizesR[i-1] ,plotRaizesC[i-1] ,'bx',mew=1.5, markersize = 9)
-                         respRaizesPlot = plt_r.plot(plotRaizesR[i] - 0.05*plotRaizesR[i],plotRaizesC[i] + 0.05*plotRaizesC[i],'bx',mew=1.5, markersize = 9)
-                         #print"Raizes repetidas"
+        if(len(plotRaizesT)>1):
+            for i in range(len(plotRaizesC)):
+                    if  complex( round ( plotRaizesR[i], 2), round ( plotRaizesC[i], 2) ) !=  complex( round ( plotRaizesR[i-1], 2), round (plotRaizesC[i-1],2 )) :
+                             #print "Raizes Diferentes"
+                             #print "Raiz: ",complex(plotRaizesR[i],plotRaizesC[i])
+                             respRaizesPlot = plt_r.plot(plotRaizesR[i],plotRaizesC[i],'bx',mew=1.5, markersize = 9)
 
-   
-        #respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
-        #print "Raizes não Repetidas"
+                    elif (plotRaizesR[i] + plotRaizesC[i]) != 0 and (plotRaizesR[i-1] + plotRaizesC[i-1])  != 0 :
+                             respRaizesPlot = plt_r.plot(plotRaizesR[i-1] ,plotRaizesC[i-1] ,'bx',mew=1.5, markersize = 9)
+                             respRaizesPlot = plt_r.plot(plotRaizesR[i] - 0.05*plotRaizesR[i],plotRaizesC[i] + 0.05*plotRaizesC[i],'bx',mew=1.5, markersize = 9)
+                             #print"Raizes repetidas"
+        else:
+            #print "ordem 1"
+            respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
+
                 
         #respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
         #plt_r.axhline(0, color = 'black',lw =1)
