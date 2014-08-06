@@ -71,7 +71,7 @@ def vp_start_gui():
     w = EDO_Solver (root)
     w.set_bind_options()
     root.protocol("WM_DELETE_WINDOW",destroy_EDO_Solver)
-    w.set_bind_entries()
+    #w.set_bind_entries()
     v5_support.init(root, w)
    # w.slider()
 
@@ -381,11 +381,17 @@ class EDO_Solver:
         canvas_plots.get_tk_widget().pack(side = TOP,fill = BOTH, expand = 1)
 
 
+    def tau_SliderText_handler(self,event):
+        self.tau_label.configure(text=
+                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + "  "+
+                                                  str(self.ScaleMax.get() ) +  u"\u03C4")
+
+
 
     def slider(self):
 
         self.ScaleMin = Scale(self.TNotebook1_pg1)
-        self.ScaleMin.place(relx=0.265,rely=0.7,relwidth=0.0,relheight=0.17
+        self.ScaleMin.place(relx=0.28,rely=0.7,relwidth=0.0,relheight=0.17
                 ,height=20,width=45)
         self.ScaleMin.configure(activebackground="#d9d9d9")
         self.ScaleMin.configure(background="white")
@@ -393,6 +399,7 @@ class EDO_Solver:
         self.ScaleMin.configure(bd=0)
         #self.Scale1.configure(command=self.new_range)
         self.ScaleMin.configure(highlightthickness="0")
+        self.ScaleMin.configure(showvalue=0)
         self.ScaleMin.configure(font="TkTextFont")
         self.ScaleMin.configure(foreground="#000000")
         self.ScaleMin.configure(highlightbackground="#d9d9d9")
@@ -405,7 +412,7 @@ class EDO_Solver:
         
 
         self.ScaleMax = Scale(self.TNotebook1_pg1)
-        self.ScaleMax.place(relx=0.32,rely=0.70,relwidth=0.0,relheight=0.17
+        self.ScaleMax.place(relx=0.335,rely=0.70,relwidth=0.0,relheight=0.17
                 ,height=20,width=45)
         self.ScaleMax.configure(activebackground="#d9d9d9")
         self.ScaleMax.configure(background="white")
@@ -413,6 +420,7 @@ class EDO_Solver:
         #self.Scale1.configure(command=self.new_range)
         self.ScaleMax.configure(highlightthickness="0")
         self.ScaleMax.configure(font="TkTextFont")
+        self.ScaleMax.configure(showvalue=0)
         #self.ScaleMax.configure(label = " *Tau")
         #self.ScaleMax.configure(variable = "*tau")
         self.ScaleMax.configure(foreground="#000000")
@@ -424,12 +432,19 @@ class EDO_Solver:
         self.ScaleMax.set(5)
 
         # Init Parameters
+        
         self.ScaleMin.configure(from_=0.0,  to=  ( 9 - self.ScaleMax.get()  ) )
+        self.ScaleMin.bind("<B1-Motion>",self.tau_SliderText_handler)
         self.ScaleMin.bind("<ButtonRelease-1>", self.new_range)
+        
+        #self.ScaleMin.bind("<ButtonRelease-1>",self.tau_SliderText_handler)
+       
 
         
         self.ScaleMax.configure(from_= self.ScaleMin.get()+1,   to= 10.0  )
+        self.ScaleMax.bind("<B1-Motion>",self.tau_SliderText_handler)
         self.ScaleMax.bind("<ButtonRelease-1>", self.new_range)
+        
 
 
     def abaPlots_handler(self,event):
@@ -495,23 +510,6 @@ class EDO_Solver:
             set_lingua(3)
             self.update_saida()
             #print "espanol"
-
-    def set_bind_entries(self):
-        pass
-
-        #KeyRelease
-        #FocusOut
-        #<Leave>
-        #Key
-
-
-
-        #self.in_a2.bind("<Leave>",self.a2_handler)
-        #self.in_a1.bind("<Leave>",self.a1_handler)
-        #self.in_a0.bind("<Leave>",self.a0_handler)
-        #self.in_xT.bind("<Leave>",self.inxT_handler)
-        #self.in_y0.bind("<Leave>",self.y0_handler)
-        #self.in_dy0.bind("<Leave>",self.dy0_handler)
 
 
 
@@ -883,7 +881,7 @@ class EDO_Solver:
         self.in_xT.configure(cursor="ibeam")
 
         self.autoScaleButton = Checkbutton (self.TNotebook1_pg1)
-        self.autoScaleButton.place(relx=0.21,rely=0.635,relheight=0.04
+        self.autoScaleButton.place(relx=0.25,rely=0.635,relheight=0.04
                 ,relwidth=0.17)
         self.autoScaleButton.configure(activebackground="#d9d9d9")
         self.autoScaleButton.configure(activeforeground="#000000")
@@ -895,6 +893,9 @@ class EDO_Solver:
         self.autoScaleButton.configure(text='''Auto Scale Amplitude''')
         self.autoScaleButton.configure(variable=checkButton_state)
         self.autoScaleButton.configure(command=self.autoScale_handler)
+
+
+     
 
 
 
@@ -939,6 +940,24 @@ class EDO_Solver:
         self.saida_log_txt.insert(END,log_print())
 
         self.slider()
+
+        self.tau_label = Label (self.TNotebook1_pg1)
+        self.tau_label.configure(width=1002)
+        self.tau_label.place(relx=0.28,rely=0.92,height=20,width=120)
+        self.tau_label.configure( anchor="nw")
+        self.tau_label.configure(activebackground="white")
+        self.tau_label.configure(activeforeground="black")
+        self.tau_label.configure(background="white")
+        self.tau_label.configure(disabledforeground="#a3a3a3")
+        self.tau_label.configure(foreground="#000000")
+        self.tau_label.configure(highlightbackground="#d9d9d9")
+        self.tau_label.configure(highlightcolor="black")
+        self.tau_label.configure(text=
+                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + "  "+
+                                                  str(self.ScaleMax.get() ) +  u"\u03C4")
+
+         
+        
 
 
 
