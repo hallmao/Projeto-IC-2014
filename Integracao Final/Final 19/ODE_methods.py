@@ -1209,7 +1209,7 @@ def idioma_print_latex():
         elif(real==0):
             idi_est_sis = ""
         else:
-            idi_est_sis = '$'+latex("Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ eh\ positiva")+'$'
+            idi_est_sis = '$'+latex("Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ e\ positiva")+'$'
 
 
 
