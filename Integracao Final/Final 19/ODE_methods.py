@@ -866,6 +866,7 @@ def idioma_show_plots():
     if(lingua==1):
         idi_amp = "Amplitude"
         idi_yn = "Ynat(t)"
+        idi_plot_raiz = u"Mapa de raízes da equação característica"
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz"
         else:
@@ -880,11 +881,12 @@ def idioma_show_plots():
         idi_yt = "Ytrans(t)"
         idi_yf = "Yforc(t)"
         idi_yc = "Yc(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc, idi_plot_raiz
 
     elif(lingua==2):
         idi_amp = "Amplitude"
         idi_yn = "Ynat(t)"
+        idi_plot_raiz =  "Characteristic equation roots mapping"
         if(len(Respostas[0])==1):
             idi_raiz = "Root"
         else:
@@ -899,11 +901,12 @@ def idioma_show_plots():
         idi_yt = "Ytrans(t)"
         idi_yf = "Yforc(t)"
         idi_yc = "Ycomplete(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc, idi_plot_raiz
 
     else:
         idi_amp = "Amplitud"
         idi_yn = "ynat(t)"
+        idi_plot_raiz = u"Mapa de raíces de la ecuación caracterisitica"
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz"
         else:
@@ -918,12 +921,12 @@ def idioma_show_plots():
         idi_yt = "ytrans(t)"
         idi_yf = "yforz(t)"
         idi_yc = "yc(t)"
-        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc
+        return idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc, idi_plot_raiz
 
 
 def show_plots():
         global tal, limx_max, limx_min, autoScale
-        idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc = idioma_show_plots()
+        idi_amp, idi_yn, idi_raiz, idi_tal, idi_real, idi_imag, idi_yp, idi_yt, idi_yf, idi_yc,idi_plot_raiz = idioma_show_plots()
 
         #plt.clf()
         plots_numpy = conversao_numpy(t)
@@ -1072,7 +1075,7 @@ def show_plots():
 
         plt_r = plt.subplot(334)
         plt_r.grid('on')
-        plt_r.set_title(idi_raiz)
+        plt_r.set_title(idi_plot_raiz)
         plt_r.set_xlabel(idi_real)
         plt_r.set_ylabel(idi_imag)
   
@@ -1216,7 +1219,7 @@ def idioma_print_latex():
             idi_est_sis = '$'+latex("Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ e\ positiva")+'$'
 
 
-
+       
         idi_eq = '$'+latex("Equacao\ diferencial:\ ")+'$'
         idi_hom = '$'+latex("Equacao\ homogenea:\ ")+'$'
         idi_car = '$'+latex("Equacao\ caracteristica:\ ")+ '$'
