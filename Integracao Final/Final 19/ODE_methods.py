@@ -1132,7 +1132,7 @@ def show_plots():
         plt_yp.set_xlabel("t")
         plt_yp.set_ylabel(idi_amp)
         plt_yp.axhline(0, color = 'black',lw =2)
-        if plotPar[0] == plotXt[2]:
+        if plotPar[0] == plotXt[1]:
                 plt_yp.set_ylim(ymax = plotPar[0] + 0.2*plotPar[0])
         respParPlot = plt_yp.plot(x_t,plotPar,lw = 2)
 
@@ -1337,12 +1337,14 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'serif' : 'Times',
-                'weight' : 'bold',
-                'size'   : 15}
+        font = {'serif' : 'Times New Roman',
+                'weight' : 'normal',
+                'size'   : 14}
 
 
         plt.rc('font', **font)
+        plt.rcParams[ 'mathtext.default' ] = 'regular'
+        #plt.rcParams['mathtext.fontset'] =  'stix'
 
         ##Obtendo as respostas em Latex
         RespostasEmLatex = [0]*(len(Respostas))

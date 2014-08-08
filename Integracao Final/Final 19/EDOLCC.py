@@ -392,7 +392,7 @@ class EDO_Solver:
 
         self.ScaleMin = Scale(self.TNotebook1_pg1)
         self.ScaleMin.place(relx=0.28,rely=0.7,relwidth=0.0,relheight=0.17
-                ,height=20,width=40)
+                ,height=20,width=20)
         self.ScaleMin.configure(activebackground="#d9d9d9")
         self.ScaleMin.configure(background="white")
         #self.ScaleMin.configure(label = " *Tau")
@@ -413,7 +413,7 @@ class EDO_Solver:
 
         self.ScaleMax = Scale(self.TNotebook1_pg1)
         self.ScaleMax.place(relx=0.33,rely=0.70,relwidth=0.0,relheight=0.17
-                ,height=20,width=40)
+                ,height=20,width=20)
         self.ScaleMax.configure(activebackground="#d9d9d9")
         self.ScaleMax.configure(background="white")
         self.ScaleMax.configure(bd=0)
