@@ -383,7 +383,7 @@ class EDO_Solver:
 
     def tau_SliderText_handler(self,event):
         self.tau_label.configure(text=
-                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + "  "+
+                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + ""+
                                                   str(self.ScaleMax.get() ) +  u"\u03C4")
 
 
@@ -412,7 +412,7 @@ class EDO_Solver:
         
 
         self.ScaleMax = Scale(self.TNotebook1_pg1)
-        self.ScaleMax.place(relx=0.335,rely=0.70,relwidth=0.0,relheight=0.17
+        self.ScaleMax.place(relx=0.33,rely=0.70,relwidth=0.0,relheight=0.17
                 ,height=20,width=45)
         self.ScaleMax.configure(activebackground="#d9d9d9")
         self.ScaleMax.configure(background="white")
@@ -943,7 +943,7 @@ class EDO_Solver:
 
         self.tau_label = Label (self.TNotebook1_pg1)
         self.tau_label.configure(width=1002)
-        self.tau_label.place(relx=0.28,rely=0.92,height=20,width=120)
+        self.tau_label.place(relx=0.28,rely=0.92,height=20,width=100)
         self.tau_label.configure( anchor="nw")
         self.tau_label.configure(activebackground="white")
         self.tau_label.configure(activeforeground="black")
@@ -953,7 +953,7 @@ class EDO_Solver:
         self.tau_label.configure(highlightbackground="#d9d9d9")
         self.tau_label.configure(highlightcolor="black")
         self.tau_label.configure(text=
-                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + "  "+
+                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + ""+
                                                   str(self.ScaleMax.get() ) +  u"\u03C4")
 
          

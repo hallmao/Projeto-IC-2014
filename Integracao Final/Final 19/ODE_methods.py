@@ -1,4 +1,5 @@
-﻿from matplotlib.figure import Figure
+﻿
+from matplotlib.figure import Figure
 #from numpy.core.defchararray import decode, replace
 import sympy.assumptions.handlers.calculus
 import sympy.assumptions.handlers.ntheory
@@ -9,6 +10,7 @@ from sympy import Function, exp, cos,  sympify, dsolve, symbols,mpmath, solve, l
 from sympy.abc import t, tau
 import matplotlib.pyplot as plt
 from numpy import array
+
 
 from sympy.mpmath import mp
 
@@ -1025,10 +1027,11 @@ def show_plots():
 
         ###Setando o tamanho da fonte  para os plots
         font = {'family' : 'Arial',
-        'weight' : 'normal',
-        'size'   : 8}
+        'weight' : 'bold',
+        'size'   : 10}
 
-        plt.rc('font', **font)
+        #plt.rc('text',usetex = True)
+        plt.rc('font',**font)
 
 
 
@@ -1056,7 +1059,8 @@ def show_plots():
 
         plt_xt = plt.subplot(331)
         plt_xt.grid('on')
-        plt_xt.set_title("x(t)")
+        plt_xt.set_title(ur'x(t) = (' +'$'+  latex(Respostas[7])+'$' + ')u(t) ')
+        #plt_xt.set_title(r' textbf{x(t)}' )  
         plt_xt.set_xlabel("t")
         plt_xt.set_ylabel(idi_amp)
         plt_xt.axhline(0, color = 'black',lw =2)
@@ -1330,8 +1334,8 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'serif' : 'New Century Schoolbook',
-                'weight' : 'normal',
+        font = {'serif' : 'Times',
+                'weight' : 'bold',
                 'size'   : 15}
 
 
