@@ -469,15 +469,15 @@ class EDO_Solver:
         global idi
         #print "Idioma:",idi.get()
         if (idi.get() == 1): #Port
-            self.menubar.entryconfig(2,label="Notacao")
-            self.menubar.entryconfig(3,label="DigitosFracionarios")
+            self.menubar.entryconfig(2,label="Notação")
+            self.menubar.entryconfig(3,label="DigitosFracionários")
             self.digitosfracionarios.entryconfig(0,label="2 Digitos")
             self.digitosfracionarios.entryconfig(1,label="3 Digitos")
             self.digitosfracionarios.entryconfig(2,label="4 Digitos")
-            self.TNotebook1.tab(0,text="Representacao Algebrica")
-            self.TNotebook1.tab(1,text="Graficos")
+            self.TNotebook1.tab(0,text=u"Representação Algébrica")
+            self.TNotebook1.tab(1,text=u"Gráficos")
             self.TNotebook1.tab(2,text="Log Texto")
-            self.cond_ini_label.configure(text='''Condicoes  Iniciais     y(0) =                         y'(0) =''')
+            self.cond_ini_label.configure(text=u'''Condições  Iniciais     y(0) =                         y'(0) =''')
             self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
             set_lingua(1)
             self.update_saida()
@@ -556,7 +556,7 @@ class EDO_Solver:
         self.cond_ini_label.configure(highlightbackground="#d9d9d9")
         self.cond_ini_label.configure(highlightcolor="#000000")
         self.cond_ini_label.configure(relief=RIDGE)
-        self.cond_ini_label.configure(text='''Condicoes  Iniciais     y(0) =                         y'(0) =''')
+        self.cond_ini_label.configure(text=u'''Condições  Iniciais     y(0) =                         y'(0) =''')
 
         self.xT_label = Label (master)
         self.xT_label.place(relx=0.57,rely=0.095,height=63,width=442)
@@ -582,10 +582,10 @@ class EDO_Solver:
         self.TNotebook1.configure(takefocus="")
         self.TNotebook1_pg0 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg0, padding=3)
-        self.TNotebook1.tab(0, text="Representacao Algebrica",underline="-1",)
+        self.TNotebook1.tab(0, text=u"Representação Algébrica",underline="-1",)
         self.TNotebook1_pg1 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg1, padding=3)
-        self.TNotebook1.tab(1, text="Graficos",underline="-1",)
+        self.TNotebook1.tab(1, text=u"Gráficos",underline="-1",)
         self.TNotebook1_pg2 = ttk.Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_pg2, padding=3)
         self.TNotebook1.tab(2, text="Log Texto",underline="-1",)
@@ -739,7 +739,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 command=self.set_idiomas,
                 foreground="#000000",
-                label="Portugues")
+                label=u"Português")
         self.idioma.add_radiobutton(
                 variable = idi,
                 value=2, # English
@@ -757,7 +757,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 command=self.set_idiomas,
                 foreground="#000000",
-                label="Espanol")
+                label=u"Español")
 
         self.notacao = Menu(master,tearoff=0)
         self.menubar.add_cascade(menu=self.notacao,
@@ -766,7 +766,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 foreground="#000000",
                 state="disabled",                 
-                label="Notacao")
+                label=u"Notação")
         self.notacao.add_radiobutton(
                 value="Leibniz",
                 activebackground="#d9d9d9",
@@ -806,7 +806,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 foreground="#000000",
                 state="disabled",
-                label="DigitosFracionarios")
+                label=u"DigitosFracionários")
         self.digitosfracionarios.add_radiobutton(
                 value="2 Digitos",
                 activebackground="#d9d9d9",

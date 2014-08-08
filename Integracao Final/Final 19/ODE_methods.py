@@ -1212,11 +1212,11 @@ def idioma_print_latex():
         else:
             idi_tal = '$'+latex("Constantes\ de\ tempo:\ ")+'$'
         if(raizRealNeg == len(Respostas[0])):
-            idi_est_sis = '$'+latex("Sistema\ estavel,\ componente\ real\ das\ raizes\ sao\ negativas")+'$'
+            idi_est_sis = '$'+latex(u"Sistema\ estavel,\ componente\ real\ das\ raizes\ sao\ negativas")+'$'
         elif(real==0):
             idi_est_sis = ""
         else:
-            idi_est_sis = '$'+latex("Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ e\ positiva")+'$'
+            idi_est_sis = '$'+latex(u"Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ e\ positiva")+'$'
 
 
        
@@ -1229,8 +1229,8 @@ def idioma_print_latex():
         idi_yt = '$'+latex("Y_{trans}(t) = ")+'$'
         idi_yf = '$'+latex("Y_{forc}(t) = ")+'$'
         idi_yc = '$'+latex("Y_c(t) = ")+'$'
-        idi_cond_sing = latex("Condicao\ inicial:\ ")
-        idi_cond_pl =   latex("Condicoes\ iniciais:\ ")
+        idi_cond_sing = u"Condição\  inicial:\ "
+        idi_cond_pl =    latex("Condicoes\ iniciais: \"")
         str_xt = latex("Entrada\ ")
         return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
@@ -1337,14 +1337,16 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'serif' : 'Times New Roman',
+        font = {'family' : 'Arial',
                 'weight' : 'normal',
-                'size'   : 14}
+                'size'   : 15}
 
 
         plt.rc('font', **font)
         plt.rcParams[ 'mathtext.default' ] = 'regular'
-        #plt.rcParams['mathtext.fontset'] =  'stix'
+        plt.rcParams['text.latex.unicode'] =  'True'
+        #plt.rcParams['mathtext.bf'] = 'serif:bold'
+      
 
         ##Obtendo as respostas em Latex
         RespostasEmLatex = [0]*(len(Respostas))
