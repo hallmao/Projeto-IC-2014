@@ -1029,8 +1029,8 @@ def show_plots():
         ###-----------FIM----------
 
         ###Setando o tamanho da fonte  para os plots
-        font = {'family' : 'Arial',
-        'weight' : 'bold',
+        font = {#'family' : 'Arial',
+        #'weight' : 'normal',
         'size'   : 10}
 
         #plt.rc('text',usetex = True)
@@ -1337,8 +1337,8 @@ def print_latex():
         ##Perfumaria
         dif = 0.9 -0.77
         xdif = -0.15
-        font = {'family' : 'Arial',
-                'weight' : 'normal',
+        font = {#'family' : 'Arial',
+                #'weight' : 'normal',
                 'size'   : 15}
 
 
