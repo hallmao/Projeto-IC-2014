@@ -210,6 +210,60 @@ def init(a2, a1, a0, xT, y0, dy0):
         edo_main()
         
 
+def  evaluate_roots(roots):
+
+        print "Metodo Evaluate Roots"
+
+        print roots,len(roots)
+
+        RaizesC = [0]*len(roots)
+        RaizesR = [0]*len(roots)
+        output  = [0]*len(roots)
+
+        for i in range(len(roots)):
+
+                print "for loop",i
+
+                RaizesC[i] = im(roots[i])
+                RaizesR[i] = re(roots[i])
+                print RaizesR[i]
+                print RaizesC[i]
+
+                if RaizesC[i] != 0 and RaizesR[i] != 0:
+
+                        ratio  = 0
+
+                        ratio = abs(RaizesC[i]/RaizesR[i])
+                        flagRatio = False
+
+
+                        print "Ratio: ",ratio
+
+
+                        if ratio <  (1.0/100):
+                                print "Parte complexa ignorada"
+
+                                output[i] = complex(RaizesR[i],0)
+
+
+                        elif ratio > 100:
+                                print "Parte real ignorada"
+
+                                output[i] = complex(0,RaizesC[i])
+                        else:
+                                print "Only output"
+                                output[i] = complex(RaizesR[i],RaizesC[i])
+
+
+
+                else:
+                        print "Only output"
+                        output[i] = complex(RaizesR[i],RaizesC[i])
+
+        print "Raizes ---:",output
+        return output
+
+
 def raizes():
                 #polyroots retorna uma lista
                 if(const[5] != 0):
@@ -228,7 +282,8 @@ def raizes():
                                 roots = mpmath.polyroots([const[1], const[0]])
                            # print roots[0]
 
-                Respostas[0] = roots
+                Respostas[0] = evaluate_roots(roots)
+
 
 def cte_tempo():
                 global tal, maiorTal, limx_max, limx_min
@@ -1475,6 +1530,20 @@ def print_latex():
         return log_figure
 
 
+def subs_rootof(eq):
+
+    rootOf_list = eq.find("RootOf")
+    rootOf_list = list(rootOf_list)
+
+    for i in range(len(rootOf_list)-1):
+        eq = eq.replace(str(rootOf_list[i]),str(Respostas[0][((len(Respostas[0])-2)-i)]))
+
+    eq = eq.replace(str(rootOf_list[-1]),str(Respostas[0][-1]))
+
+    print eq
+
+
+
 def edo_main():
         global t
         #const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
@@ -1515,6 +1584,7 @@ def edo_main():
                 sepEq = solvedEq._args[1]
                 #sepEq = sepEq.evalf(prec)
                 print "sepEq", sepEq
+
                 if const[5] != 0:
                                 RespPart = sepEq.subs([(C1, 0), (C2, 0), (C3, 0), (C4, 0), (C5, 0)])
                 elif const[4] != 0:
@@ -1529,14 +1599,22 @@ def edo_main():
 
                 ##Resposta transitória alocada em  RespTran, natural em RespNat
                 #print "Equacao:",sepEq
-               # print "RespPart",RespPart
+                #print "RespPart",RespPart
                 Respostas[3] = RespPart.evalf(prec)
                 sepEq = expand(sepEq) #conserta o erro das raizes iguais com entrada igual
                 #a eq vinha simplificada e o metodo subs nao reconhecia o RespPart na sepEq, por isso dava erro
                 #print "Equacao:",sepEq
                 formaNatural = sepEq - RespPart #usar o metodo subs aqui da problema em algumas situações
                 #print "FN=",formaNatural
-                
+
+                raizes()
+                print Respostas[0]
+                cte_tempo()
+
+                str_fn = str(formaNatural)
+
+                if str_fn.find("RootOf") != -1:
+                    subs_rootof(formaNatural)
                 
                 ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
                 ##isso é válido no método conds_iniciais_aplicadas
@@ -1551,9 +1629,6 @@ def edo_main():
 
                 
                 rP = RespPart.evalf(prec)
-                raizes()
-                print Respostas[0]
-                cte_tempo()
                 conds_iniciais_aplicadas(fN, rP)
 
                 respForc = Respostas[4] + Respostas[3] #Yf = Yt + Yp
