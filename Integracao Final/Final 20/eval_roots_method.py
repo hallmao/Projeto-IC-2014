@@ -1,3 +1,4 @@
+
 def  evaluate_roots(roots):
 
         print "Metodo Evaluate Roots"
@@ -19,16 +20,29 @@ def  evaluate_roots(roots):
 
                 if RaizesC[i] != 0 and RaizesR[i] != 0:
 
-                        if RaizesC[i] < (1.0/100)*RaizesR[i]:
+                        ratio  = 0
+
+                        ratio = abs(RaizesC[i]/RaizesR[i])
+                        flagRatio = False
+
+
+                        print "Ratio: ",ratio
+
+                        
+                        if ratio <  (1.0/100):
                                 print "Parte complexa ignorada"
 
                                 output[i] = complex(RaizesR[i],0)
 
 
-                        elif RaizesR[i] < (1.0/100)*RaizesC[i]:
+                        elif ratio > 100:
                                 print "Parte real ignorada"
 
                                 output[i] = complex(0,RaizesC[i])
+                        else:
+                                print "Only output"
+                                output[i] = complex(RaizesR[i],RaizesC[i])
+                                
          
  
                 else:
