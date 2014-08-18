@@ -404,6 +404,8 @@ def conds_iniciais_aplicadas(fN, rP):
 
                                                 #print "Resposta Transitoria:"
                                                 #pprint(respTrans)
+                                else:
+                                    Respostas[4] = 0
 
 
 
@@ -481,6 +483,8 @@ def conds_iniciais_aplicadas(fN, rP):
                                                 Respostas[4] = respTrans.evalf(prec) #Adiciona Resposta Transitoria a lista de respostas
                                                 #print "Respsota Transitoria:"
                                                 #pprint(respTrans)
+                                else:
+                                    Respostas[4] = 0
 
 
 
@@ -571,6 +575,8 @@ def conds_iniciais_aplicadas(fN, rP):
 
                                                 #print "Respsota Transitoria:"
                                            # pprint(respTrans)
+                                else:
+                                    Respostas[4] = 0
 
 
                 #Ordem 4
@@ -663,6 +669,8 @@ def conds_iniciais_aplicadas(fN, rP):
 
                                                 #print "Respsota Transitoria:"
                                            # pprint(respTrans)
+                                else:
+                                    Respostas[4] = 0
 
 
                 #Ordem 5
@@ -763,6 +771,8 @@ def conds_iniciais_aplicadas(fN, rP):
 
                                                 #print "Respsota Transitoria:"
                                                 #pprint(respTrans)
+                                else:
+                                    Respostas[4] = 0
 
 
 
@@ -898,13 +908,13 @@ def log_print():
         #print str_yn
 
         if(Respostas[7] != 0):
-            str_yp = idi_yp+"( "+str(Respostas[3])+" )*u(t)"
+            str_yp = idi_yp+"( "+str(Respostas[3])+" )*u(t)\n"
             #print str_yp
 
-            str_ytrans = idi_ytrans+"( "+str(Respostas[4])+" )*u(t)"
+            str_ytrans = idi_ytrans+"( "+str(Respostas[4])+" )*u(t)\n"
             #print str_ytrans
 
-            str_yforc = idi_yf+"( "+str(Respostas[5])+" )*u(t)"
+            str_yforc = idi_yf+"( "+str(Respostas[5])+" )*u(t)\n"
             #print str_yforc
         else:
             str_yp = ""
@@ -919,7 +929,7 @@ def log_print():
         else: #eq ordem 2
             str_cond_ini = idi_cond_pl+"y(0) = "+str(cond_ini[0])+"    y'(0) = "+str(cond_ini[1])
 
-        str_resp = eqGer+"\n"+eqHom+"\n"+eqCar+"\n"+str_raiz+"\n"+str_tal+"\n"+str_yfn+"\n"+str_cond_ini+"\n"+str_yn+"\n"+str_xT+"\n"+str_yp+"\n"+str_ytrans+"\n"+str_yforc+"\n"+str_yc
+        str_resp = eqGer+"\n"+eqHom+"\n"+eqCar+"\n"+str_raiz+"\n"+str_tal+"\n"+str_yfn+"\n"+str_cond_ini+"\n"+str_yn+"\n"+str_xT+"\n"+str_yp+str_ytrans+str_yforc+str_yc
         #print str_resp
 
         #return c tds as respostas em uma variavel
@@ -1087,6 +1097,13 @@ def show_plots():
                     plotTran[i]    = plots_numpy[4](x_t[ultimo_valido])
                     plotFor[i]     = plots_numpy[5](x_t[ultimo_valido])
                     plotCom[i]     = plots_numpy[6](x_t[ultimo_valido])
+        print "plotXt", plotXt[0],plotXt[-1]
+        print "plotN", plotNat[0],plotNat[-1]
+        print "plotP", plotPar[0],plotPar[-1]
+        print "plotT", plotTran[0],plotTran[-1]
+        print "plotF", plotFor[0],plotFor[-1]
+        print "plotC", plotCom[0],plotCom[-1]
+
 
         ###-----raiz e tau em latex----####
         raizEmLatex = [0]*(len(Respostas[0]))
@@ -1156,22 +1173,23 @@ def show_plots():
         plt_xt = plt.subplot(331)
         plt_xt.grid('on')
         plt_xt.set_title(ur'x(t) = (' +'$'+  latex(Respostas[7])+'$' + ')u(t) ')
-        #plt_xt.set_title(r' textbf{x(t)}' )  
+        #plt_xt.set_title(r' textbf{x(t)}' )
         plt_xt.set_xlabel("t")
         plt_xt.set_ylabel(idi_amp)
         plt_xt.axhline(0, color = 'black',lw =2)
         plt_xt.axvline(-0.01, color = 'black',lw =2)
-        if plotXt[1] == plotXt[-1]:
+        if plotXt[0] == plotXt[-1]:
                 plt_xt.set_ylim(ymax = plotXt[0] + 0.2*plotXt[0])
+                if plotXt[0] == 0:
+                    plt_xt.set_ylim(ymin=-0.2,ymax=0.2)
         respXtPlot = plt_xt.plot(x_t,plotXt,lw = 2)
-
 
         plt_r = plt.subplot(334)
         plt_r.grid('on')
         plt_r.set_title(idi_plot_raiz)
         plt_r.set_xlabel(idi_real)
         plt_r.set_ylabel(idi_imag)
-  
+
         if plotRaizesC[0] != 0:
                 plt_r.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
         else:
@@ -1205,7 +1223,7 @@ def show_plots():
 
 
 
-                
+
         #respRaizesPlot = plt_r.plot(plotRaizesR,plotRaizesC,'bx',mew=1.5, markersize = 9)
         #plt_r.axhline(0, color = 'black',lw =1)
         plt_r.spines['left'].set_position('center')
@@ -1225,8 +1243,10 @@ def show_plots():
         plt_yp.set_xlabel("t")
         plt_yp.set_ylabel(idi_amp)
         plt_yp.axhline(0, color = 'black',lw =2)
-        if plotPar[0] == plotXt[1]:
+        if plotPar[0] == plotPar[-1]:
                 plt_yp.set_ylim(ymax = plotPar[0] + 0.2*plotPar[0])
+                if plotPar[0] == 0:
+                    plt_yp.set_ylim(ymin=-0.2,ymax=0.2)
         respParPlot = plt_yp.plot(x_t,plotPar,lw = 2)
 
         plt_yt = plt.subplot(335)
@@ -1265,16 +1285,13 @@ def show_plots():
         if(autoScale==0):
             #graficos na mesma coluna com o mesmo limite superior no eixo y
             ymin, ymax = plt_yf1.get_ylim()
-            plt_yp.set_ylim(ymax=ymax)
-            plt_yt.set_ylim(ymax=ymax)
+            plt_yp.set_ylim(ymin=ymin, ymax=ymax)
+            plt_yt.set_ylim(ymin=ymin, ymax=ymax)
 
             ymin, ymax = plt_yc.get_ylim()
-            plt_yn.set_ylim(ymax=ymax)
-            plt_yf2.set_ylim(ymax=ymax)
+            plt_yn.set_ylim(ymin=ymin, ymax=ymax)
+            plt_yf2.set_ylim(ymin=ymin, ymax=ymax)
 
-
-
-        
 
         plt.subplots_adjust(left=0.08, bottom=0.10, right=0.97, top=0.95,
                                         wspace=0.46, hspace=0.64)
@@ -1657,6 +1674,7 @@ def subs_rootof(eq):
 
 def edo_main():
         global t
+
         #const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
 
         ##Criando uma variavel para guardar valores digitados anteriormente,este só vai calcular as coisas novamente se
