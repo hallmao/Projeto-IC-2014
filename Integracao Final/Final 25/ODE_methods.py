@@ -1518,23 +1518,55 @@ def print_latex():
         # eqDiferencialEntradaLatex = latex(eqD)
 
 #-------------------Equacao diferencial em Latex na ordem correta-------------------------------
-        eqD = str(const[2])+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}" # as partes escritas entre as aspas sao as formulas das derivadas em latex
-        eqC = str(const[2])+"r^{2}"
-        if(const[1]<0):
-            eqD = eqD+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
-            eqC = eqC+str(const[1])+"r"
-        else:
-            eqD = eqD+"+"+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
-            eqC = eqC+"+"+str(const[1])+"r"
-        if(const[0]<0):
-            eqD = eqD+str(const[0])+"y{\left (t \\right )}"
-            eqC = eqC+str(const[0])
-        else:
-            eqD = eqD+"+"+str(const[0])+"y{\left (t \\right )}"
-            eqC = eqC+"+"+str(const[0])
 
-        eqDiferencialEntradaLatex = latex(eqD)
-        eqCaracEmLatex = latex(eqC)
+        str_const=[str(const[0]), str(const[1]), str(const[2]), str(const[3]), str(const[4]), str(const[5])]
+
+        for i in range(len(const)):
+            if(const[i]>0):
+                str_const[i] = "+"+str_const[i]
+
+        str_eq = ""
+        str_eqC = ""
+        if(const[0] != 0):
+            str_eq = str_const[0]+"y{\left (t \\right )}"
+            str_eqC = str_const[0]
+        if(const[1] != 0):
+            str_eq = str_const[1]+"\\frac{d}{d t} y{\left (t \\right )}"+str_eq
+            str_eqC = str_const[1]+"r"+str_eqC
+        if(const[2] != 0):
+            str_eq = str_const[2]+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}"+str_eq
+            str_eqC = str_const[2]+"r^{2}"+str_eqC
+        if(const[3] != 0):
+            str_eq = str_const[3]+"\\frac{d^{3}}{d t^{3}}  y{\left (t \\right )}"+str_eq
+            str_eqC = str_const[3]+"r^{3}"+str_eqC
+        if(const[4] != 0):
+            str_eq = str_const[4]+"\\frac{d^{4}}{d t^{4}}  y{\left (t \\right )}"+str_eq
+            str_eqC = str_const[4]+"r^{4}"+str_eqC
+        if(const[5] != 0):
+            str_eq = str_const[5]+"\\frac{d^{5}}{d t^{5}}  y{\left (t \\right )}"+str_eq
+            str_eqC = str_const[5]+"r^{5}"+str_eqC
+
+        if(str_eq[0]=="+"):
+            str_eq = str_eq[1:] #exclui o primeiro caractere da string
+            str_eqC = str_eqC[1:]
+
+        # eqD = str(const[2])+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}" # as partes escritas entre as aspas sao as formulas das derivadas em latex
+        # eqC = str(const[2])+"r^{2}"
+        # if(const[1]<0):
+        #     eqD = eqD+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
+        #     eqC = eqC+str(const[1])+"r"
+        # else:
+        #     eqD = eqD+"+"+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
+        #     eqC = eqC+"+"+str(const[1])+"r"
+        # if(const[0]<0):
+        #     eqD = eqD+str(const[0])+"y{\left (t \\right )}"
+        #     eqC = eqC+str(const[0])
+        # else:
+        #     eqD = eqD+"+"+str(const[0])+"y{\left (t \\right )}"
+        #     eqC = eqC+"+"+str(const[0])
+
+        eqDiferencialEntradaLatex = latex(str_eq)
+        eqCaracEmLatex = latex(str_eqC)
 #----------------------FIM-----------------------------------------------------------
 
 
@@ -1609,49 +1641,50 @@ def print_latex():
 
         plt.text(xdif, 0.9-dif,idi_hom+
                  ur'$'+eqDiferencialEntradaLatex+'$'+"  "+
-                 ur'$'+latex("=\ 0")+'$'+"   "+
-                 idi_car+ur'$'+eqCaracEmLatex+'$'+"  "+
                  ur'$'+latex("=\ 0")+'$')
 
-        plt.text(xdif,0.9-2*dif,str_r+ur''+
+        plt.text(xdif, 0.9-2*dif,idi_car+ur'$'+eqCaracEmLatex+'$'+"  "+
+                 ur'$'+latex("=\ 0")+'$')
+
+        plt.text(xdif,0.9-3*dif,str_r+ur''+
                  str_raizLatex+"    "
                  #+idi_est_sis
         )
 
-        plt.text(xdif,0.9-3*dif,str_t+ur''+str_talLatex)
+        plt.text(xdif,0.9-4*dif,str_t+ur''+str_talLatex)
         
-        plt.text(xdif,0.9-4*dif,ur''+
+        plt.text(xdif,0.9-5*dif,ur''+
                  idi_yfn+ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[1]+
                  ur'$'+latex(")u(t)")+'$')
 
         if((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
-            plt.text(xdif,0.9-5*dif,ur'$'+idi_cond_sing+latex("y(0)= ")+latex(cond_ini[0]) +'$')
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_sing+latex("y(0)= ")+latex(cond_ini[0]) +'$')
         elif((const[5] == 0) and (const[4] == 0) and (const[3] == 0) ):#eq ordem 2
-            plt.text(xdif,0.9-5*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
                      ur'$'+latex("\ \ dy(0)= ")+latex(cond_ini[1]) + '$')
         elif((const[5] == 0) and (const[4] == 0)):#eq ordem 3
-            plt.text(xdif,0.9-5*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
                      ur'$'+latex("\ \ dy(0)= ")+latex(cond_ini[1]) + '$'
                      ur'$'+latex("\ \ d^{2}y(0)= ")+latex(cond_ini[2]) + '$')
         elif((const[5] == 0)):#eq ordem 4
-            plt.text(xdif,0.9-5*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
                      ur'$'+latex("\ \ dy(0)= ")+latex(cond_ini[1]) + '$'
                      ur'$'+latex("\ \ d^{2}y(0)= ")+latex(cond_ini[2]) + '$'
                      ur'$'+latex("\ \ d^{3}y(0)= ")+latex(cond_ini[3]) + '$')
         else:#eq ordem 5
-            plt.text(xdif,0.9-5*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
                      ur'$'+latex("\ \ dy(0)= ")+latex(cond_ini[1]) + '$'
                      ur'$'+latex("\ \ d^{2}y(0)= ")+latex(cond_ini[2]) + '$'
                      ur'$'+latex("\ \ d^{3}y(0)= ")+latex(cond_ini[3]) + '$'
                      ur'$'+latex("\ \ d^{4}y(0)= ")+latex(cond_ini[4]) + '$')
 
-        plt.text(xdif,0.9-6*dif,ur''+idi_yn+
+        plt.text(xdif,0.9-7*dif,ur''+idi_yn+
                      ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+
                      ur'$'+latex(")u(t)")+'$')
 
             
-        plt.text(xdif,0.9-7*dif,ur'$'+str_xt+latex("x(t) = ($")+
+        plt.text(xdif,0.9-8*dif,ur'$'+str_xt+latex("x(t) = ($")+
                  ur''+RespostasEmLatex[7]+
                  ur'$'+latex(")u(t)")+'$'+"   "
                  ur''+idi_yp+
@@ -1660,24 +1693,24 @@ def print_latex():
                  ur'$'+latex(")u(t)")+'$'
                  )
         
-        plt.text(xdif,0.9-8*dif,ur''+idi_yt+
+        plt.text(xdif,0.9-9*dif,ur''+idi_yt+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[4]+
                  ur'$'+latex(")u(t)")+'$')
         
-        plt.text(xdif,0.9-9*dif,ur''+idi_yf+
+        plt.text(xdif,0.9-10*dif,ur''+idi_yf+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[5]+
                  ur'$'+latex(")u(t)")+'$')
         
-        plt.text(xdif,0.9-10*dif,ur''+idi_yc+
+        plt.text(xdif,0.9-11*dif,ur''+idi_yc+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[6]+
                  ur'$'+latex(")u(t)")+'$')
         #plt.text(xdif,0.9-7*dif,'x(t) = '+ur''+RespostasEmLatex[7])
         
 
-        plt.subplots_adjust(left=0.12, bottom=0.20, right=0.53, top=0.93,
+        plt.subplots_adjust(left=0.12, bottom=0.26, right=0.53, top=0.93,
                                                 wspace=0.22, hspace=0.21)
 
 
