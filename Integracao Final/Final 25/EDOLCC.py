@@ -499,7 +499,7 @@ class EDO_Solver:
     def slider(self):
 
         self.ScaleMin = Scale(self.TNotebook1_pg1)
-        self.ScaleMin.place(relx=0.28,rely=0.7,relwidth=0.0,relheight=0.17
+        self.ScaleMin.place(relx=0.30,rely=0.7,relwidth=0.0,relheight=0.17
                 ,height=20,width=20)
         self.ScaleMin.configure(activebackground="gray")
         self.ScaleMin.configure(background="white")
@@ -520,7 +520,7 @@ class EDO_Solver:
         
 
         self.ScaleMax = Scale(self.TNotebook1_pg1)
-        self.ScaleMax.place(relx=0.33,rely=0.70,relwidth=0.0,relheight=0.17
+        self.ScaleMax.place(relx=0.34,rely=0.70,relwidth=0.0,relheight=0.17
                 ,height=20,width=20)
         self.ScaleMax.configure(activebackground="gray")
         self.ScaleMax.configure(background="white")
@@ -585,10 +585,9 @@ class EDO_Solver:
             self.TNotebook1.tab(0,text=u"Representação Algébrica")
             self.TNotebook1.tab(1,text=u"Gráficos")
             self.TNotebook1.tab(2,text="Log Texto")
-            self.cond_ini_label.configure(text=u'''Condições  Iniciais     y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
-            set_lingua(1)
-            self.update_saida()
+            self.cond_ini_label.configure(text=u"""Condições  Iniciais:
+        y\u207D\u2074\u207E(0) =        y\u207D\u00B3\u207E(0) =        y''(0) =        y'(0) =        y(0) =              """, anchor=N, font=("Verdana", 14))
+            self.xT_label.configure(text='''Entrada x(t) =\t\t    u(t)''', font=("Verdana", 14))
             #print "port"
         elif(idi.get() == 2): #English
             self.menubar.entryconfig(2,label="Notation")
@@ -599,8 +598,9 @@ class EDO_Solver:
             self.TNotebook1.tab(0,text="Algebraic Representation")
             self.TNotebook1.tab(1,text="Graphics")
             self.TNotebook1.tab(2,text="Text Log")
-            self.cond_ini_label.configure(text='''Initial Conditions      y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Input x(t) =\t\t\t\t\t     u(t)''')
+            self.cond_ini_label.configure(text=u"""Initial Conditions:
+        y\u207D\u2074\u207E(0) =        y\u207D\u00B3\u207E(0) =        y''(0) =        y'(0) =        y(0) =              """, anchor=N, font=("Verdana", 14))
+            self.xT_label.configure(text='''  Input x(t) =\t\t    u(t)''', font=("Verdana", 14))
             set_lingua(2)
             self.update_saida()
             #print "english"
@@ -613,8 +613,9 @@ class EDO_Solver:
             self.TNotebook1.tab(0,text=u"Representación Algebraica")
             self.TNotebook1.tab(1,text=u"Gráficos")
             self.TNotebook1.tab(2,text="Log Texto")
-            self.cond_ini_label.configure(text='''Condiciones Iniciales   y(0) =                         y'(0) =''')
-            self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
+            self.cond_ini_label.configure(text=u"""Condiciones Iniciales:
+        y\u207D\u2074\u207E(0) =        y\u207D\u00B3\u207E(0) =        y''(0) =        y'(0) =        y(0) =              """, anchor=N, font=("Verdana", 14))
+            self.xT_label.configure(text='''Entrada x(t) =\t\t    u(t)''', font=("Verdana", 14))
             set_lingua(3)
             self.update_saida()
             #print "espanol"
@@ -630,10 +631,10 @@ class EDO_Solver:
         idi.set(1)
         checkButton_state.set(0)
         _bgcolor = 'white'  # X11 color: 'gray85'
-        _fgcolor = 'white'  # X11 color: 'black'
+        _fgcolor = 'black'  # X11 color: 'black'
         _compcolor = 'white' # X11 color: 'gray85'
-        _ana1color = 'white' # X11 color: 'gray85' 
-        _ana2color = 'white' # X11 color: 'gray85' 
+        _ana1color = 'white' # X11 color: 'gray85'
+        _ana2color = 'white' # X11 color: 'gray85'
         font14 = "-family Arial -size 14 -weight normal -slant roman  " + \
             "-underline 0 -overstrike 0"
         font15 = "-family {Segoe UI} -size 12 -weight normal -slant  " + \
@@ -665,7 +666,7 @@ class EDO_Solver:
         self.cond_ini_label.configure(highlightcolor="#000000")
         self.cond_ini_label.configure(relief=RIDGE)
         self.cond_ini_label.configure(text=u"""Condições  Iniciais:
-        y(0) =                  dy(0) =                  d2y(0) =                  d3y(0) =                  d4y(0) =                  """, anchor=N, font=("Times", 12,"bold"))
+        y\u207D\u2074\u207E(0) =        y\u207D\u00B3\u207E(0) =        y''(0) =        y'(0) =        y(0) =              """, anchor=N, font=("Verdana", 14))
 
         self.xT_label = Label (master)
         self.xT_label.place(relx=0.639,rely=0.095,height=63,width=370)
@@ -676,12 +677,12 @@ class EDO_Solver:
         self.xT_label.configure(borderwidth="4")
         self.xT_label.configure(disabledforeground="#a3a3a3")
         self.xT_label.configure(foreground="#000000")
-        self.xT_label.configure(highlightbackground="white")
+        self.xT_label.configure(highlightbackground="black")
         self.xT_label.configure(highlightcolor="black")
         self.xT_label.configure(relief=RIDGE)
-        self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t   u(t)''', font=("Times", 12, "bold"))
+        self.xT_label.configure(text='''Entrada x(t) =\t\t    u(t)''', font=("Verdana", 14))
 
-        self.style.configure('TNotebook.Tab',background="black")
+        self.style.configure('TNotebook.Tab',background="#d9d9d9")
         self.style.configure('TNotebook.Tab',foreground="black")
         self.style.map('TNotebook.Tab',background=
             [('selected', _compcolor), ('active',_ana2color)])
@@ -731,7 +732,7 @@ class EDO_Solver:
         self.saida_log_txt.configure(highlightbackground="white")
         self.saida_log_txt.configure(highlightcolor="black")
         self.saida_log_txt.configure(insertbackground="black")
-        self.saida_log_txt.configure(selectbackground="white")
+        self.saida_log_txt.configure(selectbackground="gray")
         self.saida_log_txt.configure(selectforeground="black")
         self.saida_log_txt.configure(width=1024)
 
@@ -955,34 +956,34 @@ class EDO_Solver:
 
        
 
-        self.in_y0 = Entry (master)
-        self.in_y0.place(relx=0.085,rely=0.13,relheight=0.035,relwidth=0.035)
-        self.in_y0.configure(background="white")
-        self.in_y0.configure(disabledforeground="#a3a3a3")
-        self.in_y0.configure(font="TkFixedFont")
-        self.in_y0.configure(foreground="#000000")
-        self.in_y0.configure(highlightbackground="white")
-        self.in_y0.configure(highlightcolor="black")
-        self.in_y0.configure(insertbackground="black")
-        self.in_y0.configure(selectbackground="#c4c4c4")
-        self.in_y0.configure(selectforeground="black")
-        self.in_y0.configure(width=44)
+        self.in_d4y0 = Entry (master)
+        self.in_d4y0.place(relx=0.092,rely=0.13,relheight=0.035,relwidth=0.035)
+        self.in_d4y0.configure(background="white")
+        self.in_d4y0.configure(disabledforeground="#a3a3a3")
+        self.in_d4y0.configure(font="TkFixedFont")
+        self.in_d4y0.configure(foreground="#000000")
+        self.in_d4y0.configure(highlightbackground="white")
+        self.in_d4y0.configure(highlightcolor="black")
+        self.in_d4y0.configure(insertbackground="black")
+        self.in_d4y0.configure(selectbackground="#c4c4c4")
+        self.in_d4y0.configure(selectforeground="black")
+        self.in_d4y0.configure(width=44)
 
-        self.in_dy0 = Entry (master)
-        self.in_dy0.place(relx=0.2,rely=0.13,relheight=0.035,relwidth=0.035)
-        self.in_dy0.configure(background="white")
-        self.in_dy0.configure(disabledforeground="#a3a3a3")
-        self.in_dy0.configure(font="TkFixedFont")
-        self.in_dy0.configure(foreground="#000000")
-        self.in_dy0.configure(highlightbackground="#d9d9d9")
-        self.in_dy0.configure(highlightcolor="black")
-        self.in_dy0.configure(insertbackground="black")
-        self.in_dy0.configure(selectbackground="#c4c4c4")
-        self.in_dy0.configure(selectforeground="black")
-        self.in_dy0.configure(width=44)
+        self.in_d3y0 = Entry (master)
+        self.in_d3y0.place(relx=0.228,rely=0.13,relheight=0.035,relwidth=0.035)
+        self.in_d3y0.configure(background="white")
+        self.in_d3y0.configure(disabledforeground="#a3a3a3")
+        self.in_d3y0.configure(font="TkFixedFont")
+        self.in_d3y0.configure(foreground="#000000")
+        self.in_d3y0.configure(highlightbackground="#d9d9d9")
+        self.in_d3y0.configure(highlightcolor="black")
+        self.in_d3y0.configure(insertbackground="black")
+        self.in_d3y0.configure(selectbackground="#c4c4c4")
+        self.in_d3y0.configure(selectforeground="black")
+        self.in_d3y0.configure(width=44)
 
         self.in_d2y0 = Entry (master)
-        self.in_d2y0.place(relx=0.325,rely=0.13,relheight=0.035,relwidth=0.035)
+        self.in_d2y0.place(relx=0.353,rely=0.13,relheight=0.035,relwidth=0.035)
         self.in_d2y0.configure(background="white")
         self.in_d2y0.configure(disabledforeground="#a3a3a3")
         self.in_d2y0.configure(font="TkFixedFont")
@@ -995,41 +996,41 @@ class EDO_Solver:
         self.in_d2y0.configure(width=44)
 
 
-        self.in_d3y0 = Entry (master)
-        self.in_d3y0.place(relx=0.45,rely=0.13,relheight=0.035,relwidth=0.035)
-        self.in_d3y0.configure(background="white")
-        self.in_d3y0.configure(disabledforeground="#a3a3a3")
-        self.in_d3y0.configure(font="TkFixedFont")
-        self.in_d3y0.configure(foreground="#000000")
-        self.in_d3y0.configure(highlightbackground="#d9d9d9")
-        self.in_d3y0.configure(highlightcolor="black")
-        self.in_d3y0.configure(insertbackground="black")
-        self.in_d3y0.configure(selectbackground="#c4c4c4")
-        self.in_d3y0.configure(selectforeground="black")
-        self.in_d3y0.configure(width=44)
+        self.in_dy0 = Entry (master)
+        self.in_dy0.place(relx=0.476,rely=0.13,relheight=0.035,relwidth=0.035)
+        self.in_dy0.configure(background="white")
+        self.in_dy0.configure(disabledforeground="#a3a3a3")
+        self.in_dy0.configure(font="TkFixedFont")
+        self.in_dy0.configure(foreground="#000000")
+        self.in_dy0.configure(highlightbackground="#d9d9d9")
+        self.in_dy0.configure(highlightcolor="black")
+        self.in_dy0.configure(insertbackground="black")
+        self.in_dy0.configure(selectbackground="#c4c4c4")
+        self.in_dy0.configure(selectforeground="black")
+        self.in_dy0.configure(width=44)
 
-        self.in_d4y0 = Entry (master)
-        self.in_d4y0.place(relx=0.575,rely=0.13,relheight=0.035,relwidth=0.035)
-        self.in_d4y0.configure(background="white")
-        self.in_d4y0.configure(disabledforeground="#a3a3a3")
-        self.in_d4y0.configure(font="TkFixedFont")
-        self.in_d4y0.configure(foreground="#000000")
-        self.in_d4y0.configure(highlightbackground="#d9d9d9")
-        self.in_d4y0.configure(highlightcolor="black")
-        self.in_d4y0.configure(insertbackground="black")
-        self.in_d4y0.configure(selectbackground="#c4c4c4")
-        self.in_d4y0.configure(selectforeground="black")
-        self.in_d4y0.configure(width=44)
+        self.in_y0 = Entry (master)
+        self.in_y0.place(relx=0.59,rely=0.13,relheight=0.035,relwidth=0.035)
+        self.in_y0.configure(background="white")
+        self.in_y0.configure(disabledforeground="#a3a3a3")
+        self.in_y0.configure(font="TkFixedFont")
+        self.in_y0.configure(foreground="#000000")
+        self.in_y0.configure(highlightbackground="#d9d9d9")
+        self.in_y0.configure(highlightcolor="black")
+        self.in_y0.configure(insertbackground="black")
+        self.in_y0.configure(selectbackground="#c4c4c4")
+        self.in_y0.configure(selectforeground="black")
+        self.in_y0.configure(width=44)
 
         self.in_xT = ttk.Entry (master)
-        self.in_xT.place(relx=0.741,rely=0.11,relheight=0.06,relwidth=0.22)
+        self.in_xT.place(relx=0.78,rely=0.11,relheight=0.06,relwidth=0.17)
         self.in_xT.configure(font=font15)
         self.in_xT.configure(width=226)
         self.in_xT.configure(takefocus="")
         self.in_xT.configure(cursor="ibeam")
 
         self.autoScaleButton = Checkbutton (self.TNotebook1_pg1)
-        self.autoScaleButton.place(relx=0.25,rely=0.635,relheight=0.04
+        self.autoScaleButton.place(relx=0.28,rely=0.635,relheight=0.04
                 ,relwidth=0.17)
         self.autoScaleButton.configure(activebackground="white")
         self.autoScaleButton.configure(activeforeground="#000000")
@@ -1106,7 +1107,7 @@ class EDO_Solver:
 
         self.tau_label = Label (self.TNotebook1_pg1)
         self.tau_label.configure(width=1002)
-        self.tau_label.place(relx=0.28,rely=0.92,height=20,width=100)
+        self.tau_label.place(relx=0.295,rely=0.92,height=20,width=100)
         self.tau_label.configure( anchor="nw")
         self.tau_label.configure(activebackground="white")
         self.tau_label.configure(activeforeground="black")
@@ -1116,7 +1117,7 @@ class EDO_Solver:
         self.tau_label.configure(highlightbackground="#d9d9d9")
         self.tau_label.configure(highlightcolor="black")
         self.tau_label.configure(text=
-                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "\t " + ""+
+                                                  str(self.ScaleMin.get() ) +  u"\u03C4"  + "       "+
                                                   str(self.ScaleMax.get() ) +  u"\u03C4")
 
          

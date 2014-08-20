@@ -1337,8 +1337,8 @@ def show_plots():
         plt_yp.set_xlabel("t")
         plt_yp.set_ylabel(idi_amp)
         plt_yp.axhline(0, color = 'black',lw =2)
-        if plotPar[0] == plotPar[-1]:
-                plt_yp.set_ylim(ymax = plotPar[0] + 0.2*plotPar[0])
+        if plotPar[0] == plotPar[2]:
+                plt_yp.set_ylim(ymax = plotPar[0] + 0.2*abs(plotPar[0]))
                 if plotPar[0] == 0:
                     plt_yp.set_ylim(ymin=-0.2,ymax=0.2)
         respParPlot = plt_yp.plot(x_t,plotPar,lw = 2)
@@ -1379,12 +1379,12 @@ def show_plots():
         if(autoScale==0):
            #graficos na mesma coluna com o mesmo limite superior no eixo y
            ymin, ymax = plt_yf1.get_ylim()
-           plt_yp.set_ylim(ymin=ymin, ymax=ymax)
-           plt_yt.set_ylim(ymin=ymin, ymax=ymax)
+           plt_yp.set_ylim( ymax=ymax)
+           plt_yt.set_ylim( ymax=ymax)
 
            ymin, ymax = plt_yc.get_ylim()
-           plt_yn.set_ylim(ymin=ymin, ymax=ymax)
-           plt_yf2.set_ylim(ymin=ymin, ymax=ymax)
+           plt_yn.set_ylim( ymax=ymax)
+           plt_yf2.set_ylim( ymax=ymax)
 
 
         plt.subplots_adjust(left=0.08, bottom=0.10, right=0.97, top=0.95,
@@ -1919,7 +1919,7 @@ def edo_main():
                         #Respostas[i] = sympy.trigsimp(Respostas[i])
                         #Respostas[i] = sympy.radsimp(Respostas[i])
                         if i == 0: Respostas[i] = sympy.powsimp(Respostas[i])
-                        else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(prec,chop = True)
+                        else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(3,chop = True)
 
                         #Respostas[i] = nsimplify(Respostas[i],tolerance = 0.1, full = True, rational = False).evalf(2)
 
