@@ -1375,16 +1375,16 @@ def show_plots():
         plt_yc.axhline(0, color = 'black',lw =2)
         respComPlot = plt_yc.plot(x_t,plotCom,lw = 2)
 
-##
-##        if(autoScale==0):
-##            #graficos na mesma coluna com o mesmo limite superior no eixo y
-##            ymin, ymax = plt_yf1.get_ylim()
-##            plt_yp.set_ylim(ymin=ymin, ymax=ymax)
-##            plt_yt.set_ylim(ymin=ymin, ymax=ymax)
-##
-##            ymin, ymax = plt_yc.get_ylim()
-##            plt_yn.set_ylim(ymin=ymin, ymax=ymax)
-##            plt_yf2.set_ylim(ymin=ymin, ymax=ymax)
+
+        if(autoScale==0):
+           #graficos na mesma coluna com o mesmo limite superior no eixo y
+           ymin, ymax = plt_yf1.get_ylim()
+           plt_yp.set_ylim(ymin=ymin, ymax=ymax)
+           plt_yt.set_ylim(ymin=ymin, ymax=ymax)
+
+           ymin, ymax = plt_yc.get_ylim()
+           plt_yn.set_ylim(ymin=ymin, ymax=ymax)
+           plt_yf2.set_ylim(ymin=ymin, ymax=ymax)
 
 
         plt.subplots_adjust(left=0.08, bottom=0.10, right=0.97, top=0.95,
