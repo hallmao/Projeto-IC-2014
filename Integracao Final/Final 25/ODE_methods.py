@@ -802,13 +802,13 @@ def idioma_log_print():
     global lingua
 
     if(lingua==1):
-        idi_eq = "Equacao diferencial: "
-        idi_hom = "Equacao homogenea: "
-        idi_car = "Equacao caracteristica: "
+        idi_eq = u"Equação diferencial: "
+        idi_hom = u"Equação homogênea: "
+        idi_car = u"Equação característica: "
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz: "
         else:
-            idi_raiz = "Raizes: "
+            idi_raiz = u"Raízes: "
         if(len(tal)==1):
             idi_tal = "Constante de tempo: "
         else:
@@ -816,16 +816,16 @@ def idioma_log_print():
         idi_yfn = "Forma natural de resposta: Yfn(t) = "
         idi_yn = "Resposta natural: Ynat(t) = "
         idi_yp = "Resposta particular: Ypart(t) = "
-        idi_ytrans = "Resposta transitoria: Ytrans(t) = "
-        idi_yf = "Resposta forcada: Yforc(t) = "
+        idi_ytrans = u"Resposta transitória: Ytrans(t) = "
+        idi_yf = u"Resposta forçada: Yforc(t) = "
         idi_yc = "Resposta completa: Yc(t) = "
-        idi_cond_sing = "Condicao inicial:  "
-        idi_cond_pl = "Condicoes iniciais:  "
+        idi_cond_sing = u"Condição inicial:  "
+        idi_cond_pl = u"Condições iniciais:  "
         return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
     elif(lingua==2):
         idi_eq = "Differential equation: "
-        idi_hom = "Homogenous\ Equation: "
+        idi_hom = "Homogeneous\ Equation: "
         idi_car = "Characteristic Equation: "
         if(len(Respostas[0])==1):
             idi_raiz = "Root: "
@@ -846,24 +846,24 @@ def idioma_log_print():
         return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
     else:
-        idi_eq = "Ecuacion diferencial: "
-        idi_hom = "Ecuacion homogenea: "
-        idi_car = "Ecuacion caracteristica: "
+        idi_eq = u"Ecuación diferencial: "
+        idi_hom = u"Ecuación homogénea: "
+        idi_car = u"Ecuación característica: "
         if(len(Respostas[0])==1):
-            idi_raiz = "Raiz: "
+            idi_raiz = u"Raíz: "
         else:
-            idi_raiz = "Raices: "
+            idi_raiz = u"Raíces: "
         if(len(tal)==1):
             idi_tal = "Constante de tiempo: "
         else:
             idi_tal = "Constantes de tiempo: "
-        idi_yfn = "Solucion general: Ygen(t) = "
+        idi_yfn = u"Solución general: Ygen(t) = "
         idi_yn = "Respuesta natural: Ynat(t) = "
-        idi_yp = "Solucion particular: Ypart(t) = "
+        idi_yp = u"Solución particular: Ypart(t) = "
         idi_ytrans = "Respuesta transitoria: Ytrans(t) = "
         idi_yf = "Respuesta forzada: Yforz(t) = "
         idi_yc = "Respuesta completa: Yc(t) = "
-        idi_cond_sing = "Condicion inicial:  "
+        idi_cond_sing = u"Condición inicial:  "
         idi_cond_pl = "Condiciones iniciales:  "
         return idi_eq, idi_hom, idi_car, idi_raiz, idi_tal, idi_yfn, idi_yn, idi_yp, idi_ytrans, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl
 
@@ -1033,13 +1033,13 @@ def idioma_show_plots():
         if(len(Respostas[0])==1):
             idi_raiz = "Raiz"
         else:
-            idi_raiz = "Raizes"
+            idi_raiz = u"Raízes"
         if(len(tal)==1):
             idi_tal = "Constante de tempo: "
         else:
             idi_tal = "Constantes de tempo: "
         idi_real = "Real"
-        idi_imag = "Imaginario"
+        idi_imag = u"Imaginário"
         idi_yp = "Ypart(t)"
         idi_yt = "Ytrans(t)"
         idi_yf = "Yforc(t)"
@@ -1071,9 +1071,9 @@ def idioma_show_plots():
         idi_yn = "ynat(t)"
         idi_plot_raiz = u"Mapa de raíces de la ecuación caracterisitica"
         if(len(Respostas[0])==1):
-            idi_raiz = "Raiz"
+            idi_raiz = u"Raíz"
         else:
-            idi_raiz = "Raices"
+            idi_raiz = u"Raíces"
         if(len(tal)==1):
             idi_tal = "Constante de tiempo: "
         else:
@@ -1410,31 +1410,31 @@ def idioma_print_latex():
         if(len(Respostas[0])==1):
             idi_raiz = '$'+latex("Raiz:\ ")+'$'
         else:
-            idi_raiz = '$'+latex("Raizes:\ ")+'$'
+            idi_raiz = '$'+latex("Ra\\'{\i}zes:\ ")+'$'
         if(len(tal)==1):
             idi_tal = '$'+latex("Constante\ de\ tempo:\ ")+'$'
         else:
             idi_tal = '$'+latex("Constantes\ de\ tempo:\ ")+'$'
         if(raizRealNeg == len(Respostas[0])):
-            idi_est_sis = '$'+latex(u"Sistema\ estavel,\ componente\ real\ das\ raizes\ sao\ negativas")+'$'
+            idi_est_sis = '$'+latex("Sistema\ est\\'{a}vel,\ componente\ real\ das\ ra\\'{\i}zes\ s\~{a}o\ negativas")+'$'
         elif(real==0):
             idi_est_sis = ""
         else:
-            idi_est_sis = '$'+latex(u"Sistema\ nao\ estavel,\ componente\ real\ da\ raiz\ e\ positiva")+'$'
+            idi_est_sis = '$'+latex("Sistema\ n\~{a}o\ est\\'{a}vel,\ componente\ real\ da\ raiz\ \\'{e}\ positiva")+'$'
 
 
        
-        idi_eq = '$'+latex("Equacao\ diferencial:\ ")+'$'
-        idi_hom = '$'+latex("Equacao\ homogenea:\ ")+'$'
-        idi_car = '$'+latex("Equacao\ caracteristica:\ ")+ '$'
+        idi_eq = '$'+latex("Equac\c\~{a}o\ diferencial:\ ")+'$' #c\c = cedilha
+        idi_hom = '$'+latex("Equac\c\~{a}o\ homog\^{e}nea:\ ")+'$'
+        idi_car = '$'+latex("Equac\c\~{a}o\ caracter\\'{\i}stica:\ ")+ '$'
         idi_yfn = '$'+latex("Y_{fn}(t) = ")+'$'
         idi_yn = '$'+latex("Y_{nat}(t) = ")+'$'
         idi_yp = '$'+latex("Y_{part}(t) = ")+'$'
         idi_yt = '$'+latex("Y_{trans}(t) = ")+'$'
         idi_yf = '$'+latex("Y_{forc}(t) = ")+'$'
         idi_yc = '$'+latex("Y_c(t) = ")+'$'
-        idi_cond_sing = latex("Condicao\  inicial:\ ")
-        idi_cond_pl = latex("Condicoes\ iniciais:\ ")
+        idi_cond_sing = latex("Condic\c\~{a}o\  inicial:\ ")
+        idi_cond_pl = latex("Condic\c\~{o}es\ iniciais:\ ")
         str_xt = latex("Entrada\ ")
         return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
@@ -1471,31 +1471,31 @@ def idioma_print_latex():
 
     else:
         if(len(Respostas[0])==1):
-            idi_raiz = '$'+latex("Raiz:\ ")+'$'
+            idi_raiz = '$'+latex("Ra\\'{\i}z:\ ")+'$'
         else:
-            idi_raiz = '$'+latex("Raices:\ ")+'$'
+            idi_raiz = '$'+latex("Ra\\'{\i}ces:\ ")+'$'
         if(len(tal)==1):
             idi_tal = '$'+latex("Constante\ de\ tiempo:\ ")+'$'
         else:
             idi_tal = '$'+latex("Constantes\ de\ tiempo:\ ")+'$'
         if(raizRealNeg == len(Respostas[0])):
-            idi_est_sis = '$'+latex("Sistema\ estable,\ componente\ reales\ de\ las\ raices\ son\ negativas")+'$'
+            idi_est_sis = '$'+latex("Sistema\ estable,\ componente\ reales\ de\ las\ ra\\'{\i}ces\ son\ negativas")+'$'
         elif(real==0):
             idi_est_sis = ""
         else:
-            idi_est_sis = '$'+latex("Sistema\ no\ es\ estable,\ componente\ real\ de\ la\ raiz\ es\ positiva")+'$'
+            idi_est_sis = '$'+latex("Sistema\ no\ es\ estable,\ componente\ real\ de\ la\ ra\\'{\i}z\ es\ positiva")+'$'
 
 
-        idi_eq = '$'+latex("Ecuacion\ diferencial:\ ")+'$'
-        idi_hom = '$'+latex("Ecuacion\ homogenea:\ ")+'$'
-        idi_car = '$'+latex("Ecuacion\ caracteristica:\ ")+ '$'
+        idi_eq = '$'+latex("Ecuaci\\'{o}n\ diferencial:\ ")+'$'
+        idi_hom = '$'+latex("Ecuaci\\'{o}n\ homog\\'{e}nea:\ ")+'$'
+        idi_car = '$'+latex("Ecuaci\\'{o}n\ caracter\\'{\i}stica:\ ")+ '$'
         idi_yfn = '$'+latex("Y_{gen}(t) = ")+'$'
         idi_yn = '$'+latex("Y_{nat}(t) = ")+'$'
         idi_yp = '$'+latex("Y_{part}(t) = ")+'$'
         idi_yt = '$'+latex("Y_{trans}(t) = ")+'$'
         idi_yf = '$'+latex("Y_{forz}(t) = ")+'$'
         idi_yc = '$'+latex("Y_{c}(t) = ")+'$'
-        idi_cond_sing = latex("Condicion\ inicial:\  ")
+        idi_cond_sing = latex("Condici\\'{o}n\ inicial:\  ")
         idi_cond_pl = latex("Condiciones\ iniciales:\  ")
         str_xt = latex("Entrada\ ")
         return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt

@@ -577,11 +577,11 @@ class EDO_Solver:
         global idi
         #print "Idioma:",idi.get()
         if (idi.get() == 1): #Port
-            self.menubar.entryconfig(2,label="Notação")
-            self.menubar.entryconfig(3,label="DigitosFracionários")
-            self.digitosfracionarios.entryconfig(0,label="2 Digitos")
-            self.digitosfracionarios.entryconfig(1,label="3 Digitos")
-            self.digitosfracionarios.entryconfig(2,label="4 Digitos")
+            self.menubar.entryconfig(2,label=u"Notação")
+            self.menubar.entryconfig(3,label=u"DigitosFracionários")
+            self.digitosfracionarios.entryconfig(0,label=u"2 Dígitos")
+            self.digitosfracionarios.entryconfig(1,label=u"3 Dígitos")
+            self.digitosfracionarios.entryconfig(2,label=u"4 Dígitos")
             self.TNotebook1.tab(0,text=u"Representação Algébrica")
             self.TNotebook1.tab(1,text=u"Gráficos")
             self.TNotebook1.tab(2,text="Log Texto")
@@ -605,13 +605,13 @@ class EDO_Solver:
             self.update_saida()
             #print "english"
         else: #Espanol
-            self.menubar.entryconfig(2,label="Notacion")
-            self.menubar.entryconfig(3,label="DigitosFraccionarios")
-            self.digitosfracionarios.entryconfig(0,label="2 Digitos")
-            self.digitosfracionarios.entryconfig(1,label="3 Digitos")
-            self.digitosfracionarios.entryconfig(2,label="4 Digitos")
-            self.TNotebook1.tab(0,text="Representacion Algebraica")
-            self.TNotebook1.tab(1,text="Graficos")
+            self.menubar.entryconfig(2,label=u"Notación")
+            self.menubar.entryconfig(3,label=u"DígitosFraccionarios")
+            self.digitosfracionarios.entryconfig(0,label=u"2 Dígitos")
+            self.digitosfracionarios.entryconfig(1,label=u"3 Dígitos")
+            self.digitosfracionarios.entryconfig(2,label=u"4 Dígitos")
+            self.TNotebook1.tab(0,text=u"Representación Algebraica")
+            self.TNotebook1.tab(1,text=u"Gráficos")
             self.TNotebook1.tab(2,text="Log Texto")
             self.cond_ini_label.configure(text='''Condiciones Iniciales   y(0) =                         y'(0) =''')
             self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
@@ -664,8 +664,8 @@ class EDO_Solver:
         self.cond_ini_label.configure(highlightbackground="#d9d9d9")
         self.cond_ini_label.configure(highlightcolor="#000000")
         self.cond_ini_label.configure(relief=RIDGE)
-        self.cond_ini_label.configure(text=u'''Condicoes  Iniciais:
-        y(0) =                  dy(0) =                  d2y(0) =                  d3y(0) =                  d4y(0) =                  ''', anchor=N, font=("Times", 12,"bold"))
+        self.cond_ini_label.configure(text=u"""Condições  Iniciais:
+        y(0) =                  dy(0) =                  d2y(0) =                  d3y(0) =                  d4y(0) =                  """, anchor=N, font=("Times", 12,"bold"))
 
         self.xT_label = Label (master)
         self.xT_label.place(relx=0.639,rely=0.095,height=63,width=370)
@@ -679,7 +679,7 @@ class EDO_Solver:
         self.xT_label.configure(highlightbackground="#d9d9d9")
         self.xT_label.configure(highlightcolor="black")
         self.xT_label.configure(relief=RIDGE)
-        self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t\t     u(t)''')
+        self.xT_label.configure(text='''Entrada x(t) =\t\t\t\t   u(t)''', font=("Times", 12, "bold"))
 
         self.style.configure('TNotebook.Tab',background=_bgcolor)
         self.style.configure('TNotebook.Tab',foreground=_fgcolor)
@@ -914,7 +914,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 foreground="#000000",
                 state="disabled",
-                label=u"DigitosFracionários")
+                label=u"DígitosFracionários")
         self.digitosfracionarios.add_radiobutton(
                 value="2 Digitos",
                 activebackground="#d9d9d9",
@@ -922,7 +922,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 command=v5_support.TODO,
                 foreground="#000000",
-                label="2 Digitos")
+                label=u"2 Dígitos")
         self.digitosfracionarios.add_radiobutton(
                 value="3 Digitos",
                 activebackground="#d9d9d9",
@@ -930,7 +930,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 command=v5_support.TODO,
                 foreground="#000000",
-                label="3 Digitos")
+                label=u"3 Dígitos")
         self.digitosfracionarios.add_radiobutton(
                 value="4 Digitos",
                 activebackground="#d9d9d9",
@@ -938,7 +938,7 @@ class EDO_Solver:
                 background="#d9d9d9",
                 command=v5_support.TODO,
                 foreground="#000000",
-                label="4 Digitos")
+                label=u"4 Dígitos")
 
 
         self.label_menu_plot = Label (master)
@@ -1022,7 +1022,7 @@ class EDO_Solver:
         self.in_d4y0.configure(width=44)
 
         self.in_xT = ttk.Entry (master)
-        self.in_xT.place(relx=0.715,rely=0.11,relheight=0.06,relwidth=0.22)
+        self.in_xT.place(relx=0.741,rely=0.11,relheight=0.06,relwidth=0.22)
         self.in_xT.configure(font=font15)
         self.in_xT.configure(width=226)
         self.in_xT.configure(takefocus="")
