@@ -19,7 +19,8 @@ from sympy.mpmath import mp
 
 ###Precisão Decimal
 prec = 2 ## Numero de digitos decimais de precisão mostrados no log de dados
-mp.dps = prec
+#mp.dps = prec
+#mp.pretty = True
 C1, C2, C3, C4, C5 = symbols("C1 C2 C3 C4 C5")
 flag_init = True
 lingua = 1 # 1- Portugues; 2- English; 3-Espanol
@@ -411,7 +412,7 @@ def conds_iniciais_aplicadas(fN, rP):
 
                                 if(Respostas[7] != 0):    #Eq. nao homogenea
                                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
-                                                yt = sympify(yt, rational = False,evaluate= False)#.evalf(prec)
+                                                #, rational = False,evaluate= False)#.evalf(prec)
                                                 yt0 = yt.subs(t, 0) #Aplicando as condicoes iniciais; Ytrans(0)
 
                                                 #c1 eh o valor de C1
@@ -440,7 +441,7 @@ def conds_iniciais_aplicadas(fN, rP):
                                 #antes de aplicar as conds iniciais é necessário ter y'(t) e y(t) da resp natural
 
                                 #Forma natural é derivada uma vez
-                                ylinhaNat = sympify(fN.diff(t))
+                                ylinhaNat = fN.diff(t)
                                 formaNatural  = fN
                                 #print"yLinhaNat:", ylinhaNat
 
@@ -476,7 +477,7 @@ def conds_iniciais_aplicadas(fN, rP):
                                                 yt = fN + rP #Yt(t) = Yfn(t) + Yp
 
                                                 #Resposta Transitoria é derivada uma vez
-                                                ylinhaTran = sympify(yt.diff(t) )
+                                                ylinhaTran = yt.diff(t) #)
                                                 #print"yLinhaTran:", ylinhaTran
 
                                                 ## Agora é necessário resolver o sistema:
@@ -1878,13 +1879,16 @@ def edo_main():
 
                 for i in range(len(Respostas)): #arruma precisao
 
+                        print "Loop",i
+
                         #Respostas[i] = sympy.expand(Respostas[i])
                         #Respostas[i] = sympy.powsimp(Respostas[i])
-                        #Respostas[i] = sympy.ratsimp(Respostas[i])
+                        #Respostas[i] = sympy.trigsimp(Respostas[i])
                         #Respostas[i] = sympy.radsimp(Respostas[i])
-                        Respostas[i] = sympy.powsimp(Respostas[i])
+                        if i == 0: Respostas[i] = sympy.powsimp(Respostas[i])
+                        else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(prec,chop = True)
 
-                        #Respostas[i] = nsimplify(Respostas[i],tolerance = 1e-1, full = True, rational = False).evalf(prec)
+                        #Respostas[i] = nsimplify(Respostas[i],tolerance = 0.1, full = True, rational = False).evalf(2)
 
 
                         #Respostas[i] = sympy.collect(Respostas[i], t )
