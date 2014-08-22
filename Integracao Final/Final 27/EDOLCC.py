@@ -620,15 +620,31 @@ class EDO_Solver:
             self.update_saida()
             #print "espanol"
 
+    def set_digitosFracionarios(self):
+        global prec
+
+        if(prec.get()==2):
+            set_prec(2)
+        elif(prec.get()==3):
+            set_prec(3)
+        else:
+            set_prec(4)
+
+        edo_main()
+        self.update_saida()
+
+
 
 
     def __init__(self, master):
         global canvas_latex,canvas_plots,latex_fig,plot_fig,toolbar
-        global  user_input, idi, checkButton_state
+        global  user_input, idi, prec, checkButton_state
         self.mast = master
         idi = IntVar()
+        prec = IntVar()
         checkButton_state = IntVar()
         idi.set(1)
+        prec.set(2)
         checkButton_state.set(0)
         _bgcolor = 'white'  # X11 color: 'gray85'
         _fgcolor = 'black'  # X11 color: 'black'
@@ -914,30 +930,33 @@ class EDO_Solver:
                 activeforeground="#111111",
                 background="#d9d9d9",
                 foreground="#000000",
-                state="disabled",
+                state="normal",
                 label=u"DígitosFracionários")
         self.digitosfracionarios.add_radiobutton(
-                value="2 Digitos",
+                variable=prec,
+                value=2,
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_digitosFracionarios,
                 foreground="#000000",
                 label=u"2 Dígitos")
         self.digitosfracionarios.add_radiobutton(
-                value="3 Digitos",
+                variable=prec,
+                value=3,
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_digitosFracionarios,
                 foreground="#000000",
                 label=u"3 Dígitos")
         self.digitosfracionarios.add_radiobutton(
-                value="4 Digitos",
+                variable=prec,
+                value=4,
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_digitosFracionarios,
                 foreground="#000000",
                 label=u"4 Dígitos")
 

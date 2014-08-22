@@ -55,7 +55,9 @@ def drange(start,stop,step):
 # 6- Resposta Completa; 7- xT; 8- eq
 Respostas = [0]*9
 Respostas[0] = [0] #vetor de raizes
+const_orig = [0]*6#usado para quando o usuario muda a precisao
 const = [0]*6 #a0, a1, a2, a3, a4, a5   ; nessa ordem
+cond_ini_orig = [0]*5 #usado para quando o usuario muda a precisao
 cond_ini = [0]*5 #y0, dy0, d2y0, d3y0, d4y0     ; nessa ordem
 xT = 0
 #----------------------Tal - constante de tempo, para cálculo do coef de amortecimento
@@ -71,6 +73,11 @@ autoScale = 0
 ##eq = 0
 ##fN = 0
 ##rP = 0
+
+def set_prec(p):
+    global prec
+    prec = p
+
 def get_maiorTal():
     global maiorTal
     return maiorTal
@@ -123,7 +130,7 @@ def set_a5(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[5] = float(valid)
+                    const_orig[5] = float(valid)
         except:
                 pass
         
@@ -132,7 +139,7 @@ def set_a4(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[4] = float(valid)
+                    const_orig[4] = float(valid)
         except:
                 pass
         
@@ -141,7 +148,7 @@ def set_a3(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[3] = float(valid)
+                    const_orig[3] = float(valid)
         except:
                 pass
         
@@ -150,7 +157,7 @@ def set_a2(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[2] = float(valid)
+                    const_orig[2] = float(valid)
 
 
         except:
@@ -161,7 +168,7 @@ def set_a1(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[1] = float(valid)
+                    const_orig[1] = float(valid)
         except:
                 pass
         
@@ -169,7 +176,7 @@ def set_a0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    const[0] = float(valid)
+                    const_orig[0] = float(valid)
         except:
                 pass
         
@@ -201,7 +208,7 @@ def set_y0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    cond_ini[0] = float(valid)
+                    cond_ini_orig[0] = float(valid)
         except:
                 pass
         
@@ -209,7 +216,7 @@ def set_dy0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    cond_ini[1] = float(valid)
+                    cond_ini_orig[1] = float(valid)
         except:
                 pass
 
@@ -217,7 +224,7 @@ def set_d2y0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    cond_ini[2] = float(valid)
+                    cond_ini_orig[2] = float(valid)
         except:
                 pass
 
@@ -225,7 +232,7 @@ def set_d3y0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    cond_ini[3] = float(valid)
+                    cond_ini_orig[3] = float(valid)
         except:
                 pass
 
@@ -233,7 +240,7 @@ def set_d4y0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
-                    cond_ini[4] = float(valid)
+                    cond_ini_orig[4] = float(valid)
         except:
                 pass
 
@@ -294,8 +301,8 @@ def  evaluate_roots(roots):
 
                 #print "for loop",i
 
-                RaizesC[i] = round(im(roots[i]),2)
-                RaizesR[i] = round(re(roots[i]),2)
+                RaizesC[i] = round(im(roots[i]),prec)
+                RaizesR[i] = round(re(roots[i]),prec)
                 #print RaizesR[i]
                # print RaizesC[i]
 
@@ -388,6 +395,8 @@ def cte_tempo():
                                 tal[i] = 1.0
                 #Define qual o maior valor de tal e aloca este valor em talMaior
                 tal.sort()
+                for i in range(len(tal)):
+                    tal[i] = round(tal[i],prec)
                 ##----Pega o maior valor de tal e calcula o coef de amortecimento
                 maiorTal = int(5*tal[-1])
                 if maiorTal > 100e3:
@@ -1149,7 +1158,7 @@ def show_plots():
 
         ## Nossa variável de deslocamento t no eixo x, varia de 0 a 5tal
         #x_t = drange(0,10,0.00001)
-        x_t  = drange(limx_min,limx_max,1e-3)
+        x_t  = drange(limx_min,limx_max,1e-2)
 
         ###Nossas Variaveis de plot, todas tem o mesmo tamanho do vetor x_t
         ##Now they have equal length
@@ -1238,7 +1247,7 @@ def show_plots():
         plt.text(0.23, 0.9, idi_tal, fontsize=12)
         for i in range(len(str_raizLatex)):
             plt_txt.text(-0.3, 0.7-(0.25*i),str_raizLatex[i], fontsize=12)
-            plt_txt.text(0.23, 0.7-(0.25*i),str_talLatex[i], fontsize=12)
+            plt_txt.text(0.35, 0.7-(0.25*i),str_talLatex[i], fontsize=12)
 
 
         plt_yn = plt.subplot(333)
@@ -1630,7 +1639,7 @@ def print_latex():
         talEmLatex= [0]*(len(tal))
         str_talLatex=""
         for i in range(len(tal)):
-                talEmLatex[i] = '$'+str(latex(round(tal[i],prec))) +'$'
+                talEmLatex[i] = '$'+str(latex(tal[i])) +'$'
         if(len(tal) == 1):
            taln = "\\tau = "
            taln = '$'+str(latex(taln)) +'$'
@@ -1851,6 +1860,11 @@ def edo_main():
 
         #print "FLAG INIT",flag_init
         xT = get_xT()
+        for i in range(len(const_orig)):
+            const[i] = round(const_orig[i], prec)
+        for i in range(len(cond_ini)):
+            cond_ini[i] = round(cond_ini_orig[i], prec)
+
 
         try:
                 print "Calculando edo_main", const[2], type(const[2])
@@ -1943,12 +1957,13 @@ def edo_main():
                         #Respostas[i] = sympy.trigsimp(Respostas[i])
                         #Respostas[i] = sympy.radsimp(Respostas[i])
                         if i == 0: Respostas[i] = sympy.powsimp(Respostas[i])
-                        else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(3,chop = True)
+                        else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(prec,chop = True)
 
                         #Respostas[i] = nsimplify(Respostas[i],tolerance = 0.1, full = True, rational = False).evalf(2)
 
 
                         #Respostas[i] = sympy.collect(Respostas[i], t )
+
         except:
                 pass
 
