@@ -1662,7 +1662,7 @@ def print_latex():
         ax1.get_xaxis().tick_bottom()
         ax1.get_xaxis().set_visible(False)
         ax1.axes.get_yaxis().set_visible(False)
-        for i in range(0,9,1):
+        for i in range(0,11,1):
             plt.axhline(0.86-dif*i,xmin = -10,xmax = 5, color = 'black',lw =0.2, linestyle = ':')
         #plt.axhline(0.86-dif*4, color='black', lw=2)
         #plt.axhline(0.86-dif*5, color='black', lw=2)
@@ -1744,7 +1744,7 @@ def print_latex():
         #plt.text(xdif,0.9-7*dif,'x(t) = '+ur''+RespostasEmLatex[7])
         
 
-        plt.subplots_adjust(left=0.12, bottom=0.26, right=0.53, top=0.93,
+        plt.subplots_adjust(left=0.12, bottom=0.04, right=0.53, top=0.93,
                                                 wspace=0.22, hspace=0.21)
 
 
