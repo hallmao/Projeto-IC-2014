@@ -885,6 +885,7 @@ def conds_iniciais_aplicadas(fN, rP):
 
                 #print "Valor das constantes com t = 0",valorConstantesT0
 
+
 def idioma_log_print():
     global lingua
 
@@ -1180,9 +1181,6 @@ def show_plots():
 
         #plt.clf()
         plots_numpy = conversao_numpy(t)
-
-
-
         
         ##Separando parte real e imaginária das raízes
         plotRaizesT = (Respostas[0])
@@ -1205,6 +1203,7 @@ def show_plots():
         plotRaizesC.sort()
 
         raizesRabs = [None]*len(plotRaizesR)
+
 
         for i in range(len(plotRaizesR)):raizesRabs[i] = abs(float(plotRaizesR[i]))
         raizesRabs.sort()
@@ -1477,7 +1476,7 @@ def show_plots():
         plt.subplots_adjust(left=0.08, bottom=0.10, right=0.97, top=0.95,
                                         wspace=0.46, hspace=0.64)
 
- 
+
         return outputPlots
 
 def idioma_print_latex():
@@ -1918,8 +1917,6 @@ def edo_main():
         for i in range(len(cond_ini)):
             cond_ini[i] = round(cond_ini_orig[i], prec)
 
-        print cond_ini_orig, const_orig
-
         try:
                 print "Calculando edo_main"
                 ##Adicionando os coefs a eq diferencial
@@ -2010,7 +2007,7 @@ def edo_main():
                         #Respostas[i] = sympy.powsimp(Respostas[i])
                         #Respostas[i] = sympy.trigsimp(Respostas[i])
                         #Respostas[i] = sympy.radsimp(Respostas[i])
-                        if i == 0: Respostas[i] = sympy.powsimp(Respostas[i])
+                        if i == 0: None#Respostas[i] = sympy.powsimp(Respostas[i])
                         else: Respostas[i] = sympy.powsimp(Respostas[i]).evalf(prec,chop = True)
 
                         #Respostas[i] = nsimplify(Respostas[i],tolerance = 0.1, full = True, rational = False).evalf(2)
@@ -2020,8 +2017,6 @@ def edo_main():
 
         except:
                 pass
-
-
 
 
 
