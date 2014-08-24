@@ -133,6 +133,11 @@ def set_a5(cte):
                     const_orig[5] = float(valid)
         except:
                 pass
+
+        try: #para entrada = 0
+               const_orig[5] = float(cte)
+        except:
+                pass
         
 
 def set_a4(cte):
@@ -140,6 +145,11 @@ def set_a4(cte):
                 valid = sympify(cte)
                 if(float(valid)):
                     const_orig[4] = float(valid)
+        except:
+                pass
+
+        try: #para entrada = 0
+               const_orig[4] = float(cte)
         except:
                 pass
         
@@ -151,6 +161,11 @@ def set_a3(cte):
                     const_orig[3] = float(valid)
         except:
                 pass
+
+        try: #para entrada = 0
+               const_orig[3] = float(cte)
+        except:
+                pass
         
 
 def set_a2(cte):
@@ -158,8 +173,11 @@ def set_a2(cte):
                 valid = sympify(cte)
                 if(float(valid)):
                     const_orig[2] = float(valid)
+        except:
+                pass
 
-
+        try: #para entrada = 0
+               const_orig[2] = float(cte)
         except:
                 pass
         
@@ -171,12 +189,22 @@ def set_a1(cte):
                     const_orig[1] = float(valid)
         except:
                 pass
+
+        try: #para entrada = 0
+               const_orig[1] = float(cte)
+        except:
+                pass
         
 def set_a0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
                     const_orig[0] = float(valid)
+        except:
+                pass
+
+        try: #para entrada = 0
+               const_orig[5] = float(cte)
         except:
                 pass
         
@@ -197,7 +225,7 @@ def set_xT(expr):
         except:
                 pass
         
-        try:
+        try: #para entrada = 0
                Respostas[7] = xT = float(expr)
         except:
                 pass
@@ -211,12 +239,22 @@ def set_y0(cte):
                     cond_ini_orig[0] = float(valid)
         except:
                 pass
+
+        try: #para entrada = 0
+               cond_ini_orig[0] = float(cte)
+        except:
+                pass
         
 def set_dy0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
                     cond_ini_orig[1] = float(valid)
+        except:
+                pass
+
+        try: #para entrada = 0
+               cond_ini_orig[1] = float(cte)
         except:
                 pass
 
@@ -228,6 +266,11 @@ def set_d2y0(cte):
         except:
                 pass
 
+        try: #para entrada = 0
+               cond_ini_orig[2] = float(cte)
+        except:
+                pass
+
 def set_d3y0(cte):
         try:
                 valid = sympify(cte)
@@ -236,11 +279,21 @@ def set_d3y0(cte):
         except:
                 pass
 
+        try: #para entrada = 0
+               cond_ini_orig[3] = float(cte)
+        except:
+                pass
+
 def set_d4y0(cte):
         try:
                 valid = sympify(cte)
                 if(float(valid)):
                     cond_ini_orig[4] = float(valid)
+        except:
+                pass
+
+        try: #para entrada = 0
+               cond_ini_orig[4] = float(cte)
         except:
                 pass
 
@@ -1865,9 +1918,10 @@ def edo_main():
         for i in range(len(cond_ini)):
             cond_ini[i] = round(cond_ini_orig[i], prec)
 
+        print cond_ini_orig, const_orig
 
         try:
-                print "Calculando edo_main", const[2], type(const[2])
+                print "Calculando edo_main"
                 ##Adicionando os coefs a eq diferencial
                 eq = sympify(const[5] * y(t).diff(t, 5) + const[4] * y(t).diff(t, 4) + const[3] * y(t).diff(t, 3) +
                 const[2] * y(t).diff(t, 2) + const[1] * y(t).diff(t) + const[0] * y(t) - xT)
