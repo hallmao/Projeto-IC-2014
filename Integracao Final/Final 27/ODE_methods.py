@@ -204,7 +204,7 @@ def set_a0(cte):
                 pass
 
         try: #para entrada = 0
-               const_orig[5] = float(cte)
+               const_orig[0] = float(cte)
         except:
                 pass
         
