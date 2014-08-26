@@ -29,9 +29,16 @@ import base64
 
 from icon_embedded import icone
 from leibniz_image_embedded import leibniz
+from lagrange_image_embedded import lagrange
+from newton_image_embedded import newton
+from euler_image_embedded import euler
 # or copy paste the background variable found in embeddedImage.py
 #icon = Image.open(cStringIO.StringIO(base64.b64decode(icone)))
 leibniz_im = Image.open(cStringIO.StringIO(base64.b64decode(leibniz)))
+lagrange_im = Image.open(cStringIO.StringIO(base64.b64decode(lagrange)))
+newton_im = Image.open(cStringIO.StringIO(base64.b64decode(newton)))
+euler_im = Image.open(cStringIO.StringIO(base64.b64decode(euler)))
+
 
 ICON = (b'\x00\x00\x01\x00\x01\x00\x10\x10\x00\x00\x01\x00\x08\x00h\x05\x00\x00'
     b'\x16\x00\x00\x00(\x00\x00\x00\x10\x00\x00\x00 \x00\x00\x00\x01\x00'
@@ -620,6 +627,26 @@ class EDO_Solver:
             self.update_saida()
             #print "espanol"
 
+    def set_notation(self):
+        global notation
+
+        if(notation.get()==1):
+            self.eq_label.configure(image=self._img1)
+            self.in_a0.place_configure(relx=0.83)
+        elif(notation.get()==2):
+            self.eq_label.configure(image=self._img2)
+            self.in_a0.place_configure(relx=0.815)
+        elif(notation.get()==3):
+            self.eq_label.configure(image=self._img3)
+            self.in_a0.place_configure(relx=0.805)
+
+        elif (notation.get() == 4 ):
+            self.eq_label.configure(image=self._img4)
+            self.in_a0.place_configure(relx=0.81)
+
+
+
+
     def set_digitosFracionarios(self):
         global prec
 
@@ -638,12 +665,14 @@ class EDO_Solver:
 
     def __init__(self, master):
         global canvas_latex,canvas_plots,latex_fig,plot_fig,toolbar
-        global  user_input, idi, prec, checkButton_state
+        global  user_input, idi, notation, prec, checkButton_state
         self.mast = master
         idi = IntVar()
+        notation = IntVar()
         prec = IntVar()
         checkButton_state = IntVar()
         idi.set(1)
+        notation.set(1)
         prec.set(2)
         checkButton_state.set(0)
         _bgcolor = 'white'  # X11 color: 'gray85'
@@ -762,6 +791,9 @@ class EDO_Solver:
         self.eq_label.configure(highlightbackground="#d9d9d9")
         self.eq_label.configure(highlightcolor="black")
         self._img1 =ImageTk.PhotoImage(leibniz_im)
+        self._img2 =ImageTk.PhotoImage(lagrange_im)
+        self._img3 =ImageTk.PhotoImage(newton_im)
+        self._img4 =ImageTk.PhotoImage(euler_im)
         self.eq_label.configure(image=self._img1)
         self.eq_label.configure(text='''Label''')
         self.eq_label.configure(width=1002)
@@ -890,38 +922,42 @@ class EDO_Solver:
                 activeforeground="#111111",
                 background="#d9d9d9",
                 foreground="#000000",
-                state="disabled",                 
+                state="normal",
                 label=u"Notação")
         self.notacao.add_radiobutton(
-                value="Leibniz",
+                variable=notation,
+                value=1,#Leibniz
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_notation,
                 foreground="#000000",
                 label="Leibniz")
         self.notacao.add_radiobutton(
-                value="Lagrange",
+                variable=notation,
+                value=2, #Lagrange
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_notation,
                 foreground="#000000",
                 label="Lagrange")
         self.notacao.add_radiobutton(
-                value="Heaviside",
+                variable=notation,
+                value=3, #Newton
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_notation,
                 foreground="#000000",
-                label="Heaviside")
+                label="Newton")
         self.notacao.add_radiobutton(
-                value="Euler",
+                variable=notation,
+                value=4, #Euler
                 activebackground="#d9d9d9",
                 activeforeground="#000000",
                 background="#d9d9d9",
-                command=v5_support.TODO,
+                command=self.set_notation,
                 foreground="#000000",
                 label="Euler")
         self.digitosfracionarios = Menu(master,tearoff=0)
