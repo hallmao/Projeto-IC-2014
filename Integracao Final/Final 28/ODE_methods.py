@@ -142,7 +142,7 @@ def set_a5(cte):
                const_orig[5] = float(cte)
         except:
                 pass
-        
+
 
 def set_a4(cte):
         try:
@@ -156,7 +156,7 @@ def set_a4(cte):
                const_orig[4] = float(cte)
         except:
                 pass
-        
+
 
 def set_a3(cte):
         try:
@@ -170,7 +170,7 @@ def set_a3(cte):
                const_orig[3] = float(cte)
         except:
                 pass
-        
+
 
 def set_a2(cte):
         try:
@@ -184,8 +184,8 @@ def set_a2(cte):
                const_orig[2] = float(cte)
         except:
                 pass
-        
-        
+
+
 def set_a1(cte):
         try:
                 valid = sympify(cte)
@@ -198,7 +198,7 @@ def set_a1(cte):
                const_orig[1] = float(cte)
         except:
                 pass
-        
+
 def set_a0(cte):
         try:
                 valid = sympify(cte)
@@ -211,7 +211,7 @@ def set_a0(cte):
                const_orig[0] = float(cte)
         except:
                 pass
-        
+
 def set_xT(expr):
         global xT
         try:
@@ -228,14 +228,14 @@ def set_xT(expr):
                         Respostas [7]= xT = sympify(expr)
         except:
                 pass
-        
+
         try: #para entrada = 0
                Respostas[7] = xT = float(expr)
         except:
                 pass
-        
-        
-        
+
+
+
 def set_y0(cte):
         try:
                 valid = sympify(cte)
@@ -248,7 +248,7 @@ def set_y0(cte):
                cond_ini_orig[0] = float(cte)
         except:
                 pass
-        
+
 def set_dy0(cte):
         try:
                 valid = sympify(cte)
@@ -304,7 +304,7 @@ def set_d4y0(cte):
 def get_xT():
         global xT
         return xT
-        
+
 
 
 ##Entrada pelo console
@@ -342,7 +342,7 @@ def init(a5, a4, a3, a2, a1, a0, xT, y0, dy0, d2y0, d3y0, d4y0):
         set_d4y0(d4y0)
         Respostas[7] = get_xT()
         edo_main()
-        
+
 
 def  evaluate_roots(roots):
 
@@ -446,8 +446,8 @@ def cte_tempo():
                                 if tal[i] >= 1000:
                                         tal[i] = 100
 
-                      
-                                
+
+
                         else:
                                 tal[i] = 1.0
                 #Define qual o maior valor de tal e aloca este valor em talMaior
@@ -1185,7 +1185,7 @@ def show_plots():
 
         #plt.clf()
         plots_numpy = conversao_numpy(t)
-        
+
         ##Separando parte real e imaginária das raízes
         plotRaizesT = (Respostas[0])
         plotRaizesC = [0]*len(plotRaizesT)
@@ -1196,7 +1196,7 @@ def show_plots():
                 plotRaizesC[i] = im(plotRaizesT[i])
                 plotRaizesR[i] = re(plotRaizesT[i])
 
-        
+
 
 
         #print  len(plotRaizesC),plotRaizesC,type(plotRaizesC)
@@ -1334,10 +1334,10 @@ def show_plots():
         plt_r.set_xlabel(idi_real)
         plt_r.set_ylabel(idi_imag)
 
- 
 
 
-                
+
+
 
         if plotRaizesC[0] != 0:
                 plt_r.set_ylim(float(-abs(plotRaizesC[0] + 0.2*plotRaizesC[0])),float(abs(plotRaizesC[-1]+ 0.2*plotRaizesC[-1]) ))
@@ -1351,14 +1351,14 @@ def show_plots():
             plt_r.set_xlim(-1,1)
 
 
-        
+
 
 
 
         for i in range(  len(Respostas[0]) ):
 
                 print  str(Respostas[0].count(Respostas[0][i]) )
-                
+
 
                 if Respostas[0].count(Respostas[0][i]) == 1 :
                         #print " UM"
@@ -1418,8 +1418,8 @@ def show_plots():
         plt_r.spines['bottom']#.set_smart_bounds(True)
         plt_r.xaxis.set_ticks_position('bottom')
         plt_r.yaxis.set_ticks_position('left')
-         
-                                              
+
+
 
         plt_yp = plt.subplot(332)
         plt_yp.grid('on')
@@ -1513,7 +1513,7 @@ def idioma_print_latex():
             idi_est_sis = '$'+latex("Sistema\ n\~{a}o\ est\\'{a}vel,\ componente\ real\ da\ raiz\ \\'{e}\ positiva")+'$'
 
 
-       
+
         idi_eq = '$'+latex("Equac\c\~{a}o\ diferencial:\ ")+'$' #c\c = cedilha
         idi_hom = '$'+latex("Equac\c\~{a}o\ homog\^{e}nea:\ ")+'$'
         idi_car = '$'+latex("Equac\c\~{a}o\ caracter\\'{\i}stica:\ ")+ '$'
@@ -1590,7 +1590,7 @@ def idioma_print_latex():
         str_xt = latex("Entrada\ ")
         return idi_raiz, idi_tal, idi_est_sis, idi_eq, idi_hom, idi_car, idi_yfn, idi_yn, idi_yp, idi_yt, idi_yf, idi_yc, idi_cond_sing, idi_cond_pl, str_xt
 
-def eq_emLatex():
+def eq_CondIni_emLatex():
     global notation
 
     str_const=[str(const[0]), str(const[1]), str(const[2]), str(const[3]), str(const[4]), str(const[5])]
@@ -1602,46 +1602,83 @@ def eq_emLatex():
     str_eq = ""
     str_eqC = ""
     if(const[0] != 0):
-        str_eq = str_const[0]+"y{\left (t \\right )}"
-        str_eqC = str_const[0]
+            str_eq = str_const[0]+"y(t)"
+            str_eqC = str_const[0]
     if(const[1] != 0):
-        str_eq = str_const[1]+"\\frac{d}{d t} y{\left (t \\right )}"+str_eq
         str_eqC = str_const[1]+"r"+str_eqC
+        if(notation==1):
+            str_eq = str_const[1]+"\\frac{d}{d t} y(t)"+str_eq
+        elif(notation==2):
+            str_eq = str_const[1]+"y\prime(t)"+str_eq
     if(const[2] != 0):
-        str_eq = str_const[2]+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}"+str_eq
         str_eqC = str_const[2]+"r^{2}"+str_eqC
+        if(notation==1):
+            str_eq = str_const[2]+"\\frac{d^{2}}{d t^{2}}  y(t)"+str_eq
+        elif(notation==2):
+            str_eq = str_const[2]+"y\prime\prime(t)"+str_eq
     if(const[3] != 0):
-        str_eq = str_const[3]+"\\frac{d^{3}}{d t^{3}}  y{\left (t \\right )}"+str_eq
         str_eqC = str_const[3]+"r^{3}"+str_eqC
+        if(notation==1):
+            str_eq = str_const[3]+"\\frac{d^{3}}{d t^{3}}  y(t)"+str_eq
+        elif(notation==2):
+            str_eq = str_const[3]+"y\prime\prime\prime(t)"+str_eq
     if(const[4] != 0):
-        str_eq = str_const[4]+"\\frac{d^{4}}{d t^{4}}  y{\left (t \\right )}"+str_eq
         str_eqC = str_const[4]+"r^{4}"+str_eqC
+        if(notation==1):
+            str_eq = str_const[4]+"\\frac{d^{4}}{d t^{4}}  y(t)"+str_eq
+        elif(notation==2):
+            str_eq = str_const[4]+"y^{\left(4\\right)}(t)"+str_eq
     if(const[5] != 0):
-        str_eq = str_const[5]+"\\frac{d^{5}}{d t^{5}}  y{\left (t \\right )}"+str_eq
         str_eqC = str_const[5]+"r^{5}"+str_eqC
+        if(notation==1):
+            str_eq = str_const[5]+"\\frac{d^{5}}{d t^{5}}  y(t)"+str_eq
+        elif(notation==2):
+            str_eq = str_const[5]+"y^{\left(5\\right)}(t)"+str_eq
 
     if(str_eq[0]=="+"):
         str_eq = str_eq[1:] #exclui o primeiro caractere da string
         str_eqC = str_eqC[1:]
 
-    # eqD = str(const[2])+"\\frac{d^{2}}{d t^{2}}  y{\left (t \\right )}" # as partes escritas entre as aspas sao as formulas das derivadas em latex
-    # eqC = str(const[2])+"r^{2}"
-    # if(const[1]<0):
-    #     eqD = eqD+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
-    #     eqC = eqC+str(const[1])+"r"
-    # else:
-    #     eqD = eqD+"+"+str(const[1])+"\\frac{d}{d t} y{\left (t \\right )}"
-    #     eqC = eqC+"+"+str(const[1])+"r"
-    # if(const[0]<0):
-    #     eqD = eqD+str(const[0])+"y{\left (t \\right )}"
-    #     eqC = eqC+str(const[0])
-    # else:
-    #     eqD = eqD+"+"+str(const[0])+"y{\left (t \\right )}"
-    #     eqC = eqC+"+"+str(const[0])
-
     eqDiferencialEntradaLatex = latex(str_eq)
     eqCaracEmLatex = latex(str_eqC)
-    return eqDiferencialEntradaLatex, eqCaracEmLatex
+
+    condIni_latex = ""
+
+    if((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
+        if(notation==1):
+            condIni_latex = "y(0) \ = \ "+str(cond_ini[0])
+        elif(notation==2):
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])
+    elif((const[5] == 0) and (const[4] == 0) and (const[3] == 0) ):#eq ordem 2
+        if(notation==1):
+            condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1]) #\quad = space
+        elif(notation==2):
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])#\prime = apostrofo em latex
+    elif((const[5] == 0) and (const[4] == 0)):#eq ordem 3
+        if(notation==1):
+            condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
+                "\quad"+"\\frac{d^{2}}{d t^{2}}  y(0) \ = \ "+str(cond_ini[2])
+        elif(notation==2):
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])#^ em latex usado para superscript
+    elif((const[5] == 0)):#eq ordem 4
+        if(notation==1):
+            condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
+                "\quad"+"\\frac{d^{2}}{d t^{2}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{3}}{d t^{3}}  y(0) \ = \ "+str(cond_ini[3])
+        elif(notation==2):
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])+\
+                        "\quad"+"y\prime\prime\prime(0) \ = \  "+str(cond_ini[3])#\left(...\right) = (..) e latex
+    else:#eq ordem 5
+        if(notation==1):
+            condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
+                "\quad"+"\\frac{d^{2}}{d t^{2}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{3}}{d t^{3}}  y(0) \ = \ "+str(cond_ini[3])+\
+                "\quad"+"\\frac{d^{4}}{d t^{4}}  y(0) \ = \ "+str(cond_ini[4])
+        elif(notation==2):
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])+\
+                    "\quad"+"y\prime\prime\prime(0) \ = \  "+str(cond_ini[3])+"\quad"+"y^{\left(4\\right)}(0) \ = \  "+str(cond_ini[4])
+
+    condIni_latex = latex(condIni_latex)
+
+    return eqDiferencialEntradaLatex, eqCaracEmLatex, condIni_latex
 
 def print_latex():
         global t
@@ -1659,7 +1696,7 @@ def print_latex():
         # eqD = Respostas[8] + Respostas[7] #xT esta negativo dentro da equacao, por isso a soma
         # eqDiferencialEntradaLatex = latex(eqD)
 
-        eqDiferencialEntradaLatex, eqCaracEmLatex = eq_emLatex()
+        eqDiferencialEntradaLatex, eqCaracEmLatex, condIni_latex = eq_CondIni_emLatex()
 
         ##Perfumaria
         dif = 0.9 -0.77
@@ -1673,7 +1710,7 @@ def print_latex():
         plt.rcParams[ 'mathtext.default' ] = 'regular'
         plt.rcParams['text.latex.unicode'] =  'True'
         #plt.rcParams['mathtext.bf'] = 'serif:bold'
-      
+
 
         ##Obtendo as respostas em Latex
         RespostasEmLatex = [0]*(len(Respostas))
@@ -1743,38 +1780,22 @@ def print_latex():
         )
 
         plt.text(xdif,0.9-4*dif,str_t+ur''+str_talLatex)
-        
+
         plt.text(xdif,0.9-5*dif,ur''+
                  idi_yfn+ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[1]+
                  ur'$'+latex(")u(t)")+'$')
 
         if((const[5] == 0) and (const[4] == 0) and (const[3] == 0) and (const[2] == 0)):#eq ordem 1
-            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_sing+latex("y(0)= ")+latex(cond_ini[0]) +'$')
-        elif((const[5] == 0) and (const[4] == 0) and (const[3] == 0) ):#eq ordem 2
-            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
-                     ur'$'+latex("\ \ y\prime(0)= ")+latex(cond_ini[1]) + '$') #\prime = apostrofo em latex
-        elif((const[5] == 0) and (const[4] == 0)):#eq ordem 3
-            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
-                     ur'$'+latex("\ \ y\prime(0)= ")+latex(cond_ini[1]) + '$'              #^ em latex usado para superscript
-                     ur'$'+latex("\ \ y\prime\prime(0)= ")+latex(cond_ini[2]) + '$')
-        elif((const[5] == 0)):#eq ordem 4
-            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
-                     ur'$'+latex("\ \ y\prime(0)= ")+latex(cond_ini[1]) + '$'
-                     ur'$'+latex("\ \ y\prime\prime(0)= ")+latex(cond_ini[2]) + '$'
-                     ur'$'+latex("\ \ y^{\left(3\\right)}(0)= ")+latex(cond_ini[3]) + '$')#\left(...\right) = (..) e latex
-        else:#eq ordem 5
-            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+latex("y(0)= ")+latex(cond_ini[0]) +'$'
-                     ur'$'+latex("\ \ y\prime(0)= ")+latex(cond_ini[1]) + '$'
-                     ur'$'+latex("\ \ y\prime\prime(0)= ")+latex(cond_ini[2]) + '$'
-                     ur'$'+latex("\ \ y^{\left(3\\right)}(0)= ")+latex(cond_ini[3]) + '$'
-                     ur'$'+latex("\ \ y^{\left(4\\right)}(0)= ")+latex(cond_ini[4]) + '$')
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_sing+condIni_latex+'$')
+        else:#eq ordem >1
+            plt.text(xdif,0.9-6*dif,ur'$'+idi_cond_pl+condIni_latex+'$')
 
         plt.text(xdif,0.9-7*dif,ur''+idi_yn+
                      ur'$'+latex("(")+'$'+ur''+RespostasEmLatex[2]+
                      ur'$'+latex(")u(t)")+'$')
 
-            
+
         plt.text(xdif,0.9-8*dif,ur'$'+str_xt+latex("x(t) = ($")+
                  ur''+RespostasEmLatex[7]+
                  ur'$'+latex(")u(t)")+'$'+"   "
@@ -1783,23 +1804,23 @@ def print_latex():
                  ur''+RespostasEmLatex[3]+
                  ur'$'+latex(")u(t)")+'$'
                  )
-        
+
         plt.text(xdif,0.9-9*dif,ur''+idi_yt+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[4]+
                  ur'$'+latex(")u(t)")+'$')
-        
+
         plt.text(xdif,0.9-10*dif,ur''+idi_yf+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[5]+
                  ur'$'+latex(")u(t)")+'$')
-        
+
         plt.text(xdif,0.9-11*dif,ur''+idi_yc+
                  ur'$'+latex("(")+'$'+
                  ur''+RespostasEmLatex[6]+
                  ur'$'+latex(")u(t)")+'$')
         #plt.text(xdif,0.9-7*dif,'x(t) = '+ur''+RespostasEmLatex[7])
-        
+
 
         plt.subplots_adjust(left=0.12, bottom=0.04, right=0.53, top=0.93,
                                                 wspace=0.22, hspace=0.21)
@@ -1827,21 +1848,21 @@ def subs_rootof(eq):
         ocur = [None]*len(ct)
         flag_sin_cos = False
         output = ""
- 
+
 
         for i in range(  len( ct) ):
                 #print "Loop ",i
                 #print ct[i]
-                
+
                 if type( Respostas[0][i] ) is ComplexType and not flag_sin_cos :
                         ct[i] = "C" + ct[i]
                         ocur[i] = ct[i].find("e")
-                        
+
                         ct[i] = ct[i] [:ocur[i]]
                         #print "Antes de adicionar raiz",ct[i]
 
                         ct[i] = "(" + ct[i] + "exp(t*" + str( round(-re(Respostas[0][i]),2) ) + ")" + "*sin(t*" +  str( abs (round( im(Respostas[0][i]),2) ) ) + ")" + ")"
-                        
+
                         #print ct[i]
                         #print ocur
                         flag_sin_cos = True
@@ -1849,16 +1870,16 @@ def subs_rootof(eq):
                 elif type( Respostas[0][i] ) is ComplexType and  flag_sin_cos :
                         ct[i] = "C" + ct[i]
                         ocur[i] = ct[i].find("e")
-                        
+
                         ct[i] = ct[i] [:ocur[i]]
                         #print "Antes de adicionar raiz",ct[i]
 
                         ct[i] = "(" +  ct[i] + "exp(t*" + str( round(-re(Respostas[0][i]),2) ) + ")" + "*cos(t*" +  str( abs ( round(im(Respostas[0][i]),2) ) ) + ")"+ ")"
-                        
+
                         #print ct[i]
                         #print ocur
                         flag_sin_cos = False
-                        
+
 
 
                 else:
@@ -1867,14 +1888,14 @@ def subs_rootof(eq):
                         ct[i] = ct[i] [:ocur[i] ]
                         #print "Antes de adicionar raiz",ct[i]
                         ct[i] = "(" + ct[i] + "exp(t*" + str(      round(-re(Respostas[0][i]),2)        ) + ")"+ ")"
-                        
+
                         #print ct[i]
                         #print ocur
-                        
+
 
         for i in range( len(ct) ):
 
-                
+
 
                 if i == 0 :
                         output =  output + ct[i]
@@ -1887,10 +1908,10 @@ def subs_rootof(eq):
         return output
 
 
-                    
 
 
-            
+
+
 
 ##    for i in range(len(rootOf_list)-1):
 ##        #eq = eq.replace(str(rootOf_list[i]),Respostas[0][-1 + i ])
@@ -1941,7 +1962,7 @@ def edo_main():
                 else:           # nth_linear_constant_coeff_variation_of_parameters
                                 solvedEq = dsolve(sympify(Respostas[8]), y(t), hint='nth_linear_constant_coeff_undetermined_coefficients', returns='both')
                                 #solvedEq = dsolve(sympify(Respostas[8]), y(t), hint='nth_linear_constant_coeff_variation_of_parameters_Integral')
-        
+
                 ##Transformação do tipo sympy_unity para o sympy_mul (mais operações permitidas)
                 sepEq = solvedEq._args[1]
                 #sepEq = sepEq.evalf(prec)
@@ -1977,19 +1998,19 @@ def edo_main():
 
                 if str_fn.find("RootOf") != -1:
                     formaNatural = subs_rootof(formaNatural)
-                
+
                 ## fN é a mesma coisa, mas usado por um bug bizarro do Sympy que exige uma variável sem alocações prévias quando diferenciando
                 ##isso é válido no método conds_iniciais_aplicadas
                 # 0- Raizes; 1- Forma Natural da respsota; 2- Resposta Natural;
                 # 3- Resposta Particular; 4- Resposta Transitoria; 5- Respsota Forcada
                 # 6- Resposta Completa; 7- xT; 8- eq
-                
+
                 fN = formaNatural
 
- 
+
                 Respostas[1] = formaNatural #Adicionando Forma natural de resposta na lista de respostas
 
-                
+
                 rP = RespPart.evalf(prec)
                 conds_iniciais_aplicadas(fN, rP)
 
