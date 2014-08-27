@@ -1610,18 +1610,24 @@ def eq_CondIni_emLatex():
             str_eq = str_const[1]+"\\frac{d}{d t} y(t)"+str_eq
         elif(notation==2):
             str_eq = str_const[1]+"y\prime(t)"+str_eq
+        elif(notation==3):
+            str_eq = str_const[1]+"\dot{y}(t)"+str_eq
     if(const[2] != 0):
         str_eqC = str_const[2]+"r^{2}"+str_eqC
         if(notation==1):
             str_eq = str_const[2]+"\\frac{d^{2}}{d t^{2}}  y(t)"+str_eq
         elif(notation==2):
             str_eq = str_const[2]+"y\prime\prime(t)"+str_eq
+        elif(notation==3):
+            str_eq = str_const[2]+"\ddot{y}(t)"+str_eq
     if(const[3] != 0):
         str_eqC = str_const[3]+"r^{3}"+str_eqC
         if(notation==1):
             str_eq = str_const[3]+"\\frac{d^{3}}{d t^{3}}  y(t)"+str_eq
         elif(notation==2):
             str_eq = str_const[3]+"y\prime\prime\prime(t)"+str_eq
+        elif(notation==3):
+            str_eq = str_const[3]+"y^{\dddots}(t)"+str_eq
     if(const[4] != 0):
         str_eqC = str_const[4]+"r^{4}"+str_eqC
         if(notation==1):
