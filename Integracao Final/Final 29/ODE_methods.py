@@ -1497,6 +1497,7 @@ def idioma_print_latex():
 
 
     if(lingua==1):
+
         if(len(Respostas[0])==1):
             idi_raiz = '$'+latex("Raiz:\ ")+'$'
         else:

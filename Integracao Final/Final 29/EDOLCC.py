@@ -604,6 +604,8 @@ class EDO_Solver:
             self.cond_ini_label.configure(text=u"""Condições  Iniciais:
         y\u207D\u2074\u207E(0) =        y\u207D\u00B3\u207E(0) =        y''(0) =        y'(0) =        y(0) =              """, anchor=N, font=("Verdana", 14))
             self.xT_label.configure(text='''Entrada x(t) =\t\t    u(t)''', font=("Verdana", 14))
+            set_lingua(1)
+            self.update_saida()
             #print "port"
         elif(idi.get() == 2): #English
             self.menubar.entryconfig(2,label="Notation")
