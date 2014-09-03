@@ -1616,7 +1616,7 @@ def eq_CondIni_emLatex():
         elif(notation==4):
             str_eq = str_const[1]+"D_t"+str_eq
     if(const[2] != 0):
-        str_eqC = str_const[2]+"r^{(ii)}"+str_eqC
+        str_eqC = str_const[2]+"r^{2}"+str_eqC
         if(notation==1):
             str_eq = str_const[2]+"\\frac{d^{(ii)}}{d t^{(ii)}}  y(t)"+str_eq
         elif(notation==2):
@@ -1626,7 +1626,7 @@ def eq_CondIni_emLatex():
         elif(notation==4):
             str_eq = str_const[2]+"D_{t}^{(ii)}"+str_eq
     if(const[3] != 0):
-        str_eqC = str_const[3]+"r^{(iii)}"+str_eqC
+        str_eqC = str_const[3]+"r^{3}"+str_eqC
         if(notation==1):
             str_eq = str_const[3]+"\\frac{d^{(iii)}}{d t^{(iii)}}  y(t)"+str_eq
         elif(notation==2):
@@ -1636,7 +1636,7 @@ def eq_CondIni_emLatex():
         elif(notation==4):
             str_eq = str_const[3]+"D_{t}^{(iii)}"+str_eq
     if(const[4] != 0):
-        str_eqC = str_const[4]+"r^{(iv)}"+str_eqC
+        str_eqC = str_const[4]+"r^{4}"+str_eqC
         if(notation==1):
             str_eq = str_const[4]+"\\frac{d^{(iv)}}{d t^{(iv)}}  y(t)"+str_eq
         elif(notation==2):
@@ -1646,7 +1646,7 @@ def eq_CondIni_emLatex():
         elif(notation==4):
             str_eq = str_const[4]+"D_{t}^{(iv)}"+str_eq
     if(const[5] != 0):
-        str_eqC = str_const[5]+"r^{(v)}"+str_eqC
+        str_eqC = str_const[5]+"r^{5}"+str_eqC
         if(notation==1):
             str_eq = str_const[5]+"\\frac{d^{(v)}}{d t^{(v)}}  y(t)"+str_eq
         elif(notation==2):
