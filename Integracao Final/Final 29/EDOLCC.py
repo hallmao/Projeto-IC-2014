@@ -52,6 +52,16 @@ with open(ICON_PATH, 'wb') as icon_file:icon_file.write(ICON)
 #------------------------------------------------------------------
 
 def destroy_EDO_Solver():
+    global root, config, prec, notation, idi, checkButton_state
+
+    try:
+        config = open("config.txt","w")
+        config.write(str(idi.get())+str(notation.get())+str(prec.get())+str(checkButton_state.get()))
+        config.close()
+    except:
+        print "no file"
+
+
     root.quit()
     root.destroy()
     raise SystemExit
@@ -481,7 +491,7 @@ class EDO_Solver:
     def autoScale_handler(self):
         global checkButton_state, canvas_plots, plot_fig
 
-        print "CheckButton value", checkButton_state.get()
+        #print "CheckButton value", checkButton_state.get()
         set_autoScale(checkButton_state.get())
 
         canvas_plots.get_tk_widget().destroy()
@@ -658,9 +668,28 @@ class EDO_Solver:
         edo_main()
         self.update_saida()
 
+    def load_config(self):
+        global idi,notation,prec, checkButton_state
+
+        try:
+            config = open("config.txt","r")
+            str_config = config.read()
+            print "Config = "+str_config
+            idi.set(str_config[0])
+            notation.set(str_config[1])
+            prec.set(str_config[2])
+            checkButton_state.set(str_config[3])
+            self.set_idiomas()
+            self.set_notation()
+            self.set_digitosFracionarios()
+        except:
+            print "Config not found"
+            pass
+
     def __init__(self, master):
         global canvas_latex,canvas_plots,latex_fig,plot_fig,toolbar
         global  user_input, idi, notation, prec, checkButton_state
+        global config
 
         self.mast = master
         idi = IntVar()
@@ -1170,6 +1199,13 @@ class EDO_Solver:
         self.tau_label.configure(text=
                                                   str(self.ScaleMin.get() ) +  u"\u03C4"  + "       "+
                                                   str(self.ScaleMax.get() ) +  u"\u03C4")
+
+        self.load_config()
+        
+
+
+
+
 
 
 
