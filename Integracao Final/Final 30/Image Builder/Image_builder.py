@@ -1,9 +1,9 @@
 
 import base64
 
-im_filename = 'Newton.png'
-im_variable_name = 'newton'
-py_filename = 'newton_image_embedded.py'
+im_filename = 'Euler.png'
+im_variable_name = 'euler'
+py_filename = 'euler_image_embedded.py'
 
 with open(im_filename,'rb') as f:
     str64 = base64.b64encode(f.read())
@@ -35,8 +35,8 @@ import cStringIO
 import base64
 
 #from icon_embedded import icone
-from newton_image_embedded import newton
+from euler_image_embedded import euler
 # or copy paste the background variable found in embeddedImage.py
 #icon = Image.open(cStringIO.StringIO(base64.b64decode(icone)))
-euler_im = Image.open(cStringIO.StringIO(base64.b64decode(newton)))
+euler_im = Image.open(cStringIO.StringIO(base64.b64decode(euler)))
 
