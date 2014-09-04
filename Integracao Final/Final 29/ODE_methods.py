@@ -1610,7 +1610,7 @@ def eq_CondIni_emLatex():
         if(notation==1):
             str_eq = str_const[1]+"\\frac{d}{d t} y(t)"+str_eq
         elif(notation==2):
-            str_eq = str_const[1]+"y\prime(t)"+str_eq#\prime = apostrofo em latex
+            str_eq = str_const[1]+"y^{(i)}(t)"+str_eq#\prime = apostrofo em latex
         elif(notation==3):
             str_eq = str_const[1]+"\dot{y}(t)"+str_eq#\dot{y} = ponto em cima do y(notacao de newton)
         elif(notation==4):
@@ -1618,9 +1618,9 @@ def eq_CondIni_emLatex():
     if(const[2] != 0):
         str_eqC = str_const[2]+"r^{2}"+str_eqC
         if(notation==1):
-            str_eq = str_const[2]+"\\frac{d^{(ii)}}{d t^{(ii)}}  y(t)"+str_eq
+            str_eq = str_const[2]+"\\frac{d^{2}}{d t^{2}}  y(t)"+str_eq
         elif(notation==2):
-            str_eq = str_const[2]+"y\prime\prime(t)"+str_eq
+            str_eq = str_const[2]+"y^{(ii)}(t)"+str_eq
         elif(notation==3):
             str_eq = str_const[2]+"\ddot{y}(t)"+str_eq
         elif(notation==4):
@@ -1628,9 +1628,9 @@ def eq_CondIni_emLatex():
     if(const[3] != 0):
         str_eqC = str_const[3]+"r^{3}"+str_eqC
         if(notation==1):
-            str_eq = str_const[3]+"\\frac{d^{(iii)}}{d t^{(iii)}}  y(t)"+str_eq
+            str_eq = str_const[3]+"\\frac{d^{3}}{d t^{3}}  y(t)"+str_eq
         elif(notation==2):
-            str_eq = str_const[3]+"y\prime\prime\prime(t)"+str_eq
+            str_eq = str_const[3]+"y^{(iii)}(t)"+str_eq
         elif(notation==3):
             str_eq = str_const[3]+"y^{(iii)}(t)"+str_eq
         elif(notation==4):
@@ -1638,7 +1638,7 @@ def eq_CondIni_emLatex():
     if(const[4] != 0):
         str_eqC = str_const[4]+"r^{4}"+str_eqC
         if(notation==1):
-            str_eq = str_const[4]+"\\frac{d^{(iv)}}{d t^{(iv)}}  y(t)"+str_eq
+            str_eq = str_const[4]+"\\frac{d^{4}}{d t^{4}}  y(t)"+str_eq
         elif(notation==2):
             str_eq = str_const[4]+"y^{(iv)}(t)"+str_eq
         elif(notation==3):
@@ -1648,7 +1648,7 @@ def eq_CondIni_emLatex():
     if(const[5] != 0):
         str_eqC = str_const[5]+"r^{5}"+str_eqC
         if(notation==1):
-            str_eq = str_const[5]+"\\frac{d^{(v)}}{d t^{(v)}}  y(t)"+str_eq
+            str_eq = str_const[5]+"\\frac{d^{5}}{d t^{5}}  y(t)"+str_eq
         elif(notation==2):
             str_eq = str_const[5]+"y^{(v)}(t)"+str_eq
         elif(notation==3):
@@ -1671,7 +1671,7 @@ def eq_CondIni_emLatex():
         if(notation==1):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1]) #\quad = space
         elif(notation==2):
-            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y^{(i)}(0) \ = \  "+str(cond_ini[1])
         elif(notation==3):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\dot{y}(0) \ = \ "+str(cond_ini[1])
         elif(notation==4):
@@ -1679,9 +1679,9 @@ def eq_CondIni_emLatex():
     elif((const[5] == 0) and (const[4] == 0)):#eq ordem 3
         if(notation==1):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
-                "\quad"+"\\frac{d^{(ii)}}{d t^{(ii)}}  y(0) \ = \ "+str(cond_ini[2])
+                "\quad"+"\\frac{d^{2}}{d t^{(2}}  y(0) \ = \ "+str(cond_ini[2])
         elif(notation==2):
-            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])#^ em latex usado para superscript
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y^{(i)}(0) \ = \  "+str(cond_ini[1])+"\quad"+"y^{(ii)}(0) \ = \  "+str(cond_ini[2])#^ em latex usado para superscript
         elif(notation==3):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\dot{y}(0) \ = \ "+str(cond_ini[1])+"\quad"+"\ddot{y}(0) \ = \ "+str(cond_ini[2])
         elif(notation==4):
@@ -1689,10 +1689,10 @@ def eq_CondIni_emLatex():
     elif((const[5] == 0)):#eq ordem 4
         if(notation==1):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
-                "\quad"+"\\frac{d^{(ii)}}{d t^{(ii)}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{(iii)}}{d t^{(iii)}}  y(0) \ = \ "+str(cond_ini[3])
+                "\quad"+"\\frac{d^{2}}{d t^{2}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{3}}{d t^{3}}  y(0) \ = \ "+str(cond_ini[3])
         elif(notation==2):
-            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])+\
-                "\quad"+"y\prime\prime\prime(0) \ = \  "+str(cond_ini[3])#\left(...\right) = (..) e latex
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y^{(i)}(0) \ = \  "+str(cond_ini[1])+"\quad"+"y^{(ii)}(0) \ = \  "+str(cond_ini[2])+\
+                "\quad"+"y^{(iii)}(0) \ = \  "+str(cond_ini[3])#\left(...\right) = (..) e latex
         elif(notation==3):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\dot{y}(0) \ = \ "+str(cond_ini[1])+"\quad"+"\ddot{y}(0) \ = \ "+str(cond_ini[2])+\
                 "\quad"+"y^{(iii)}(0) \ = \ "+str(cond_ini[3])
@@ -1702,11 +1702,11 @@ def eq_CondIni_emLatex():
     else:#eq ordem 5
         if(notation==1):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\\frac{d}{d t} y(0) \ = \ "+ str(cond_ini[1])+\
-                "\quad"+"\\frac{d^{(ii)}}{d t^{(ii)}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{(iii)}}{d t^{(iii)}}  y(0) \ = \ "+str(cond_ini[3])+\
-                "\quad"+"\\frac{d^{(iv)}}{d t^{(iv)}}  y(0) \ = \ "+str(cond_ini[4])
+                "\quad"+"\\frac{d^{2}}{d t^{2}}  y(0) \ = \ "+str(cond_ini[2])+"\quad"+"\\frac{d^{3}}{d t^{3}}  y(0) \ = \ "+str(cond_ini[3])+\
+                "\quad"+"\\frac{d^{4}}{d t^{4}}  y(0) \ = \ "+str(cond_ini[4])
         elif(notation==2):
-            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y\prime(0) \ = \  "+str(cond_ini[1])+"\quad"+"y\prime\prime(0) \ = \  "+str(cond_ini[2])+\
-                    "\quad"+"y\prime\prime\prime(0) \ = \  "+str(cond_ini[3])+"\quad"+"y^{(iv)}(0) \ = \  "+str(cond_ini[4])
+            condIni_latex = "y(0) \ = \  "+str(cond_ini[0])+"\quad"+"y^{(i)}(0) \ = \  "+str(cond_ini[1])+"\quad"+"y^{(ii)}(0) \ = \  "+str(cond_ini[2])+\
+                    "\quad"+"y^{(iii)}(0) \ = \  "+str(cond_ini[3])+"\quad"+"y^{(iv)}(0) \ = \  "+str(cond_ini[4])
         elif(notation==3):
             condIni_latex = "y(0) \ = \ "+str(cond_ini[0])+"\quad"+"\dot{y}(0) \ = \ "+str(cond_ini[1])+"\quad"+"\ddot{y}(0) \ = \ "+str(cond_ini[2])+\
                 "\quad"+"y^{(iii)}(0) \ = \ "+str(cond_ini[3])+"\quad"+"y^{(iv)}(0) \ = \  "+str(cond_ini[4])

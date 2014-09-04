@@ -684,6 +684,7 @@ class EDO_Solver:
             self.set_idiomas()
             self.set_notation()
             self.set_digitosFracionarios()
+            self.autoScale_handler()
         except:
             print "Config not found"
             pass
